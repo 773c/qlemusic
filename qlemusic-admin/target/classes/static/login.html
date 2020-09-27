@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div class="container-fluid" align="center">
+    <div class="row" style="border: 1px solid blue;">
+        <div class="col-md tback" >
+            <form action="/admin/login" method="post" id="form-login" >
+                用户名：<input type="text" id="username" name="account" value="cjj"><br><br>
+                密&nbsp;&nbsp;&nbsp;码：<input type="text" id="password" name="password" value="123456"><br><br>
+                <input type="radio" id="rememberMe" name="rememberMe">记住我
+                <button id="btLogin" type="submit">登录</button>
+            </form>
+            <br>
+            <form action="" method="post" id="form-login2">
+                用户名：<input type="text" id="username2" name="username"><br><br>
+                密&nbsp;&nbsp;&nbsp;码：<input type="text" id="password2" name="password"><br><br>
+                <button id="btRegister" type="submit">注册</button>
+            </form>
+            <br>
+            <form action="/admin/test2" method="post" id="form-login3">
+                用户名：<input type="text" id="username3" name="username"><br><br>
+                密&nbsp;&nbsp;&nbsp;码：<input type="text" id="password3" name="password"><br><br>
+                <button id="btUpdate" type="submit">修改</button>
+            </form>
+            <br>
+            <a href="/admin/logout">退出</a>
+            <a id="cli" href="/admin/test">点击</a>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjj.qlemusic.security.dao.UmsAdminDao">
+    <resultMap id="umsAdminResult" type="UmsAdmin">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="account" column="account"/>
+        <result property="password" column="password"/>
+        <result property="salt" column="salt"/>
+        <result property="headIcon" column="head_icon"/>
+        <result property="note" column="note"/>
+        <result property="available" column="available"/>
+    </resultMap>
+    
+    <sql id="umsAdminCol">
+        id,
+        name,
+        account,
+        password,
+        salt,
+        head_icon,
+        note,
+        available
+    </sql>
+    <insert id="addTest" parameterType="UmsAdmin" >
+        insert into
+            ums_admin(name,account,password)
+        values
+            (#{name},#{account},#{password})
+    </insert>
+    <select id="selectAll" resultMap="umsAdminResult">
+        select
+            <include refid="umsAdminCol"/>
+        from
+            ums_admin
+    </select>
+    <select id="selectAdminByAccount" parameterType="java.lang.String" resultMap="umsAdminResult">
+        select
+            <include refid="umsAdminCol"/>
+        from
+            ums_admin
+        where
+            account=#{account}
+    </select>
+    <select id="selectAccountAndPassword" parameterType="UmsAdminLogin" resultType="UmsAdminLogin">
+        select
+            account,password
+        from
+            ums_admin
+        where
+            account=#{account}
+        and
+            password=#{password}
+    </select>
+    <select id="selectRoles" parameterType="java.lang.String" resultType="java.lang.String">
+        select
+            r.name
+        from
+            ums_admin a
+            join ums_admin_role ar on ar.admin_id = a.id
+            join ums_role r on ar.role_id = r.id
+        where
+            account=#{account}
+    </select>
+    <select id="selectPermissions" parameterType="java.lang.String" resultType="java.lang.String">
+        select
+            rs.permission
+        from
+            ums_admin a
+            join ums_admin_role ar on ar.admin_id = a.id
+            join ums_role r on ar.role_id = r.id
+            join ums_role_resource rrs on rrs.role_id = r.id
+            join ums_resource rs on rrs.resource_id = rs.id
+        where
+            account=#{account}
+    </select>
+</mapper>

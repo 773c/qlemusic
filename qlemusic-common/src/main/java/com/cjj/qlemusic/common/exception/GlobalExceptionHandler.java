@@ -1,0 +1,34 @@
+package com.cjj.qlemusic.common.exception;
+
+import com.cjj.qlemusic.common.util.ResponseResultUtil;
+import org.apache.shiro.authz.AuthorizationException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+/**
+ * 全局异常处理类
+ */
+@ControllerAdvice
+@ResponseBody
+public class GlobalExceptionHandler {
+    /**
+     * 自定义捕捉异常
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value = ApiException.class)
+    public ResponseResultUtil handle(ApiException e){
+        return ResponseResultUtil.failed(e.getMessage());
+    }
+
+    /**
+     * 未授权异常
+     * @return
+     */
+    @ExceptionHandler(value = AuthorizationException.class)
+    public ResponseResultUtil noAuthorization(){
+        return ResponseResultUtil.noAuthorization();
+    }
+
+}

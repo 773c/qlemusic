@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/qlemusic.iml" filepath="$PROJECT_DIR$/.idea/qlemusic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qlemusic-admin/qlemusic-admin.iml" filepath="$PROJECT_DIR$/qlemusic-admin/qlemusic-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qlemusic-common/qlemusic-common.iml" filepath="$PROJECT_DIR$/qlemusic-common/qlemusic-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qlemusic-portal/qlemusic-portal.iml" filepath="$PROJECT_DIR$/qlemusic-portal/qlemusic-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qlemusic-security/qlemusic-security.iml" filepath="$PROJECT_DIR$/qlemusic-security/qlemusic-security.iml" />
+    </modules>
+  </component>
+</project>

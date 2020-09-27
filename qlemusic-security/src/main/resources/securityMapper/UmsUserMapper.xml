@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjj.qlemusic.security.dao.UmsUserDao">
+    <resultMap id="userMap" type="UmsUser">
+        <id property="id" column="id"/>
+        <result property="uniqueId" column="unique_id"/>
+        <result property="headIcon" column="head_icon"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+        <result property="telephone" column="telephone"/>
+        <result property="password" column="password"/>
+        <result property="salt" column="salt"/>
+        <result property="createTime" column="create_time"/>
+        <result property="email" column="email"/>
+        <result property="description" column="description"/>
+        <result property="available" column="available"/>
+    </resultMap>
+
+    <sql id="userCol">
+        id,
+        unique_id,
+        head_icon,
+        name,
+        sex,
+        telephone,
+        password,
+        salt,
+        create_time,
+        email,
+        description,
+        available
+    </sql>
+
+    <insert id="insert">
+        insert into
+            ums_user(unique_id,head_icon,name,telephone,password,salt,create_time,available)
+        values
+            (#{unique_id},#{headIcon},#{name},#{telephone},#{password},#{salt},#{createTime},#{available})
+    </insert>
+    <select id="selectUserByTelephone" resultMap="userMap">
+        select
+            <include refid="userCol"/>
+        from
+            ums_user
+        where
+            telephone = #{telephone}
+    </select>
+    <update id="updateInfo">
+        update
+            ums_user
+        set
+            name=#{name},
+            sex=#{sex},
+            description=#{description}
+        where
+            id = #{id}
+    </update>
+    <select id="selectUserById" resultMap="userMap">
+        select
+            <include refid="userCol"/>
+        from
+            ums_user
+        where
+            id = #{id}
+    </select>
+    <update id="updateUniqueId">
+        update
+            ums_user
+        set
+            unique_id=#{uniqueId}
+        where
+            id = #{id}
+    </update>
+    <select id="selectUserByIdFromUniqueId" resultType="java.lang.Long">
+        select
+            id
+        from
+            ums_user_unique_id
+        where
+            user_id = #{id}
+    </select>
+    <insert id="addUpdateUniqueIdRecord">
+        insert into
+            ums_user_unique_id(user_id)
+        value
+            (#{id})
+    </insert>
+</mapper>

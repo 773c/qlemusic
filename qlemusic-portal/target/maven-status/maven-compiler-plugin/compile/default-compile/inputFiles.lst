@@ -1,0 +1,14 @@
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\config\MybatisConfig.java
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\QlemusicPortalApplication.java
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\controller\UmsUserController.java
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\config\Oauth2Config.java
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\service\impl\BbsMusicServiceImpl.java
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\config\SmsConfig.java
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\service\BbsMusicService.java
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\config\OssConfig.java
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\config\CorsConfig.java
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\controller\BbsMusicController.java
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\aspect\BindingResultAspect.java
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\entity\BbsMusic.java
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\dao\BbsMusicDao.java
+F:\javaweb\qlemusic\qlemusic-portal\src\main\java\com\cjj\qlemusic\portal\config\Swagger2Config.java

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjj.qlemusic.admin.dao.AmsAuthorDao">
+    <resultMap id="amsAuthorResult" type="AmsAuthor">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+        <result property="headIcon" column="head_icon"/>
+        <result property="description" column="description"/>
+        <result property="prefix" column="prefix"/>
+        <result property="fansSum" column="fans_sum"/>
+        <result property="language" column="language"/>
+        <result property="tag" column="tag"/>
+        <result property="available" column="available"/>
+    </resultMap>
+
+    <sql id="amsAuthorCol">
+        id,
+        name,
+        sex,
+        head_icon,
+        description,
+        prefix,
+        fans_sum,
+        language,
+        tag,
+        available
+    </sql>
+
+    <select id="selectAll" resultMap="amsAuthorResult">
+        select
+            <include refid="amsAuthorCol"/>
+        from
+            ams_author
+    </select>
+</mapper>

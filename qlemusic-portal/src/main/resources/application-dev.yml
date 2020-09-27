@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/qlmusic?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5 #连接池初始化大小
+      min-idle: 10 #最小空闲连接数
+      max-active: 20 #最大连接数
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+      #访问监控网页的登录用户名和密码
+      stat-view-servlet:
+        login-username: druid
+        login-password: druid
+  redis:
+    host: 127.0.0.1
+    database: 0
+    port: 6379
+#    password:
+    timeout: 5000
+#    lettuce:
+#      pool:
+#        max-active: 8 #最大连接数
+#        max-idle: 8 #最大空闲连接 默认8
+#        max-wait: -1ms #默认-1 最大连接阻塞等待时间
+#        min-idle: 0 #最小空闲连接

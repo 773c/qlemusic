@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjj.qlemusic.security.dao.UmsRoleDao">
+    <resultMap id="umsMenuResult" type="UmsMenu">
+        <id property="id" column="id"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="title" column="title"/>
+        <result property="level" column="level"/>
+        <result property="sort" column="sort"/>
+        <result property="name" column="name"/>
+        <result property="icon" column="icon"/>
+        <result property="hidden" column="hidden"/>
+    </resultMap>
+
+    <select id="selectMenuList" resultMap="umsMenuResult" parameterType="java.lang.Long">
+      select
+          m.id,
+          m.parent_id,
+          m.create_time,
+          m.title,
+          m.level,
+          m.sort,
+          m.name,
+          m.icon,
+          m.hidden
+      from
+          ums_admin_role ar
+          join ums_role r on ar.role_id = r.id
+          join ums_role_menu rm on rm.role_id = r.id
+          join ums_menu m on rm.menu_id = m.id
+      where
+          ar.admin_id=#{admin_id}
+    </select>
+    <select id="selectRoleByAdminId" resultType="java.lang.String" parameterType="java.lang.Long">
+        select
+            r.name
+        from
+            ums_role r
+            join ums_admin_role ar on ar.role_id = r.id
+        where
+            ar.admin_id = #{admin_id}
+    </select>
+</mapper>

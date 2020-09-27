@@ -1,0 +1,14 @@
+com\cjj\qlemusic\portal\service\BbsMusicService.class
+com\cjj\qlemusic\portal\config\MybatisConfig.class
+com\cjj\qlemusic\portal\config\SmsConfig.class
+com\cjj\qlemusic\portal\dao\BbsMusicDao.class
+com\cjj\qlemusic\portal\config\Oauth2Config.class
+com\cjj\qlemusic\portal\config\OssConfig.class
+com\cjj\qlemusic\portal\QlemusicPortalApplication.class
+com\cjj\qlemusic\portal\config\Swagger2Config.class
+com\cjj\qlemusic\portal\aspect\BindingResultAspect.class
+com\cjj\qlemusic\portal\config\CorsConfig.class
+com\cjj\qlemusic\portal\controller\UmsUserController.class
+com\cjj\qlemusic\portal\service\impl\BbsMusicServiceImpl.class
+com\cjj\qlemusic\portal\controller\BbsMusicController.class
+com\cjj\qlemusic\portal\entity\BbsMusic.class

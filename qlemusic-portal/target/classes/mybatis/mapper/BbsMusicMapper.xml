@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjj.qlemusic.portal.dao.BbsMusicDao">
+    <resultMap id="bbsMusicMap" type="BbsMusic">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="audio_url" property="audioUrl"/>
+        <result column="audio_avatar_url" property="audioAvatarUrl"/>
+        <result column="start_time" property="startTime"/>
+        <result column="play_time" property="playTime"/>
+        <association property="umsUser" javaType="UmsUser" column="user_id">
+            <id property="id" column="id"/>
+            <result property="headIcon" column="head_icon"/>
+            <result property="name" column="name"/>
+        </association>
+    </resultMap>
+
+    <sql id="bbsMusicCol">
+        id,
+        title,
+        audio_url,
+        audio_avatar_url,
+        start_time,
+        play_time
+    </sql>
+
+    <select id="selectRecommendList" resultMap="bbsMusicMap">
+        select
+            m.*,u.head_icon,u.name
+        from
+            bbs_music m
+            left join ums_user u on u.id = m.user_id
+    </select>
+</mapper>
