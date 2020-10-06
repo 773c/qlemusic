@@ -10,10 +10,14 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.cjj.qlemusic.common.exception.Asserts;
 import com.cjj.qlemusic.common.util.TelephoneUtil;
+import com.cjj.qlemusic.common.util.UuidUtil;
 import com.cjj.qlemusic.common.util.VerifyUtil;
+import com.cjj.qlemusic.security.dao.UmsCollectDao;
 import com.cjj.qlemusic.security.dao.UmsUserDao;
+import com.cjj.qlemusic.security.entity.UmsCollect;
 import com.cjj.qlemusic.security.entity.UmsUser;
 import com.cjj.qlemusic.security.entity.UmsUserRegister;
+import com.cjj.qlemusic.security.service.OssService;
 import com.cjj.qlemusic.security.service.UmsUserCacheService;
 import com.cjj.qlemusic.security.service.UmsUserService;
 import com.cjj.qlemusic.security.util.JwtTokenUtil;
@@ -24,7 +28,9 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +50,8 @@ public class UmsUserServiceImpl implements UmsUserService {
     private String defaultAvatar;
     @Value("${user.uniqueId}")
     private String uniqueId;
+    @Value("${aliyun.oss.host}")
+    private String host;
 
     @Autowired
     private UmsUserDao userDao;
@@ -55,15 +63,21 @@ public class UmsUserServiceImpl implements UmsUserService {
     private UmsUserCacheService userCacheService;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
+    @Autowired
+    private OssService ossService;
+    @Autowired
+    private UmsCollectDao collectDao;
 
     @Override
     public UmsUser register(UmsUserRegister umsUserRegister) {
+        int count = 0;
+        UmsUser regUser = null;
         UmsUser user = getUserByTelephone(umsUserRegister.getTelephone());
         //判断手机号是否已经注册
         if (user == null) {
             //判断两次密码是否相同
             if (umsUserRegister.getPassword().equals(umsUserRegister.getRePassword())) {
-                UmsUser regUser = new UmsUser();
+                regUser = new UmsUser();
                 //手机号
                 regUser.setTelephone(umsUserRegister.getTelephone());
                 //盐
@@ -75,9 +89,14 @@ public class UmsUserServiceImpl implements UmsUserService {
                 regUser = setUserInfo(regUser);
                 //存入数据库
                 userDao.insert(regUser);
-                return regUser;
+                //这里进行收藏夹默认的创建
+                addDefaultCollect(regUser);
+                count = 1;
             }
-            return null;
+            if(count == 1)
+                return regUser;
+            else
+                return null;
         }
         user.setAvailable(false);
         return user;
@@ -197,4 +216,33 @@ public class UmsUserServiceImpl implements UmsUserService {
     public Long getUserByIdFromUniqueId(Long id) {
         return userDao.selectUserByIdFromUniqueId(id);
     }
+
+    @Override
+    public String updateAvatar(Long id,String uniqueId,MultipartFile file) throws IOException {
+        int count;
+        //更改头像图片名称
+        String imgName = uniqueId + "_" + UuidUtil.getTwentyBit() + "_" +file.getOriginalFilename();
+        //上传到OSS
+        String ossFileApiPath = ossService.uploadOss(imgName, file.getInputStream());
+        //修改数据库
+        userDao.updateAvatar(id,host + ossFileApiPath);
+        //更新缓存
+        userCacheService.delUser(userDao.selectUserById(id).getTelephone());
+        userCacheService.setUser(userDao.selectUserById(id));
+        count = 1;
+        if(count == 1)
+            return ossFileApiPath;
+        else
+            return null;
+    }
+
+    @Override
+    public void addDefaultCollect(UmsUser regUser) {
+        System.out.println(regUser);
+        UmsCollect umsCollect = new UmsCollect();
+        umsCollect.setName("默认");
+        collectDao.createCollect(umsCollect);
+        collectDao.insertUserAndCollect(regUser.getId(),umsCollect.getId());
+    }
+
 }

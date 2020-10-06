@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="qlemusic-portal:war">
-    <output-path>$PROJECT_DIR$/qlemusic-portal/target</output-path>
-    <root id="archive" name="qlemusic-portal-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="qlemusic-portal:war exploded" />
-    </root>
-  </artifact>
-</component>

@@ -74,17 +74,18 @@ shiro:
 #JWT
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
-  secretKey: test     #JWT加解密使用的秘钥
+  secretKey: qiuqiaofang     #JWT加解密使用的秘钥
   expiration: 86400          #JwtToken过期时间(7天604800)
-  tokenHead: test          #JWT负载中拿到开头
+  tokenHead: Bearer          #JWT负载中拿到开头
 
 # OSS相关配置信息
 aliyun:
   oss:
-    endpoint: oss-cn-zhangjiakou.aliyuncs.com       # oss对外服务的访问域名
-    accessKeyId: test           # 访问身份验证中用到用户标识
-    accessKeySecret: test # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
-    bucketName: qlemusic-oss1                       # oss的存储空间
+    endpoint: oss-cn-zhangjiakou.aliyuncs.com           # oss对外服务的访问域名
+    accessKeyId: LTAI4G2AFrqNjveyrrXFpjMA               # 访问身份验证中用到用户标识
+    accessKeySecret: N8uK0lnQ60yeD7Hhp2DPvz1Gyn8vn7     # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    host: http://qlmusic-oss1.oss-cn-zhangjiakou.aliyuncs.com/
+    bucketName: qlmusic-oss1                            # oss的存储空间
     policy:
       expire: 100 # 签名有效期(S)
     maxSize: 10                                         # 上传文件大小(M)
@@ -99,7 +100,7 @@ aliyuncs:
   sendSms:
     regionId: cn-hangzhou           # 地区
     signName: qlmusic               # 签名名称
-    templateCode: test     # 模板ID（CODE）
+    templateCode: SMS_198926122     # 模板ID（CODE）
     endpoint: dysmsapi.aliyuncs.com # 服务地址
     version: 2017-05-25             # 版本号
     verifyKey: code                 # 验证码Key
@@ -112,6 +113,6 @@ aliyuncs:
 
 # 第三方qq登录授权
 oauth:
-  appId: test
-  appKey: test
-  redirectUrl: test
+  appId: 101903191
+  appKey: 6fbe201112e5283eae6e5b2ae3dbfa5d
+  redirectUrl: http://www.eiqle.com/portal/connectqq

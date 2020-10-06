@@ -32,12 +32,20 @@
         description,
         available
     </sql>
-
     <insert id="insert">
         insert into
             ums_user(unique_id,head_icon,name,telephone,password,salt,create_time,available)
         values
-            (#{unique_id},#{headIcon},#{name},#{telephone},#{password},#{salt},#{createTime},#{available})
+            (#{uniqueId},#{headIcon},#{name},#{telephone},#{password},#{salt},#{createTime},#{available})
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+    <insert id="createCollect">
+        insert into
+            ums_collect(name)
+        value
+            (#{name})
     </insert>
     <select id="selectUserByTelephone" resultMap="userMap">
         select
@@ -87,4 +95,12 @@
         value
             (#{id})
     </insert>
+    <update id="updateAvatar">
+        update
+            ums_user
+        set
+            head_icon=#{headIcon}
+        where
+            id = #{id}
+    </update>
 </mapper>

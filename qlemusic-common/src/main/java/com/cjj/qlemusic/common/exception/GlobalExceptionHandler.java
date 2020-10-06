@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.ConstraintViolationException;
+
 /**
  * 全局异常处理类
  */
@@ -29,6 +31,15 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = AuthorizationException.class)
     public ResponseResultUtil noAuthorization(){
         return ResponseResultUtil.noAuthorization();
+    }
+
+    /**
+     * 变量参数校验
+     */
+    @ExceptionHandler(value = ConstraintViolationException.class)
+    public ResponseResultUtil paramValidated(ConstraintViolationException exception){
+        System.out.println(exception.getMessage());
+        return ResponseResultUtil.validateFailed(exception.getMessage().substring(exception.getMessage().indexOf(':')+1));
     }
 
 }

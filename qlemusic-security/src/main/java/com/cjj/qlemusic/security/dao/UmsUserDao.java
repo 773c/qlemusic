@@ -1,6 +1,5 @@
 package com.cjj.qlemusic.security.dao;
 
-
 import com.cjj.qlemusic.security.entity.UmsUser;
 import org.apache.ibatis.annotations.Param;
 
@@ -55,4 +54,18 @@ public interface UmsUserDao {
      * @param id
      */
     void addUpdateUniqueIdRecord(Long id);
+
+    /**
+     * 修改用户头像
+     * @param id
+     * @param headIcon
+     * @return
+     */
+    int updateAvatar(@Param("id")Long id,@Param("headIcon") String headIcon);
+
+    /**
+     * 创建默认收藏夹
+     * @param name
+     */
+    void createCollect(String name);
 }

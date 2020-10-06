@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjj.qlemusic.security.dao.UmsCollectDao">
+    <insert id="createCollect" parameterType="UmsCollect">
+        insert into
+            ums_collect(name,description)
+        value
+            (#{name},#{description})
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+    <insert id="insertUserAndCollect">
+        insert into
+            ums_user_collect(user_id,collect_id)
+        values
+            (#{id},#{collectId})
+    </insert>
+    <select id="selectCollectList" resultType="UmsCollect">
+        select
+            c.id,c.name,c.description
+        from
+            ums_collect c
+            join ums_user_collect uc on uc.collect_id = c.id
+        where
+            user_id = #{id}
+    </select>
+    <select id="selectIsExistCollect" resultType="UmsCollect">
+        select
+            c.id
+        from
+            ums_collect c
+            join ums_user_collect uc on uc.collect_id = c.id
+        where
+            c.name=#{name}
+    </select>
+    <insert id="insertCollect">
+        insert into
+            ums_collect_music(collect_id,music_id)
+        value
+            (#{collectId},#{musicId})
+    </insert>
+    <delete id="deleteCollectContent">
+        delete from
+            ums_collect_music
+        where
+            id=#{collectMusicId}
+    </delete>
+    <delete id="deleteCollect">
+        delete from
+            ums_collect
+        where
+            id=#{id}
+    </delete>
+    <update id="updateMoveCollectContent">
+        update
+            ums_collect_music
+        set
+            collect_id=#{moveId}
+        where
+            collect_id=#{id}
+    </update>
+    <delete id="deleteCollectAndContentByCollectId">
+        delete from
+            ums_collect_music
+        where
+            collect_id=#{id}
+    </delete>
+    <update id="updateBatchMoveContent">
+        update
+            ums_collect_music
+        set
+            collect_id=#{id}
+        where
+            id
+        in
+        <foreach collection="collectMusicIds" item="collectMusicId" index="index" open="(" close=")" separator=",">
+              #{collectMusicId}
+        </foreach>
+    </update>
+</mapper>

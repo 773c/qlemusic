@@ -4,6 +4,7 @@ import com.cjj.qlemusic.security.entity.UmsUser;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 音乐片段实体类
@@ -13,6 +14,9 @@ public class BbsMusic implements Serializable {
 
     @ApiModelProperty(value = "id")
     private Long id;
+
+    @ApiModelProperty(value = "收藏和音乐关联id")
+    private Long collectMusicId;
 
     @ApiModelProperty(value = "标题")
     private String title;
@@ -29,6 +33,9 @@ public class BbsMusic implements Serializable {
     @ApiModelProperty(value = "播放时长")
     private String playTime;
 
+    @ApiModelProperty(value = "发布时间")
+    private Date releaseTime;
+
     @ApiModelProperty(value = "用户信息")
     private UmsUser umsUser;
 
@@ -38,6 +45,14 @@ public class BbsMusic implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getCollectMusicId() {
+        return collectMusicId;
+    }
+
+    public void setCollectMusicId(Long collectMusicId) {
+        this.collectMusicId = collectMusicId;
     }
 
     public String getTitle() {
@@ -80,6 +95,14 @@ public class BbsMusic implements Serializable {
         this.playTime = playTime;
     }
 
+    public Date getReleaseTime() {
+        return releaseTime;
+    }
+
+    public void setReleaseTime(Date releaseTime) {
+        this.releaseTime = releaseTime;
+    }
+
     public UmsUser getUmsUser() {
         return umsUser;
     }
@@ -97,6 +120,7 @@ public class BbsMusic implements Serializable {
                 ", audioAvatarUrl='" + audioAvatarUrl + '\'' +
                 ", startTime='" + startTime + '\'' +
                 ", playTime='" + playTime + '\'' +
+                ", releaseTime=" + releaseTime +
                 ", umsUser=" + umsUser +
                 '}';
     }

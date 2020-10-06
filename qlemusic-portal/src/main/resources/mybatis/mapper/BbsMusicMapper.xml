@@ -5,16 +5,20 @@
 <mapper namespace="com.cjj.qlemusic.portal.dao.BbsMusicDao">
     <resultMap id="bbsMusicMap" type="BbsMusic">
         <id column="id" property="id"/>
+        <result column="ucm.id" property="collectMusicId"/>
         <result column="title" property="title"/>
         <result column="audio_url" property="audioUrl"/>
         <result column="audio_avatar_url" property="audioAvatarUrl"/>
         <result column="start_time" property="startTime"/>
         <result column="play_time" property="playTime"/>
-        <association property="umsUser" javaType="UmsUser" column="user_id">
-            <id property="id" column="id"/>
-            <result property="headIcon" column="head_icon"/>
-            <result property="name" column="name"/>
+        <result column="release_time" property="releaseTime"/>
+        <association column="user_id" property="umsUser" javaType="UmsUser">
+            <id column="id" property="id"/>
+            <result column="head_icon" property="headIcon" />
+            <result column="name" property="name" />
         </association>
+        <!--<association column="user_id" property="umsUser" javaType="java.lang.Long">-->
+        <!--</association>-->
     </resultMap>
 
     <sql id="bbsMusicCol">
@@ -23,7 +27,8 @@
         audio_url,
         audio_avatar_url,
         start_time,
-        play_time
+        play_time,
+        release_time
     </sql>
 
     <select id="selectRecommendList" resultMap="bbsMusicMap">
@@ -32,5 +37,25 @@
         from
             bbs_music m
             left join ums_user u on u.id = m.user_id
+    </select>
+    <select id="selectMyMusicList" resultMap="bbsMusicMap">
+        select
+            <include refid="bbsMusicCol"/>
+        from
+            bbs_music
+        where
+            user_id = #{id}
+    </select>
+    <select id="selectMusicByCollectId" resultMap="bbsMusicMap">
+        select
+            bm.*,ucm.id 'ucm.id'
+        from
+            bbs_music bm
+            join ums_collect_music ucm on ucm.music_id = bm.id
+            join ums_user_collect uuc on uuc.collect_id = ucm.collect_id
+        where
+            uuc.user_id = #{userId}
+        and
+            uuc.collect_id = #{collectId}
     </select>
 </mapper>

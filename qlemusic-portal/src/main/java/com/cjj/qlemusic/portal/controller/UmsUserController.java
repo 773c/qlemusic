@@ -19,8 +19,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -163,6 +165,23 @@ public class UmsUserController {
             return ResponseResultUtil.failed("您的ID已修改，请勿重复操作");
         else
             return ResponseResultUtil.success();
+    }
+
+    @ApiOperation(value = "修改头像")
+    @PostMapping(value = "/updateAvatar",headers = "content-type=multipart/form-data")
+    public ResponseResultUtil updateAvatar(@RequestParam(value = "id") Long id,
+                                           @RequestParam(value = "uniqueId") String uniqueId,
+                                           @RequestParam(value = "file") MultipartFile file) {
+        String ossFileApiPath = null;
+        try {
+            ossFileApiPath = userService.updateAvatar(id,uniqueId,file);
+        }catch (IOException e){
+            return ResponseResultUtil.failed("修改头像失败,IO异常");
+        }
+        if(ossFileApiPath != null)
+            return ResponseResultUtil.success(ossFileApiPath);
+        else
+            return ResponseResultUtil.failed("修改头像失败");
     }
 
     @ApiOperation(value = "退出系统")

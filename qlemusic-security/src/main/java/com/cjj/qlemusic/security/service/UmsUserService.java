@@ -4,6 +4,9 @@ package com.cjj.qlemusic.security.service;
 import com.aliyuncs.exceptions.ClientException;
 import com.cjj.qlemusic.security.entity.UmsUser;
 import com.cjj.qlemusic.security.entity.UmsUserRegister;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 /**
  * 用户管理Service
@@ -71,4 +74,19 @@ public interface UmsUserService {
      * @return
      */
     Long getUserByIdFromUniqueId(Long id);
+
+    /**
+     * 修改用户头像
+     * @param id
+     * @param uniqueId
+     * @param file
+     * @return
+     */
+    String updateAvatar(Long id,String uniqueId,MultipartFile file) throws IOException;
+
+    /**
+     * 添加默认收藏夹
+     * @param regUser
+     */
+    void addDefaultCollect(UmsUser regUser);
 }
