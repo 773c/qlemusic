@@ -68,4 +68,10 @@ public interface UmsUserDao {
      * @param name
      */
     void createCollect(String name);
+
+    /**
+     * 查询用户
+     * @param id
+     */
+    void getUserById(Long id);
 }

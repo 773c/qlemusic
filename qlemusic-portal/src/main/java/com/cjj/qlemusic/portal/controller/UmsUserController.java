@@ -184,6 +184,16 @@ public class UmsUserController {
             return ResponseResultUtil.failed("修改头像失败");
     }
 
+    @ApiOperation(value = "查询用户")
+    @GetMapping(value = "/getUserById")
+    public ResponseResultUtil getUserById(@RequestParam(value = "id") Long id) {
+        UmsUser user = userService.getUserById(id);
+        if(user != null)
+            return ResponseResultUtil.success(user);
+        else
+            return ResponseResultUtil.failed("您查看的用户不存在");
+    }
+
     @ApiOperation(value = "退出系统")
     @PostMapping(value = "/logout")
     public ResponseResultUtil logout() {

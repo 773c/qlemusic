@@ -27,14 +27,14 @@ public interface OssService {
 
     /**
      * 将文件上传到OSS
-     * @param imgName
+     * @param filename
      * @param inputStream
      */
-    String uploadOss(String imgName, InputStream inputStream);
+    String uploadOss(String filename, InputStream inputStream);
     /**
      * 获取OSS上传路径
-     * @param imgName
+     * @param filename
      * @return
      */
-    String getOssFileApiPath(String imgName);
+    String getOssFileApiPath(String filename);
 }

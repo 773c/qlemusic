@@ -13,12 +13,16 @@
         <result column="play_time" property="playTime"/>
         <result column="release_time" property="releaseTime"/>
         <association column="user_id" property="umsUser" javaType="UmsUser">
-            <id column="id" property="id"/>
+            <id column="user_id" property="id"/>
             <result column="head_icon" property="headIcon" />
+            <result column="unique_id" property="uniqueId" />
             <result column="name" property="name" />
         </association>
-        <!--<association column="user_id" property="umsUser" javaType="java.lang.Long">-->
-        <!--</association>-->
+        <association column="mo.id" property="bbsMusicOperation" javaType="BbsMusicOperation">
+            <id column="mo.id" property="id"/>
+            <result column="like_count" property="likeCount"/>
+            <result column="ul.isLike" property="isLike"/>
+        </association>
     </resultMap>
 
     <sql id="bbsMusicCol">
@@ -33,10 +37,14 @@
 
     <select id="selectRecommendList" resultMap="bbsMusicMap">
         select
-            m.*,u.head_icon,u.name
+            m.*,
+            u.id,u.unique_id,u.head_icon,u.name,
+            mo.id 'mo.id',mo.like_count,ul.isLike 'ul.isLike'
         from
             bbs_music m
             left join ums_user u on u.id = m.user_id
+			left join bbs_music_operation mo on mo.music_id = m.id
+			left join bbs_user_like ul on ul.music_id = mo.music_id
     </select>
     <select id="selectMyMusicList" resultMap="bbsMusicMap">
         select
@@ -58,4 +66,10 @@
         and
             uuc.collect_id = #{collectId}
     </select>
+    <insert id="insertBbsMusic">
+        insert into
+            bbs_music(title,audio_url,audio_avatar_url,start_time,play_time,release_time,user_id)
+        values
+            (#{bbsMusic.title},#{bbsMusic.audioUrl},#{bbsMusic.audioAvatarUrl},#{bbsMusic.startTime},#{bbsMusic.playTime},#{bbsMusic.releaseTime},#{userId})
+    </insert>
 </mapper>

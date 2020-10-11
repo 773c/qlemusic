@@ -89,4 +89,11 @@ public interface UmsUserService {
      * @param regUser
      */
     void addDefaultCollect(UmsUser regUser);
+
+    /**
+     * 查询用户
+     * @param id
+     * @return
+     */
+    UmsUser getUserById(Long id);
 }

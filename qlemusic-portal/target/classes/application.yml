@@ -24,10 +24,14 @@ redis:
    database: qlemusic
    key:
       admin: ':ums:portal:'
+      prefixId: ':userId:'
       resourceList: 'ums:resourceList'
+      userLike: ':user:like:'
+      likedCount: ':liked:count:'
    expire:
-      common: 86400 # 24小时
-      verify: 120   # 2分钟
+      common: 86400   # 24小时
+      verify: 120     # 2分钟
+
 
 #用户信息
 user:
@@ -92,6 +96,7 @@ aliyun:
     callback: http://localhost:8080/aliyun/oss/callback # 文件上传成功后的回调地址
     dir:
       prefix: qlemusic/images/ # 上传文件夹路径前缀
+      audiosPrefix: qlemusic/audios/ # 上传文件夹路径前缀
 
 # 阿里云短信
 aliyuncs:
@@ -100,7 +105,7 @@ aliyuncs:
   sendSms:
     regionId: cn-hangzhou           # 地区
     signName: qlmusic               # 签名名称
-    templateCode: SMS_198926122     # 模板ID（CODE）
+    templateCode: SMS_198926122    # 模板ID（CODE）
     endpoint: dysmsapi.aliyuncs.com # 服务地址
     version: 2017-05-25             # 版本号
     verifyKey: code                 # 验证码Key

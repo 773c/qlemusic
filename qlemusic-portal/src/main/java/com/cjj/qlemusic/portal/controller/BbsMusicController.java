@@ -7,16 +7,18 @@ import com.cjj.qlemusic.portal.service.BbsMusicService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotNull;
+import java.io.IOException;
 import java.util.List;
 
 @Api(value = "音乐片段管理")
 @RestController
 @RequestMapping("/audio")
+@Validated
 public class BbsMusicController {
     @Autowired
     private BbsMusicService bbsMusicService;
@@ -47,4 +49,19 @@ public class BbsMusicController {
         return ResponseResultUtil.success(PageUtil.restPage(collectContentList));
     }
 
+    @ApiOperation(value = "发布音乐")
+    @PostMapping(value = "/release",headers = "content-type=multipart/form-data")
+    public ResponseResultUtil release(
+            BbsMusic bbsMusic,
+            @RequestParam(value = "userId")
+            @NotNull(message = "用户ID不能为空") Long userId,
+            @RequestParam(value = "file")
+            @NotNull(message = "文件资源不能为空") MultipartFile[] file) throws IOException {
+        int count = bbsMusicService.release(bbsMusic, userId, file);
+        if(count > 0){
+            return ResponseResultUtil.success(count);
+        }else {
+            return ResponseResultUtil.failed("发布失败");
+        }
+    }
 }

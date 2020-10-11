@@ -1,6 +1,8 @@
 package com.cjj.qlemusic.portal.dao;
 
 import com.cjj.qlemusic.portal.entity.BbsMusic;
+import com.cjj.qlemusic.portal.entity.BbsMusicOperation;
+import com.cjj.qlemusic.portal.entity.BbsUserLike;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -28,4 +30,12 @@ public interface BbsMusicDao {
      * @return
      */
     List<BbsMusic> selectMusicByCollectId(@Param("userId") Long userId,@Param("collectId") Long collectId);
+
+    /**
+     * 发布
+     * @param bbsMusic
+     * @param userId
+     */
+    void insertBbsMusic(@Param("bbsMusic") BbsMusic bbsMusic,@Param("userId") Long userId);
+
 }

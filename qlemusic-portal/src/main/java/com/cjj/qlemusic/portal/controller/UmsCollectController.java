@@ -85,7 +85,6 @@ public class UmsCollectController {
             @Min(value = 1,message = "默认收藏夹无法删除")
             @NotNull(message = "收藏夹id不能为空") Long id,
             @RequestParam(value = "moveId") Long moveId) {
-        System.out.println(id+"..."+moveId);
         int count = collectService.deleteCollectAndMove(id,moveId);
         if(count > 0)
             return ResponseResultUtil.success(count);

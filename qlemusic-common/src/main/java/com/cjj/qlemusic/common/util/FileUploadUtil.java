@@ -1,0 +1,53 @@
+package com.cjj.qlemusic.common.util;
+
+public class FileUploadUtil {
+    /**
+     * 获得16位的filename
+     * @param unique
+     * @param filename
+     * @return
+     */
+    public static String getSxiteenBitBitFileName(String unique,String filename){
+        return unique+"_"+UuidUtil.getSxiteenBit()+"_"+filename;
+    }
+    /**
+     * 获得20位的filename
+     * @param unique
+     * @param filename
+     * @return
+     */
+    public static String getTwentyBitFileName(String unique,String filename){
+        return unique+"_"+UuidUtil.getTwentyBit()+"_"+filename;
+    }
+    /**
+     * 获得24位的filename
+     * @param unique
+     * @param filename
+     * @return
+     */
+    public static String getTwentyFourBitFileName(String unique,String filename){
+        return unique+"_"+UuidUtil.getTwentyFourBit()+"_"+filename;
+    }
+    /**
+     * 获得32位的filename
+     * @param unique
+     * @param filename
+     * @return
+     */
+    public static String getThirtyTwoBitFileName(String unique,String filename){
+        return unique+"_"+UuidUtil.getThirtyTwoBit()+"_"+filename;
+    }
+
+    public static boolean isAudioType(String filename){
+        int lastIndex = filename.lastIndexOf(".");
+        String suffix = filename.substring(lastIndex+1);
+        if(suffix.equals("mp3"))
+            return true;
+        else
+            return false;
+    }
+
+    public static void main(String[] args) {
+        String s = "Jony J - Big Things Start Small.mp3";
+    }
+}

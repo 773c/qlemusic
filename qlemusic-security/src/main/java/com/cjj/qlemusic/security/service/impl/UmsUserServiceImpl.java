@@ -9,6 +9,7 @@ import com.aliyuncs.CommonResponse;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.cjj.qlemusic.common.exception.Asserts;
+import com.cjj.qlemusic.common.util.FileUploadUtil;
 import com.cjj.qlemusic.common.util.TelephoneUtil;
 import com.cjj.qlemusic.common.util.UuidUtil;
 import com.cjj.qlemusic.common.util.VerifyUtil;
@@ -135,7 +136,10 @@ public class UmsUserServiceImpl implements UmsUserService {
     @Override
     public UmsUser setUserInfo(UmsUser umsUser) {
         //存入唯一标识ID
-        umsUser.setUniqueId(uniqueId+"_"+DateUtil.format(new Date(),"yyyyMMdd"));
+        umsUser.setUniqueId(uniqueId+"_"+
+                DateUtil.dayOfMonth(DateUtil.date())%10 +
+                VerifyUtil.getJsonSixNumber() +
+                DateUtil.format(new Date(),"ss"));
         //存入用户头像
         umsUser.setHeadIcon(defaultAvatar);
         //存入名称
@@ -221,7 +225,7 @@ public class UmsUserServiceImpl implements UmsUserService {
     public String updateAvatar(Long id,String uniqueId,MultipartFile file) throws IOException {
         int count;
         //更改头像图片名称
-        String imgName = uniqueId + "_" + UuidUtil.getTwentyBit() + "_" +file.getOriginalFilename();
+        String imgName = FileUploadUtil.getTwentyBitFileName(uniqueId,file.getOriginalFilename());
         //上传到OSS
         String ossFileApiPath = ossService.uploadOss(imgName, file.getInputStream());
         //修改数据库
@@ -243,6 +247,11 @@ public class UmsUserServiceImpl implements UmsUserService {
         umsCollect.setName("默认");
         collectDao.createCollect(umsCollect);
         collectDao.insertUserAndCollect(regUser.getId(),umsCollect.getId());
+    }
+
+    @Override
+    public UmsUser getUserById(Long id) {
+        return userDao.selectUserById(id);
     }
 
 }

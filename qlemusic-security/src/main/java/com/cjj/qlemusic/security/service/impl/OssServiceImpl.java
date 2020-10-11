@@ -7,6 +7,7 @@ import com.aliyun.oss.common.utils.BinaryUtil;
 import com.aliyun.oss.model.MatchMode;
 import com.aliyun.oss.model.PolicyConditions;
 import com.aliyun.oss.model.PutObjectRequest;
+import com.cjj.qlemusic.common.util.FileUploadUtil;
 import com.cjj.qlemusic.security.entity.OssCallback;
 import com.cjj.qlemusic.security.entity.OssCallbackParam;
 import com.cjj.qlemusic.security.entity.OssPolicy;
@@ -39,6 +40,8 @@ public class OssServiceImpl implements OssService {
     private String callback;
     @Value("${aliyun.oss.dir.prefix}")
     private String dirPrefix;
+    @Value("${aliyun.oss.dir.audiosPrefix}")
+    private String audiosPrefix;
 
     @Autowired
     private OSSClient ossClient;
@@ -106,15 +109,18 @@ public class OssServiceImpl implements OssService {
     }
 
     @Override
-    public String uploadOss(String imgName, InputStream inputStream) {
-        String ossFilePath = getOssFileApiPath(imgName);
-        PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName,ossFilePath , inputStream);
+    public String uploadOss(String fileName, InputStream inputStream) {
+        String ossFilePath = getOssFileApiPath(fileName);
+        PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName , ossFilePath , inputStream);
         ossClient.putObject(putObjectRequest);
         return ossFilePath;
     }
 
     @Override
-    public String getOssFileApiPath(String imgName) {
-        return dirPrefix + DateUtil.today() + "/" + imgName;
+    public String getOssFileApiPath(String filename) {
+        if(FileUploadUtil.isAudioType(filename))
+            return audiosPrefix + DateUtil.today() + "/" + filename;
+        else
+            return dirPrefix + DateUtil.today() + "/" + filename;
     }
 }

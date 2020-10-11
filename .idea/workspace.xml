@@ -1,7 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6dfce54b-30ca-446b-8aa2-5f9e3dd42061" name="Default" comment="" />
+    <list default="true" id="6dfce54b-30ca-446b-8aa2-5f9e3dd42061" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cn_hutool_hutool_all_4_5_7.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_1_1_22.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_spring_boot_starter_1_1_22.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_aliyun_java_sdk_core_4_5_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_oss_aliyun_sdk_oss_2_5_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_4_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_10.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_10.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_10_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_10.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_10.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_10.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_1_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_1_8.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_autoconfigure_1_2_10.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_starter_1_2_10.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_6.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_2_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_8_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_8_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_11.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_5.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_jsonwebtoken_jjwt_0_9_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_lettuce_lettuce_core_5_1_8_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_buffer_4_1_43_Final.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_4_1_43_Final.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_common_4_1_43_Final.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_handler_4_1_43_Final.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_resolver_4_1_43_Final.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_4_1_43_Final.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_opentracing_opentracing_api_0_33_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_opentracing_opentracing_noop_0_33_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_opentracing_opentracing_util_0_33_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_projectreactor_reactor_core_3_2_12_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_2_9_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_2_9_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_2_9_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_9_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_9_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_9_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_9_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_20.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_20.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_17.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_9_16.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_9_16.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_gplatform_Sdk4J_2_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ehcache_ehcache_core_2_6_11.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ezmorph_ezmorph_1_0_6.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_json_lib_json_lib_jdk15_2_4.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_6_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_10.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_12.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_11_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_11_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_cache_1_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_core_1_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_ogdl_1_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_core_1_3_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_core_1_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_cipher_1_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_core_1_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_hash_1_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_ehcache_1_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_event_1_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_lang_1_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_spring_1_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_web_1_4_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_27.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_27.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_27.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_4.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_11_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_crazycake_shiro_redis_3_2_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_18_Final.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ini4j_ini4j_0_5_4.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jacoco_org_jacoco_agent_runtime_0_8_5.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_3_Final.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jdom_jdom_1_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_2_0_Final.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_2_23_4.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_4_5.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_3_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_autoconfigure_1_3_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_starter_1_3_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_reactivestreams_reactive_streams_1_0_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_29.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_29.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_1_10_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_1_10_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_1_10_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_1_10_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_redis_2_1_10_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_1_10_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_1_10_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_1_10_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_1_10_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_1_10_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_1_10_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_1_10_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_1_10_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_1_5_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_keyvalue_2_1_12_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_redis_2_1_12_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_2_0_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_1_11_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_1_11_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_1_11_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_1_11_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_1_11_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_1_11_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_1_11_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_1_11_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_oxm_5_1_11_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_1_11_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_1_11_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_1_11_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_1_11_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_6_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_2_9_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/util/FileUploadUtil.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsMusicOperation.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsUserLike.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/BbsLikeCacheService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsLikeCacheServiceImpl.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/qlemusic-portal/src/test/java/com/cjj/qlemusic/portal/RedisTest.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/constant/StatusCodeConstant.class" afterPath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/constant/StatusCodeConstant.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/exception/ApiException.class" afterPath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/exception/ApiException.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/exception/Asserts.class" afterPath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/exception/Asserts.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/util/PageUtil.class" afterPath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/util/PageUtil.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/util/ResponseResultUtil.class" afterPath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/util/ResponseResultUtil.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/util/TelephoneUtil.class" afterPath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/util/TelephoneUtil.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/util/VerifyUtil.class" afterPath="$PROJECT_DIR$/qlemusic-common/target/classes/com/cjj/qlemusic/common/util/VerifyUtil.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/BbsMusicController.java" afterPath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/BbsMusicController.java" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/UmsUserController.java" afterPath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/UmsUserController.java" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/dao/BbsMusicDao.java" afterPath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/dao/BbsMusicDao.java" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsMusic.java" afterPath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsMusic.java" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/BbsMusicService.java" afterPath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/BbsMusicService.java" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsMusicServiceImpl.java" afterPath="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsMusicServiceImpl.java" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/qlemusic-portal/src/main/resources/application.yml" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/src/main/resources/mybatis/mapper/BbsMusicMapper.xml" afterPath="$PROJECT_DIR$/qlemusic-portal/src/main/resources/mybatis/mapper/BbsMusicMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/target/classes/application.yml" afterPath="$PROJECT_DIR$/qlemusic-portal/target/classes/application.yml" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/QlemusicPortalApplication.class" afterPath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/QlemusicPortalApplication.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/aspect/BindingResultAspect.class" afterPath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/aspect/BindingResultAspect.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/config/Oauth2Config.class" afterPath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/config/Oauth2Config.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/controller/BbsMusicController.class" afterPath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/controller/BbsMusicController.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/controller/UmsUserController.class" afterPath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/controller/UmsUserController.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/dao/BbsMusicDao.class" afterPath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/dao/BbsMusicDao.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/entity/BbsMusic.class" afterPath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/entity/BbsMusic.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/service/BbsMusicService.class" afterPath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/service/BbsMusicService.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/service/impl/BbsMusicServiceImpl.class" afterPath="$PROJECT_DIR$/qlemusic-portal/target/classes/com/cjj/qlemusic/portal/service/impl/BbsMusicServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-portal/target/classes/mybatis/mapper/BbsMusicMapper.xml" afterPath="$PROJECT_DIR$/qlemusic-portal/target/classes/mybatis/mapper/BbsMusicMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/dao/UmsUserDao.java" afterPath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/dao/UmsUserDao.java" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/OssService.java" afterPath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/OssService.java" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/RedisService.java" afterPath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/RedisService.java" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/UmsUserService.java" afterPath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/UmsUserService.java" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/OssServiceImpl.java" afterPath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/OssServiceImpl.java" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/RedisServiceImpl.java" afterPath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/RedisServiceImpl.java" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/UmsUserServiceImpl.java" afterPath="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/UmsUserServiceImpl.java" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-security/target/classes/com/cjj/qlemusic/security/dao/UmsUserDao.class" afterPath="$PROJECT_DIR$/qlemusic-security/target/classes/com/cjj/qlemusic/security/dao/UmsUserDao.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-security/target/classes/com/cjj/qlemusic/security/service/RedisService.class" afterPath="$PROJECT_DIR$/qlemusic-security/target/classes/com/cjj/qlemusic/security/service/RedisService.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-security/target/classes/com/cjj/qlemusic/security/service/UmsUserService.class" afterPath="$PROJECT_DIR$/qlemusic-security/target/classes/com/cjj/qlemusic/security/service/UmsUserService.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-security/target/classes/com/cjj/qlemusic/security/service/impl/OssServiceImpl.class" afterPath="$PROJECT_DIR$/qlemusic-security/target/classes/com/cjj/qlemusic/security/service/impl/OssServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-security/target/classes/com/cjj/qlemusic/security/service/impl/RedisServiceImpl.class" afterPath="$PROJECT_DIR$/qlemusic-security/target/classes/com/cjj/qlemusic/security/service/impl/RedisServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/qlemusic-security/target/classes/com/cjj/qlemusic/security/service/impl/UmsUserServiceImpl.class" afterPath="$PROJECT_DIR$/qlemusic-security/target/classes/com/cjj/qlemusic/security/service/impl/UmsUserServiceImpl.class" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/qlemusic-common/target/" />
     <ignored path="$PROJECT_DIR$/qlemusic-admin/target/" />
@@ -28,11 +224,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="UmsCollectController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/UmsCollectController.java">
+      <file leaf-file-name="BbsLikeServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsLikeServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="74" column="21" lean-forward="false" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
+            <state relative-caret-position="24">
+              <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -40,35 +236,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UmsCollectMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/resources/securityMapper/UmsCollectMapper.xml">
+      <file leaf-file-name="BbsMusicServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsMusicServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="48" column="32" lean-forward="false" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
+            <state relative-caret-position="171">
+              <caret line="40" column="46" lean-forward="false" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
               <folding>
-                <marker date="1601954487594" expanded="true" signature="283:387" ph="insert into ums_collect" />
-                <marker date="1601954487594" expanded="true" signature="465:494" ph="SELECT LAST_... " />
-                <marker date="1601954487594" expanded="true" signature="577:685" ph="insert into ums_user_collect" />
-                <marker date="1601954487594" expanded="true" signature="768:954" ph="select c.id,... ums_collect" />
-                <marker date="1601954487594" expanded="true" signature="1040:1163" ph="select c.id ums_collect" />
-                <marker date="1601954487594" expanded="true" signature="1040:1204" ph="select c.id ums_collect" />
-                <marker date="1601954487594" expanded="true" signature="1259:1373" ph="insert into ums_collect_music" />
-                <marker date="1601954487594" expanded="true" signature="1435:1523" ph="delete from ums_collect_music" />
-                <marker date="1601954487594" expanded="true" signature="1578:1648" ph="delete from ums_collect" />
-                <marker date="1601954487594" expanded="true" signature="1714:1838" ph="update ums_c... ums_collect_music" />
-                <marker date="1601954487594" expanded="true" signature="1914:1998" ph="delete from ums_collect_music" />
-                <marker date="1601954487594" expanded="true" signature="2062:2139" ph="update ums_c... ums_collect_music" />
-                <marker date="1601954487594" expanded="true" signature="2062:2148" ph="update ums_c... ums_collect_music" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1352#1353#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BbsMusicMapper.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/resources/mybatis/mapper/BbsMusicMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="37" column="35" lean-forward="true" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+              <folding>
+                <marker date="1602429033917" expanded="true" signature="1589:1826" ph="select m.*,u... bbs_music" />
+                <marker date="1602429033917" expanded="true" signature="1589:1884" ph="select m.*, bbs_music" />
+                <marker date="1602429033917" expanded="true" signature="1589:1943" ph="select m.*, bbs_music" />
+                <marker date="1602429033917" expanded="true" signature="2026:2152" ph="select from bbs_music" />
+                <marker date="1602429033917" expanded="true" signature="2240:2557" ph="select bm.*,... bbs_music" />
+                <marker date="1602429033917" expanded="true" signature="2613:2894" ph="insert into bbs_music" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="117" column="19" lean-forward="false" selection-start-line="117" selection-start-column="19" selection-end-line="117" selection-end-column="19" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/qlemusic-admin/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -80,6 +292,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -89,6 +302,9 @@
       <find>qlmusic</find>
       <find>getUserByTelephone</find>
       <find>deleteCollectContent</find>
+      <find>test</find>
+      <find>bbsMusicOperationMap</find>
+      <find>likeCount</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -106,57 +322,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/UmsLoginBase.java" />
-        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/custom/UserRealm.java" />
-        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/UmsAdmin.java" />
-        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/config/Oauth2Config.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/UmsAdminServiceImpl.java" />
-        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsMusicService.java" />
-        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsMusicServiceImpl.java" />
-        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/BbsMusicServiceImpl.java" />
-        <option value="$PROJECT_DIR$/qlemusic-security/src/main/resources/securityMapper/BbsMusicMapper.xml" />
-        <option value="$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/util/TelephoneUtil.java" />
-        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/UmsUser.java" />
-        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/QlemusicPortalApplication.java" />
-        <option value="$PROJECT_DIR$/qlemusic-admin/src/main/resources/application-datasource.yml" />
-        <option value="$PROJECT_DIR$/qlemusic-admin/src/main/java/com/cjj/qlemusic/admin/QlemusicAdminApplication.java" />
-        <option value="$PROJECT_DIR$/qlemusic-portal/pom.xml" />
         <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/util/JwtTokenUtil.java" />
-        <option value="$PROJECT_DIR$/qlemusic-admin/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/OssCallbackParam.java" />
         <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/OssServiceImpl.java" />
         <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/OssService.java" />
         <option value="$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/util/UuidUtil.java" />
         <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/OssPolicy.java" />
         <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/OssController.java" />
-        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/OssServiceImpl.java" />
-        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/OssService.java" />
-        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsMusic.java" />
-        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/UmsUserController.java" />
         <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/UmsCollect.java" />
         <option value="$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/exception/GlobalExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/dao/BbsMusicDao.java" />
-        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/resources/mybatis/mapper/BbsMusicMapper.xml" />
-        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/BbsMusicController.java" />
-        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/BbsMusicService.java" />
-        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsMusicServiceImpl.java" />
         <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/UmsCollectService.java" />
         <option value="$PROJECT_DIR$/qlemusic-portal/src/main/resources/mybatis/mapper/UmsCollectMapper.xml" />
         <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/UmsCollectServiceImpl.java" />
         <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/dao/UmsCollectDao.java" />
-        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/UmsUserService.java" />
-        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/dao/UmsUserDao.java" />
         <option value="$PROJECT_DIR$/qlemusic-security/pom.xml" />
         <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/UmsCollect.java" />
         <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/UmsCollectService.java" />
-        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/UmsUserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/qlemusic-security/src/main/resources/securityMapper/UmsUserMapper.xml" />
         <option value="$PROJECT_DIR$/qlemusic-security/src/main/resources/securityMapper/UmsCollectMapper.xml" />
         <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/dao/UmsCollectDao.java" />
         <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/UmsCollectServiceImpl.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsMusicLike.java" />
+        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/OssService.java" />
+        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/OssServiceImpl.java" />
+        <option value="$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/util/FileUploadUtil.java" />
+        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/dao/UmsUserDao.java" />
+        <option value="$PROJECT_DIR$/qlemusic-security/src/main/resources/securityMapper/UmsUserMapper.xml" />
+        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/UmsUserService.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/UmsUserController.java" />
+        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/UmsUserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/test/java/com/cjj/qlemusic/portal/RedisTest.java" />
+        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/RedisService.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/BbsLikeCacheService.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/BbsMusicService.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/dao/BbsMusicDao.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/BbsMusicController.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/BbsLikeController.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/BbsLikeService.java" />
+        <option value="$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/util/TimerUtil.java" />
         <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/UmsCollectController.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsMusicServiceImpl.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsMusic.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsUserLike.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/dao/BbsLikeDao.java" />
+        <option value="$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/RedisServiceImpl.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/aspect/TimerUtil.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsLikeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/resources/mybatis/mapper/BbsLikeMapper.xml" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsLikeCacheServiceImpl.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsMusicOperation.java" />
+        <option value="$PROJECT_DIR$/qlemusic-portal/src/main/resources/mybatis/mapper/BbsMusicMapper.xml" />
         <option value="$PROJECT_DIR$/qlemusic-portal/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/qlemusic-admin/src/main/resources/application.yml" />
       </list>
     </option>
   </component>
@@ -185,11 +401,11 @@
       <expand>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="qlemusic-security" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="qlemusic-portal" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="qlemusic-security" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="qlemusic-portal" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
         </path>
       </expand>
@@ -200,7 +416,7 @@
     <option name="jreName" value="#JAVA_INTERNAL" />
     <option name="vmOptions" value="-DarchetypeCatalog=internal" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1911" />
     <option name="y" value="-9" />
     <option name="width" value="1938" />
@@ -222,7 +438,7 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
@@ -240,9 +456,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -250,11 +467,236 @@
               <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
               <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="portal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="portal" type="462c0819:PsiDirectoryNode" />
+              <item name="aspect" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="portal" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="portal" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="portal" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="portal" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="portal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-security" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-security" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-security" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-security" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-security" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-security" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qlemusic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qlemusic" type="462c0819:PsiDirectoryNode" />
+              <item name="qlemusic-security" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -269,7 +711,7 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="RequestMappingsPanelOrder2" value="2" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15631692" />
     <property name="project.structure.side.proportion" value="0.24777183" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -322,10 +764,29 @@
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
     </configuration>
+    <configuration name="FileUploadUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.cjj.qlemusic.portal.aspect.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.cjj.qlemusic.common.util.FileUploadUtil" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="qlemusic-common" />
+      <envs />
+    </configuration>
     <configuration name="UuidUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.cjj.qlemusic.common.util.*" />
+          <option name="PATTERN" value="com.cjj.qlemusic.portal.aspect.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -355,7 +816,7 @@
       <module name="" />
       <envs />
     </configuration>
-    <configuration name="SendSmsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RedisTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.cjj.qlemusic.portal.*" />
@@ -366,7 +827,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.cjj.qlemusic.portal" />
-      <option name="MAIN_CLASS_NAME" value="com.cjj.qlemusic.portal.SendSmsTest" />
+      <option name="MAIN_CLASS_NAME" value="com.cjj.qlemusic.portal.RedisTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -380,7 +841,7 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="SendSmsTest.Demo1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RedisTest.t1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.cjj.qlemusic.portal.*" />
@@ -391,8 +852,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.cjj.qlemusic.portal" />
-      <option name="MAIN_CLASS_NAME" value="com.cjj.qlemusic.portal.SendSmsTest" />
-      <option name="METHOD_NAME" value="Demo1" />
+      <option name="MAIN_CLASS_NAME" value="com.cjj.qlemusic.portal.RedisTest" />
+      <option name="METHOD_NAME" value="t1" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -431,18 +892,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-    </configuration>
-    <configuration name="QlemusicAdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.cjj.qlemusic.admin.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cjj.qlemusic.admin.QlemusicAdminApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <module name="qlemusic-admin" />
-      <envs />
     </configuration>
     <configuration name="QlemusicPortalApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
@@ -489,19 +938,19 @@
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Spring Boot.QlemusicAdminApplication" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.SendSmsTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.SendSmsTest.Demo1" />
-      <item index="3" class="java.lang.String" itemvalue="Spring Boot.QlemusicPortalApplication" />
-      <item index="4" class="java.lang.String" itemvalue="Application.UuidUtil" />
+      <item index="0" class="java.lang.String" itemvalue="Spring Boot.QlemusicPortalApplication" />
+      <item index="1" class="java.lang.String" itemvalue="Application.UuidUtil" />
+      <item index="2" class="java.lang.String" itemvalue="Application.FileUploadUtil" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.RedisTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.RedisTest.t1" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Spring Boot.QlemusicPortalApplication" />
-        <item index="1" class="java.lang.String" itemvalue="Application.UuidUtil" />
-        <item index="2" class="java.lang.String" itemvalue="Spring Boot.QlemusicAdminApplication" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.SendSmsTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.SendSmsTest.Demo1" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.RedisTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.RedisTest.t1" />
+        <item index="3" class="java.lang.String" itemvalue="Application.FileUploadUtil" />
+        <item index="4" class="java.lang.String" itemvalue="Application.UuidUtil" />
       </list>
     </recent_temporary>
   </component>
@@ -555,18 +1004,29 @@
       <workItem from="1601182959186" duration="36933000" />
       <workItem from="1601519581413" duration="45135000" />
       <workItem from="1601865710568" duration="26055000" />
+      <workItem from="1601957872665" duration="605000" />
+      <workItem from="1601962112783" duration="15000" />
+      <workItem from="1601962141706" duration="13423000" />
+      <workItem from="1601978017189" duration="31178000" />
+      <workItem from="1602290768374" duration="35406000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SendSmsTest - 2020.08.04 at 16h 28m 17s.xml">
-      <configuration name="SendSmsTest" configurationId="JUnit" />
+    <history-entry file="RedisTest - 2020.10.11 at 16h 28m 20s.xml">
+      <configuration name="RedisTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SendSmsTest - 2020.08.04 at 16h 30m 14s.xml">
-      <configuration name="SendSmsTest" configurationId="JUnit" />
+    <history-entry file="RedisTest - 2020.10.11 at 16h 31m 49s.xml">
+      <configuration name="RedisTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SendSmsTest - 2020.08.04 at 16h 31m 41s.xml">
-      <configuration name="SendSmsTest" configurationId="JUnit" />
+    <history-entry file="RedisTest - 2020.10.11 at 16h 33m 47s.xml">
+      <configuration name="RedisTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RedisTest - 2020.10.11 at 16h 36m 16s.xml">
+      <configuration name="RedisTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RedisTest_t1 - 2020.10.11 at 16h 35m 19s.xml">
+      <configuration name="RedisTest.t1" configurationId="JUnit" />
     </history-entry>
     <history-entry file="SendSmsTest - 2020.08.04 at 16h 32m 22s.xml">
       <configuration name="SendSmsTest" configurationId="JUnit" />
@@ -585,7 +1045,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="271558000" />
+    <option name="totallyTimeSpent" value="352185000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -597,7 +1057,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1911" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="1911" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -615,15 +1076,14 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32951945" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run Dashboard" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.48741418" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40732265" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4187643" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4610984" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27803203" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32081544" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27803203" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2532189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32951945" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -631,6 +1091,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32951945" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -687,238 +1148,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/config/MybatisConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/5.1.11.RELEASE/spring-core-5.1.11.RELEASE.jar!/org/springframework/util/StringUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="35" column="26" lean-forward="false" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/custom/JwtUserRealm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="39" column="4" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/custom/JwtToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/constant/StatusCodeConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-admin/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="60" column="17" lean-forward="false" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-admin/src/main/java/com/cjj/qlemusic/admin/controller/OssController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/util/JwtTokenUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="132" column="78" lean-forward="false" selection-start-line="132" selection-start-column="78" selection-end-line="132" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/filter/JwtAuthenticationTokenFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-600">
-          <caret line="57" column="32" lean-forward="false" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/OssServiceImpl.java" />
-    <entry file="file://$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/util/UuidUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="37" column="74" lean-forward="false" selection-start-line="37" selection-start-column="74" selection-end-line="37" selection-end-column="74" />
-          <folding>
-            <element signature="e#190#191#0" expanded="false" />
-            <element signature="e#273#274#0" expanded="false" />
-            <element signature="e#359#360#0" expanded="false" />
-            <element signature="e#442#443#0" expanded="false" />
-            <element signature="e#532#533#0" expanded="false" />
-            <element signature="e#615#616#0" expanded="false" />
-            <element signature="e#704#705#0" expanded="false" />
-            <element signature="e#787#788#0" expanded="false" />
-            <element signature="e#833#834#0" expanded="false" />
-            <element signature="e#884#885#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/OssCallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/OssPolicy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/OssCallbackParam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/OssService.java" />
-    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/OssController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="23" column="18" lean-forward="false" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/OssService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="32" column="10" lean-forward="false" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/OssServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="111" column="46" lean-forward="true" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/UmsAdmin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-413">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/UmsMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-admin/src/main/java/com/cjj/qlemusic/admin/dto/AmsAuthor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-336">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/UmsRole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-96">
-          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/resources/securityMapper/UmsAdminMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-480">
-          <caret line="28" column="40" lean-forward="false" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="40" />
-          <folding>
-            <marker date="1595349028749" expanded="true" signature="921:1037" ph="insert into ums_admin" />
-            <marker date="1595349028749" expanded="true" signature="1115:1199" ph="select from ums_admin" />
-            <marker date="1595349028749" expanded="true" signature="1321:1450" ph="select from ums_admin" />
-            <marker date="1595349028749" expanded="true" signature="1573:1733" ph="select accou... ums_admin" />
-            <marker date="1595349028749" expanded="true" signature="1849:2062" ph="select r.nam... ums_admin" />
-            <marker date="1595349028749" expanded="true" signature="2184:2525" ph="select rs.pe... ums_admin" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsMusic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/exception/GlobalExceptionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="41" column="120" lean-forward="false" selection-start-line="41" selection-start-column="120" selection-end-line="41" selection-end-column="120" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/util/PageUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/dao/BbsMusicDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="29" column="41" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/BbsMusicService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="31" column="72" lean-forward="false" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/qlemusic-admin/src/main/java/com/cjj/qlemusic/admin/service/impl/OssServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -926,81 +1159,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="21" column="47" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/BbsMusicController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="44" column="98" lean-forward="false" selection-start-line="44" selection-start-column="89" selection-end-line="44" selection-end-column="98" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsMusicServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="31" column="47" lean-forward="true" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/UmsUserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="90" column="12" lean-forward="false" selection-start-line="90" selection-start-column="12" selection-end-line="90" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/resources/mybatis/mapper/BbsMusicMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="48" column="38" lean-forward="false" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
-          <folding>
-            <marker date="1601890195078" expanded="true" signature="1356:1487" ph="select from bbs_music" />
-            <marker date="1601890195078" expanded="true" signature="1570:1654" ph="select from bbs_music" />
-            <marker date="1601890195078" expanded="true" signature="1570:1696" ph="select from bbs_music" />
-            <marker date="1601890195078" expanded="true" signature="1784:2047" ph="select from bbs_music" />
-            <marker date="1601890195078" expanded="true" signature="1784:2101" ph="select bm.* bbs_music" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/dao/UmsUserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="67" column="18" lean-forward="false" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="65" column="21" lean-forward="false" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/UmsUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="186" column="5" lean-forward="false" selection-start-line="186" selection-start-column="5" selection-end-line="186" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/UmsCollect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1008,40 +1166,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-626">
           <caret line="17" column="41" lean-forward="false" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/resources/securityMapper/UmsUserMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-          <folding>
-            <marker date="1601949867397" expanded="true" signature="1186:1411" ph="insert into ums_user" />
-            <marker date="1601949867397" expanded="true" signature="1489:1518" ph="SELECT LAST_... " />
-            <marker date="1601949867397" expanded="true" signature="1594:1671" ph="insert into ums_collect" />
-            <marker date="1601949867397" expanded="true" signature="1754:1884" ph="select from ums_user" />
-            <marker date="1601949867397" expanded="true" signature="1936:1975" ph="update ums_u... ums_user" />
-            <marker date="1601949867397" expanded="true" signature="1936:2000" ph="update ums_u... ums_user" />
-            <marker date="1601949867397" expanded="true" signature="1936:2024" ph="update ums_u... ums_user" />
-            <marker date="1601949867397" expanded="true" signature="1936:2064" ph="update ums_u... ums_user" />
-            <marker date="1601949867397" expanded="true" signature="1936:2101" ph="update ums_u... ums_user" />
-            <marker date="1601949867397" expanded="true" signature="2177:2293" ph="select from ums_user" />
-            <marker date="1601949867397" expanded="true" signature="2349:2459" ph="update ums_u... ums_user" />
-            <marker date="1601949867397" expanded="true" signature="2555:2662" ph="select from ums_user" />
-            <marker date="1601949867397" expanded="true" signature="2727:2812" ph="insert into ums_user_unique_id" />
-            <marker date="1601949867397" expanded="true" signature="2866:2976" ph="update ums_u... ums_user" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/UmsUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-888">
-          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1049,17 +1173,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/UmsUserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1671">
-          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1067,9 +1180,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
           <caret line="54" column="18" lean-forward="false" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1077,7 +1187,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="32" column="73" lean-forward="true" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1085,21 +1194,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-138">
           <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/dao/UmsCollectDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="44" column="9" lean-forward="false" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/resources/securityMapper/UmsCollectMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="1152">
           <caret line="48" column="32" lean-forward="false" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
           <folding>
             <marker date="1601954487594" expanded="true" signature="283:387" ph="insert into ums_collect" />
@@ -1119,21 +1219,449 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/UmsCollectController.java">
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/UmsCollect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="74" column="21" lean-forward="false" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
+        <state relative-caret-position="168">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/UmsUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/dao/UmsCollectDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="984">
+          <caret line="44" column="9" lean-forward="false" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/entity/UmsUserRegister.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/util/TelephoneUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/util/UuidUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="36" column="40" lean-forward="false" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/OssController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="37" column="48" lean-forward="false" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/util/FileUploadUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="50" column="57" lean-forward="false" selection-start-line="50" selection-start-column="57" selection-end-line="50" selection-end-column="57" />
+          <folding>
+            <element signature="e#1380#1381#0" expanded="false" />
+            <element signature="e#1444#1445#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/OssServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15">
+          <caret line="105" column="60" lean-forward="true" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/dao/UmsUserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="72" column="11" lean-forward="false" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/resources/securityMapper/UmsUserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="104" column="13" lean-forward="false" selection-start-line="104" selection-start-column="13" selection-end-line="104" selection-end-column="13" />
+          <folding>
+            <marker date="1601949867397" expanded="true" signature="1186:1411" ph="insert into ums_user" />
+            <marker date="1601949867397" expanded="true" signature="1489:1518" ph="SELECT LAST_... " />
+            <marker date="1601949867397" expanded="true" signature="1594:1671" ph="insert into ums_collect" />
+            <marker date="1601949867397" expanded="true" signature="1754:1884" ph="select from ums_user" />
+            <marker date="1601949867397" expanded="true" signature="1936:2101" ph="update ums_u... ums_user" />
+            <marker date="1601949867397" expanded="true" signature="2177:2293" ph="select from ums_user" />
+            <marker date="1601949867397" expanded="true" signature="2349:2459" ph="update ums_u... ums_user" />
+            <marker date="1601949867397" expanded="true" signature="2555:2662" ph="select id fr... ums_user_unique_id" />
+            <marker date="1601949867397" expanded="true" signature="2727:2812" ph="insert into ums_user_unique_id" />
+            <marker date="1601949867397" expanded="true" signature="2866:2976" ph="update ums_u... ums_user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/UmsUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="93" column="11" lean-forward="false" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/UmsUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="191" column="50" lean-forward="false" selection-start-line="191" selection-start-column="50" selection-end-line="191" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-common/src/main/java/com/cjj/qlemusic/common/util/VerifyUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/UmsUserCacheService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/UmsUserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="147" column="38" lean-forward="true" selection-start-line="147" selection-start-column="38" selection-end-line="147" selection-end-column="38" />
+          <folding>
+            <element signature="e#8832#8833#0" expanded="true" />
+            <element signature="e#8881#8882#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/UmsUserCacheServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-168">
+          <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="18" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/OssService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="30" column="25" lean-forward="false" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/test/java/com/cjj/qlemusic/portal/SendSmsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1560">
+          <caret line="65" column="21" lean-forward="false" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1296">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/test/java/com/cjj/qlemusic/portal/RedisTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#544#545#0" expanded="false" />
+            <element signature="e#605#606#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/RedisService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="70" column="15" lean-forward="false" selection-start-line="70" selection-start-column="15" selection-end-line="70" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/BbsLikeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="25" column="34" lean-forward="false" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/UmsCollectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="86" column="58" lean-forward="false" selection-start-line="86" selection-start-column="58" selection-end-line="86" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/BbsMusicController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsUserLike.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="44" column="30" lean-forward="false" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#638#639#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#725#726#0" expanded="true" />
+            <element signature="e#756#757#0" expanded="true" />
+            <element signature="e#785#786#0" expanded="true" />
+            <element signature="e#827#828#0" expanded="true" />
+            <element signature="e#863#864#0" expanded="true" />
+            <element signature="e#925#926#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1041#1042#0" expanded="true" />
+            <element signature="e#1070#1071#0" expanded="true" />
+            <element signature="e#1115#1116#0" expanded="true" />
+            <element signature="e#1151#1152#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/controller/BbsLikeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="26" column="73" lean-forward="false" selection-start-line="26" selection-start-column="73" selection-end-line="26" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/BbsMusicService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="23" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-security/src/main/java/com/cjj/qlemusic/security/service/impl/RedisServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="73" column="34" lean-forward="false" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="34" />
+          <folding>
+            <element signature="e#1671#1672#0" expanded="true" />
+            <element signature="e#1734#1735#0" expanded="true" />
+            <element signature="e#1797#1798#0" expanded="true" />
+            <element signature="e#1856#1857#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/BbsLikeCacheService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="19" column="9" lean-forward="false" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/dao/BbsMusicDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/dao/BbsLikeDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="36" column="64" lean-forward="false" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/resources/mybatis/mapper/BbsLikeMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="22" column="44" lean-forward="true" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+          <folding>
+            <marker date="1602425024909" expanded="true" signature="764:886" ph="insert into bbs_user_like" />
+            <marker date="1602425024909" expanded="true" signature="971:1078" ph="select count... bbs_user_like" />
+            <marker date="1602425024909" expanded="true" signature="1140:1429" ph="update bbs_m... bbs_music_operation" />
+            <marker date="1602425024909" expanded="true" signature="1277:1428" ph="select music... bbs_music_music_operation" />
+            <marker date="1602425024909" expanded="true" signature="1530:1679" ph="select * fro... bbs_user_like" />
+            <marker date="1602425024909" expanded="true" signature="1735:1896" ph="update bbs_u... bbs_user_like" />
+            <marker date="1602425024909" expanded="true" signature="1991:2123" ph="select id,co... bbs_music_operation" />
+            <marker date="1602425024909" expanded="true" signature="2181:2302" ph="update bbs_m... bbs_music_operation" />
+            <marker date="1602425024909" expanded="true" signature="2360:2477" ph="insert into bbs_music_operation" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/aspect/TimerUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsLikeCacheServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="108" column="54" lean-forward="true" selection-start-line="108" selection-start-column="54" selection-end-line="108" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1302#1303#0" expanded="true" />
+            <element signature="e#1375#1376#0" expanded="true" />
+            <element signature="e#1447#1448#0" expanded="true" />
+            <element signature="e#1513#1514#0" expanded="true" />
+            <element signature="e#1580#1581#0" expanded="true" />
+            <element signature="e#1655#1656#0" expanded="true" />
+            <element signature="e#1722#1723#0" expanded="true" />
+            <element signature="e#1798#1799#0" expanded="true" />
+            <element signature="e#1861#1862#0" expanded="true" />
+            <element signature="e#1935#1936#0" expanded="true" />
+            <element signature="e#1996#1997#0" expanded="true" />
+            <element signature="e#2063#2064#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsLikeServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/service/impl/BbsMusicServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="40" column="46" lean-forward="false" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1352#1353#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsMusicOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="54" column="5" lean-forward="true" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+          <folding>
+            <element signature="e#658#659#0" expanded="true" />
+            <element signature="e#690#691#0" expanded="true" />
+            <element signature="e#741#742#0" expanded="true" />
+            <element signature="e#783#784#0" expanded="true" />
+            <element signature="e#815#816#0" expanded="true" />
+            <element signature="e#845#846#0" expanded="true" />
+            <element signature="e#889#890#0" expanded="true" />
+            <element signature="e#927#928#0" expanded="true" />
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1035#1036#0" expanded="true" />
+            <element signature="e#1071#1072#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="117" column="19" lean-forward="false" selection-start-line="117" selection-start-column="19" selection-end-line="117" selection-end-column="19" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-admin/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/java/com/cjj/qlemusic/portal/entity/BbsMusic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="46" column="15" lean-forward="true" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qlemusic-portal/src/main/resources/mybatis/mapper/BbsMusicMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="37" column="35" lean-forward="true" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+          <folding>
+            <marker date="1602429033917" expanded="true" signature="1589:1826" ph="select m.*,u... bbs_music" />
+            <marker date="1602429033917" expanded="true" signature="1589:1884" ph="select m.*, bbs_music" />
+            <marker date="1602429033917" expanded="true" signature="1589:1943" ph="select m.*, bbs_music" />
+            <marker date="1602429033917" expanded="true" signature="2026:2152" ph="select from bbs_music" />
+            <marker date="1602429033917" expanded="true" signature="2240:2557" ph="select bm.*,... bbs_music" />
+            <marker date="1602429033917" expanded="true" signature="2613:2894" ph="insert into bbs_music" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1148,7 +1676,6 @@
             <option name="proportions">
               <list>
                 <option value="0.24777183" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

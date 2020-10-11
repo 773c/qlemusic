@@ -1,7 +1,9 @@
 package com.cjj.qlemusic.portal.service;
 
 import com.cjj.qlemusic.portal.entity.BbsMusic;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -30,4 +32,12 @@ public interface BbsMusicService {
      * @return
      */
     List<BbsMusic> getMusicByCollectId(Integer pageNum,Integer pageSize,Long userId, Long collectId);
+
+    /**
+     * 发布
+     * @param bbsMusic
+     * @param userId
+     * @param file
+     */
+    int release(BbsMusic bbsMusic,Long userId, MultipartFile[] file) throws IOException;
 }

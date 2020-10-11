@@ -3,6 +3,7 @@ package com.cjj.qlemusic.portal.entity;
 import com.cjj.qlemusic.security.entity.UmsUser;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -19,6 +20,7 @@ public class BbsMusic implements Serializable {
     private Long collectMusicId;
 
     @ApiModelProperty(value = "标题")
+    @NotEmpty(message = "标题不能为空")
     private String title;
 
     @ApiModelProperty(value = "地址")
@@ -28,9 +30,11 @@ public class BbsMusic implements Serializable {
     private String audioAvatarUrl;
 
     @ApiModelProperty(value = "开始时间")
+    @NotEmpty(message = "开始时间不能为空")
     private String startTime;
 
     @ApiModelProperty(value = "播放时长")
+    @NotEmpty(message = "播放时长不能为空")
     private String playTime;
 
     @ApiModelProperty(value = "发布时间")
@@ -38,6 +42,9 @@ public class BbsMusic implements Serializable {
 
     @ApiModelProperty(value = "用户信息")
     private UmsUser umsUser;
+
+    @ApiModelProperty(value = "点赞,查看,评论的次数")
+    private BbsMusicOperation bbsMusicOperation;
 
     public Long getId() {
         return id;
@@ -111,10 +118,19 @@ public class BbsMusic implements Serializable {
         this.umsUser = umsUser;
     }
 
+    public BbsMusicOperation getBbsMusicOperation() {
+        return bbsMusicOperation;
+    }
+
+    public void setBbsMusicOperation(BbsMusicOperation bbsMusicOperation) {
+        this.bbsMusicOperation = bbsMusicOperation;
+    }
+
     @Override
     public String toString() {
         return "BbsMusic{" +
                 "id=" + id +
+                ", collectMusicId=" + collectMusicId +
                 ", title='" + title + '\'' +
                 ", audioUrl='" + audioUrl + '\'' +
                 ", audioAvatarUrl='" + audioAvatarUrl + '\'' +
@@ -122,6 +138,7 @@ public class BbsMusic implements Serializable {
                 ", playTime='" + playTime + '\'' +
                 ", releaseTime=" + releaseTime +
                 ", umsUser=" + umsUser +
+                ", bbsMusicOperation=" + bbsMusicOperation +
                 '}';
     }
 }

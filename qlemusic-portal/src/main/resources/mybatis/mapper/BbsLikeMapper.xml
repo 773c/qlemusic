@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjj.qlemusic.portal.dao.BbsLikeDao">
+    <resultMap id="bbsUserLikeMap" type="BbsUserLike">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="music_id" property="musicId"/>
+        <result column="isLike" property="isLike"/>
+    </resultMap>
+
+    <resultMap id="bbsMusicOperationMap" type="BbsMusicOperation">
+        <id column="id" property="id"/>
+        <result column="like_count" property="likeCount"/>
+        <result column="music_id" property="musicId"/>
+    </resultMap>
+
+    <insert id="insertUserLike">
+        insert into
+            bbs_user_like(user_id,music_id,isLike)
+        values
+            (#{userId},#{musicId},#{isLike})
+    </insert>
+    <select id="selectLikeCount" resultType="java.lang.Long">
+        select
+            count(*)
+        from
+            bbs_user_like
+        where
+            music_id=#{id}
+    </select>
+    <update id="updateMusicLikeCount">
+        update
+            bbs_music_operation
+        set
+            like_count=#{bbsMusicOperation.likeCount}
+        where
+            id = (select
+                music_operation_id
+            from
+                bbs_music_music_operation
+            where
+                music_id = #{id})
+    </update>
+    <select id="selectUserLikeByLikedIdAndUserId" resultMap="bbsUserLikeMap">
+        select
+            *
+        from
+            bbs_user_like
+        where
+            user_id = #{userId}
+        and
+            music_id=#{musicId}
+    </select>
+    <update id="updateUserLike">
+        update
+            bbs_user_like
+        set
+            isLike=#{isLike}
+        where
+            user_id=#{userId}
+        and
+            music_id=#{musicId}
+    </update>
+    <select id="selectLikedCountById" resultMap="bbsMusicOperationMap">
+        select
+            id,like_count,music_id
+        from
+            bbs_music_operation
+        where
+            music_id=#{musicId}
+    </select>
+    <update id="updateLikedCount">
+        update
+            bbs_music_operation
+        set
+            like_count=#{likeCount}
+        where
+            id=#{id}
+    </update>
+    <insert id="insertLikedCount">
+        insert into
+            bbs_music_operation(like_count,music_id)
+        values
+            (#{likeCount},#{musicId})
+    </insert>
+</mapper>
