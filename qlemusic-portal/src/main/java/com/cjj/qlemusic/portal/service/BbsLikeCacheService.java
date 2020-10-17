@@ -35,26 +35,33 @@ public interface BbsLikeCacheService {
     void delUserLike(Long likedId,Long userId);
 
     /**
-     * 自增加1
+     * 保存点赞数量
+     * @param musicId
+     * @param likeCount
+     */
+    void setLikedCount(Long musicId, Integer likeCount);
+
+    /**
+     * 自增加1(这里likedId为音乐id)
      * @param likedId
      */
     void incrementLikedCount(Long likedId);
 
     /**
-     * 自减1
+     * 自减1(这里likedId为音乐id)
      * @param likedId
      */
     void decrementLikedCount(Long likedId);
 
     /**
-     * 获取被点赞的数量
+     * 获取被点赞的数量(这里likedId为音乐id)
      * @param likedId
      * @return
      */
     Object getLikedCount(Long likedId);
 
     /**
-     * 删除被点赞的记录数
+     * 删除被点赞的记录数(这里likedId为音乐id)
      * @param likedId
      */
     void delLikedCount(Long likedId);
@@ -70,4 +77,6 @@ public interface BbsLikeCacheService {
      * @return
      */
     List<BbsMusicOperation> getLikedCountList() throws IOException;
+
+
 }

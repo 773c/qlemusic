@@ -13,7 +13,7 @@ public interface BbsLikeService {
      * @param bbsUserLike
      * @throws IOException
      */
-    int like(BbsUserLike bbsUserLike) throws IOException;
+    void like(BbsUserLike bbsUserLike) throws IOException;
 
     /**
      * 定时将用户点赞数据缓存存入数据库中
@@ -25,4 +25,8 @@ public interface BbsLikeService {
      */
     void likedCountToDatabaseTimer() throws IOException;
 
+    /**
+     * 从数据中获取点赞数据
+     */
+    void getLikeDataFromDao();
 }

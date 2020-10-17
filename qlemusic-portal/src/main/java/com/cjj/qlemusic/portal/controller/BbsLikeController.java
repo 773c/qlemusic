@@ -24,12 +24,12 @@ public class BbsLikeController {
 
     @ApiOperation(value = "点赞")
     @PostMapping("/bbsmusic")
-    public ResponseResultUtil likeBbsMusic(@RequestBody @Validated BbsUserLike bbsUserLike, BindingResult result) throws IOException {
-        System.out.println(bbsUserLike);
-        int count = bbsLikeService.like(bbsUserLike);
-        if(count > 0)
-            return ResponseResultUtil.success(count);
-        else
+    public ResponseResultUtil likeBbsMusic(@RequestBody @Validated BbsUserLike bbsUserLike, BindingResult result) {
+        try {
+            bbsLikeService.like(bbsUserLike);
+            return ResponseResultUtil.success(1);
+        } catch (IOException e) {
             return ResponseResultUtil.failed("点赞失败");
+        }
     }
 }

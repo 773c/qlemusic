@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjj.qlemusic.portal.dao.BbsCommentDao">
+    <resultMap id="bbsUserCommentMap" type="BbsUserComment">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="music_id" property="musicId"/>
+        <result column="row_id" property="rowId"/>
+        <result column="content" property="content"/>
+        <result column="create_time" property="createTime"/>
+        <result column="available" property="available"/>
+    </resultMap>
+
+    <resultMap id="bbsReplyuserCommentMap" type="BbsReplyuserComment">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="replyuser_id" property="replyuserId"/>
+        <result column="music_id" property="musicId"/>
+        <result column="row_id" property="rowId"/>
+        <result column="content" property="content"/>
+        <result column="create_time" property="createTime"/>
+        <result column="replyuser_create_time" property="replyuserCreateTime"/>
+        <result column="available" property="available"/>
+    </resultMap>
+
+    <resultMap id="bbsMusicOperationMap" type="BbsMusicOperation">
+        <id column="id" property="id"/>
+        <result column="comment_count" property="commentCount"/>
+        <result column="user_comment_count" property="userCommentCount"/>
+        <result column="music_id" property="musicId"/>
+    </resultMap>
+
+    <insert id="insertUserComment">
+        insert into
+            bbs_user_comment(user_id,music_id,row_id,content,create_time,available)
+        values
+            (#{userId},#{musicId},#{rowId},#{content},#{createTime},#{available})
+    </insert>
+    <insert id="insertReplyuserComment">
+        insert into
+            bbs_replyuser_comment(user_id,replyuser_id,music_id,row_id,content,create_time,replyuser_create_time,available)
+        values
+            (#{userId},#{replyuserId},#{musicId},#{rowId},#{content},#{createTime},#{replyuserCreateTime},#{available})
+    </insert>
+    <select id="selectCommentedCountById" resultMap="bbsMusicOperationMap">
+        select
+            id,comment_count,user_comment_count,music_id
+        from
+            bbs_music_operation
+        where
+            music_id=#{musicId}
+    </select>
+    <insert id="insertCommentedCount">
+        insert into
+             bbs_music_operation(comment_count,music_id)
+        values
+            (#{commentCount},#{musicId})
+    </insert>
+    <select id="selectCommentedCountAll" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            bbs_user_comment uc
+            join bbs_replyuser_comment rc on rc.music_id = uc.music_id
+    </select>
+    <update id="updateCommentedCount">
+        update
+            bbs_music_operation
+        set
+            comment_count = #{commentCount},
+            user_comment_count = #{userCommentCount}
+        where
+            music_id = #{musicId}
+    </update>
+    <select id="selectUserCommentByMusicIds" resultMap="bbsUserCommentMap">
+        select
+            id,user_id,music_id,row_id,content,create_time
+        from
+            bbs_user_comment
+        where
+            music_id
+        in
+        <foreach collection="list" item="musicId" index="index" open="(" separator="," close=")">
+            #{musicId}
+        </foreach>
+    </select>
+    <select id="selectReplyuserCommentByMusicIds" resultMap="bbsReplyuserCommentMap">
+        select
+            id,user_id,replyuser_id,music_id,row_id,content,create_time,replyuser_create_time
+        from
+            bbs_replyuser_comment
+        where
+            music_id
+        in
+        <foreach collection="list" item="musicId" index="index" open="(" separator="," close=")">
+            #{musicId}
+        </foreach>
+    </select>
+    <select id="selectCommentedCountByMusicIds" resultMap="bbsMusicOperationMap">
+        select
+            id,comment_count,user_comment_count,music_id
+        from
+            bbs_music_operation
+        where
+            music_id
+        in
+        <foreach collection="list" item="musicId" index="index" open="(" separator="," close=")">
+            #{musicId}
+        </foreach>
+    </select>
+    <select id="selectUserCommentByUMT" resultMap="bbsUserCommentMap">
+        select
+            id
+        from
+            bbs_user_comment
+        where
+            user_id=#{userId}
+        and
+            music_id=#{musicId}
+        and
+            create_time=#{createTime}
+    </select>
+    <select id="selectReplyuserCommentByBRMT" resultMap="bbsReplyuserCommentMap">
+        select
+            id
+        from
+            bbs_replyuser_comment
+        where
+            user_id=#{userId}
+        and
+            replyuser_id=#{replyuserId}
+        and
+            music_id=#{musicId}
+        and
+            create_time=#{createTime}
+    </select>
+    <select id="selectUserCommentByMusicId" resultMap="bbsUserCommentMap">
+        select
+            id,user_id,music_id,row_id,content,create_time
+        from
+            bbs_user_comment
+        where
+            music_id = #{musicId}
+    </select>
+    <select id="selectReplyuserCommentByMusicId" resultMap="bbsReplyuserCommentMap">
+        select
+            id,user_id,replyuser_id,music_id,row_id,content,create_time,replyuser_create_time
+        from
+            bbs_replyuser_comment
+        where
+            music_id = #{musicId}
+    </select>
+    <select id="selectUserByIds" resultType="UmsUser">
+        select
+            id,
+            unique_id as uniqueId,
+            head_icon as headIcon,
+            name,
+            sex,
+            telephone,
+            create_time as createTime,
+            email,
+            description
+        from 
+            ums_user
+        where 
+            id 
+        in 
+        <foreach collection="collection" item="id" index="index" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

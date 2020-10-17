@@ -4,6 +4,8 @@ import com.cjj.qlemusic.portal.entity.BbsMusicOperation;
 import com.cjj.qlemusic.portal.entity.BbsUserLike;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * 点赞Dao
  */
@@ -60,4 +62,30 @@ public interface BbsLikeDao {
      * @param musicOperation
      */
     void insertLikedCount(BbsMusicOperation musicOperation);
+
+    /**
+     * 获取点赞数据
+     */
+    void selectLikeData();
+
+    /**
+     * 获取点赞数量数据
+     * @param musicIdList
+     * @return
+     */
+    List<BbsMusicOperation> selectLikedCountByMusicIds(List<Long> musicIdList);
+
+    /**
+     * 获取用户点赞数据
+     * @param musicId
+     * @return
+     */
+    List<BbsUserLike> selectUserLikeByMusicIds(List<Long> musicId);
+
+    /**
+     * 获取被点赞为true
+     * @param musicId
+     * @return
+     */
+    Integer selectLikeCountByIsLike(Long musicId);
 }

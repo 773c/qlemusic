@@ -3,6 +3,8 @@ package com.cjj.qlemusic.security.dao;
 import com.cjj.qlemusic.security.entity.UmsUser;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * 用户管理Dao
  */
@@ -74,4 +76,11 @@ public interface UmsUserDao {
      * @param id
      */
     void getUserById(Long id);
+
+    /**
+     * 根据id集合获取用户
+     * @param userIds
+     * @return
+     */
+    List<UmsUser> selectUserByIds(List<Long> userIds);
 }

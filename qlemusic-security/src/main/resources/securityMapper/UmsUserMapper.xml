@@ -103,4 +103,16 @@
         where
             id = #{id}
     </update>
+    <select id="selectUserByIds" resultMap="userMap">
+        select
+            id,name,head_icon
+        from
+            ums_user
+        where
+            id
+        in
+        <foreach collection="list" item="id" index="index" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

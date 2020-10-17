@@ -85,4 +85,38 @@
         values
             (#{likeCount},#{musicId})
     </insert>
+    <select id="selectLikedCountByMusicIds" resultMap="bbsMusicOperationMap">
+        select
+            id,like_count,music_id
+        from
+            bbs_music_operation
+        where
+            music_id
+        in
+        <foreach collection="list" item="musicId" index="index" open="(" separator="," close=")">
+            #{musicId}
+        </foreach>
+    </select>
+    <select id="selectUserLikeByMusicIds" resultMap="bbsUserLikeMap">
+        select
+            *
+        from
+            bbs_user_like
+        where
+            music_id
+        in
+        <foreach collection="list" item="musicId" index="index" open="(" separator="," close=")">
+            #{musicId}
+        </foreach>
+    </select>
+    <select id="selectLikeCountByIsLike" resultType="java.lang.Integer">
+        select
+			count(*)
+		from
+		    bbs_user_like
+		where
+		    isLike = 1
+		and
+		    music_id = #{musicId}
+    </select>
 </mapper>

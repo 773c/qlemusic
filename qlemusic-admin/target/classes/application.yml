@@ -56,9 +56,9 @@ shiro:
 #JWT
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
-  secretKey: qiuqiaofang     #JWT加解密使用的秘钥
+  secretKey: test     #JWT加解密使用的秘钥
   expiration: 86400          #JwtToken过期时间(7天604800)
-  tokenHead: Bearer          #JWT负载中拿到开头
+  tokenHead: test          #JWT负载中拿到开头
 
 # OSS相关配置信息
 aliyun:

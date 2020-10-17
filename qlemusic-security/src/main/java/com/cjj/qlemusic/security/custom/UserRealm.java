@@ -50,7 +50,6 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         System.out.println("❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥ UserRealm（认证中）");
         String account = (String) authenticationToken.getPrincipal();
-        System.out.println(account);
         UmsUser umsUser = null;
         UmsAdmin umsAdmin = null;
         SimpleAuthenticationInfo authenticationInfo = null;

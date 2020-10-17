@@ -1,5 +1,11 @@
 package com.cjj.qlemusic.common.util;
 
+import org.assertj.core.util.DateUtil;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 public class FileUploadUtil {
     /**
      * 获得16位的filename
@@ -47,7 +53,11 @@ public class FileUploadUtil {
             return false;
     }
 
-    public static void main(String[] args) {
-        String s = "Jony J - Big Things Start Small.mp3";
+    public static void main(String[] args) throws ParseException {
+        String time = "2020-10-14 18:22:59";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date parse = simpleDateFormat.parse(time);
+
+        System.out.println(parse.getTime());
     }
 }

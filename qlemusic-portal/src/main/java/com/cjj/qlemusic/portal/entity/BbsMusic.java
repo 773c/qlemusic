@@ -5,7 +5,9 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 音乐片段实体类
@@ -45,6 +47,16 @@ public class BbsMusic implements Serializable {
 
     @ApiModelProperty(value = "点赞,查看,评论的次数")
     private BbsMusicOperation bbsMusicOperation;
+
+    @ApiModelProperty(value = "用户点赞")
+    private BbsUserLike bbsUserLike;
+
+    @ApiModelProperty(value = "用户点赞集合")
+    private List<BbsUserLike> bbsUserLikeList;
+
+    @ApiModelProperty(value = "用户评论集合")
+    private List<BbsUserComment> bbsUserCommentList;
+
 
     public Long getId() {
         return id;
@@ -126,19 +138,27 @@ public class BbsMusic implements Serializable {
         this.bbsMusicOperation = bbsMusicOperation;
     }
 
-    @Override
-    public String toString() {
-        return "BbsMusic{" +
-                "id=" + id +
-                ", collectMusicId=" + collectMusicId +
-                ", title='" + title + '\'' +
-                ", audioUrl='" + audioUrl + '\'' +
-                ", audioAvatarUrl='" + audioAvatarUrl + '\'' +
-                ", startTime='" + startTime + '\'' +
-                ", playTime='" + playTime + '\'' +
-                ", releaseTime=" + releaseTime +
-                ", umsUser=" + umsUser +
-                ", bbsMusicOperation=" + bbsMusicOperation +
-                '}';
+    public BbsUserLike getBbsUserLike() {
+        return bbsUserLike;
+    }
+
+    public void setBbsUserLike(BbsUserLike bbsUserLike) {
+        this.bbsUserLike = bbsUserLike;
+    }
+
+    public List<BbsUserLike> getBbsUserLikeList() {
+        return bbsUserLikeList;
+    }
+
+    public void setBbsUserLikeList(List<BbsUserLike> bbsUserLikeList) {
+        this.bbsUserLikeList = bbsUserLikeList;
+    }
+
+    public List<BbsUserComment> getBbsUserCommentList() {
+        return bbsUserCommentList;
+    }
+
+    public void setBbsUserCommentList(List<BbsUserComment> bbsUserCommentList) {
+        this.bbsUserCommentList = bbsUserCommentList;
     }
 }

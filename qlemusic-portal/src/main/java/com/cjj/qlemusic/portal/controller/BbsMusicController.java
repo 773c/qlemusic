@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @Api(value = "音乐片段管理")
 @RestController
@@ -27,8 +28,14 @@ public class BbsMusicController {
     @GetMapping("/recommend")
     public ResponseResultUtil recommend(){
         System.out.println("获取推荐音乐片段❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥");
-        List<BbsMusic> recommendList = bbsMusicService.getRecommendList();
-        return ResponseResultUtil.success(recommendList);
+        Map<String,Object> recommendList = null;
+        try {
+            recommendList = bbsMusicService.getRecommendList();
+            return ResponseResultUtil.success(recommendList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseResultUtil.failed("未知错误");
+        }
     }
 
     @ApiOperation(value = "获取我的音乐片段")

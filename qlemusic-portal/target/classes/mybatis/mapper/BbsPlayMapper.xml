@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjj.qlemusic.portal.dao.BbsPlayDao">
+    <resultMap id="bbsMusicOperationMap" type="BbsMusicOperation">
+        <id column="id" property="id"/>
+        <result column="play_count" property="playCount"/>
+        <result column="music_id" property="musicId"/>
+    </resultMap>
+
+    <select id="selectPlayedCountByMusicIds" resultMap="bbsMusicOperationMap">
+        select
+            id,play_count,music_id
+        from
+            bbs_music_operation
+        where
+            music_id
+        in
+        <foreach collection="list" item="musicId" index="index" open="(" separator="," close=")">
+            #{musicId}
+        </foreach>
+    </select>
+    <select id="selectPlayedCountByMusicId" resultType="java.lang.Long">
+        select
+            id
+        from
+            bbs_music_operation
+        where
+            music_id = #{musicId}
+    </select>
+    <insert id="insertPlayedCount">
+        insert into
+            bbs_music_operation(play_count,music_id)
+        values
+            (#{playCount},#{musicId})
+    </insert>
+    <update id="updatePlayedCount">
+        update
+            bbs_music_operation
+        set
+            play_count=#{playCount}
+        where
+            music_id=#{musicId}
+    </update>
+</mapper>

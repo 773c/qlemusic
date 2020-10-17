@@ -16,11 +16,18 @@ public class BbsMusicOperation implements Serializable {
     @ApiModelProperty(value = "点赞次数")
     private Integer likeCount;
 
+    @ApiModelProperty(value = "播放次数")
+    private Integer playCount;
+
+    @ApiModelProperty(value = "评论次数")
+    private Integer commentCount;
+
+    @ApiModelProperty(value = "用户评论次数")
+    private Integer userCommentCount;
+
     @ApiModelProperty(value = "音乐id")
     private Long musicId;
 
-    @ApiModelProperty(value = "是否点赞")
-    private boolean isLike;
 
     public Long getId() {
         return id;
@@ -38,6 +45,30 @@ public class BbsMusicOperation implements Serializable {
         this.likeCount = likeCount;
     }
 
+    public Integer getPlayCount() {
+        return playCount;
+    }
+
+    public void setPlayCount(Integer playCount) {
+        this.playCount = playCount;
+    }
+
+    public Integer getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    public Integer getUserCommentCount() {
+        return userCommentCount;
+    }
+
+    public void setUserCommentCount(Integer userCommentCount) {
+        this.userCommentCount = userCommentCount;
+    }
+
     public Long getMusicId() {
         return musicId;
     }
@@ -46,19 +77,14 @@ public class BbsMusicOperation implements Serializable {
         this.musicId = musicId;
     }
 
-    public boolean getIsLike() {
-        return isLike;
-    }
-
-    public void setIsLike(boolean isLike) {
-        this.isLike = isLike;
-    }
-
     @Override
     public String toString() {
         return "BbsMusicOperation{" +
                 "id=" + id +
                 ", likeCount=" + likeCount +
+                ", playCount=" + playCount +
+                ", commentCount=" + commentCount +
+                ", userCommentCount=" + userCommentCount +
                 ", musicId=" + musicId +
                 '}';
     }

@@ -26,8 +26,14 @@ redis:
       admin: ':ums:portal:'
       prefixId: ':userId:'
       resourceList: 'ums:resourceList'
-      userLike: ':user:like:'
-      likedCount: ':liked:count:'
+      userLike: ':like:user:'
+      likedCount: ':like:count:'
+      userComment: ':comment:user:'
+      replyUserComment: ':comment:replyuser:'
+      commentedCount: ':comment:count:'
+      userCommentedCount: ':comment:user:count:'
+      userInfoToComment: ':comment:user:info:'
+      playedCount: ':play:count:'
    expire:
       common: 86400   # 24小时
       verify: 120     # 2分钟

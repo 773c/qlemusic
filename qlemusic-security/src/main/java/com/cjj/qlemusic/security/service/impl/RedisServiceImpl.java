@@ -7,6 +7,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -70,18 +71,33 @@ public class RedisServiceImpl implements RedisService{
     }
 
     @Override
-    public void hincrement(String key,Object likedId,long count) {
-        redisTemplate.opsForHash().increment(key,likedId,count);
+    public void hincrement(String key,Object id,long count) {
+        redisTemplate.opsForHash().increment(key,id,count);
     }
 
     @Override
-    public void hdecrement(String key, Object likedId, long count) {
-        redisTemplate.opsForHash().increment(key,likedId,count);
+    public void hdecrement(String key, Object id, long count) {
+        redisTemplate.opsForHash().increment(key,id,count);
     }
 
     @Override
     public Cursor<Map.Entry<Object, Object>> hscan(String key,ScanOptions scanOptions) {
         return redisTemplate.opsForHash().scan(key, scanOptions);
+    }
+
+    @Override
+    public void lpush(String key, Object value) {
+        redisTemplate.opsForList().leftPush(key,value);
+    }
+
+    @Override
+    public List<Object> lrange(String key, long start, long end) {
+        return redisTemplate.opsForList().range(key,start,end);
+    }
+
+    @Override
+    public void lpop(String key) {
+        redisTemplate.opsForList().leftPop(key);
     }
 
 }

@@ -4,6 +4,7 @@ package com.cjj.qlemusic.security.service;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.ScanOptions;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -85,18 +86,18 @@ public interface RedisService {
     /**
      * 自增加1
      * @param key
-     * @param likedId
+     * @param id
      * @param count
      */
-    void hincrement(String key,Object likedId,long count);
+    void hincrement(String key,Object id,long count);
 
     /**
      * 自减1
      * @param key
-     * @param likedId
+     * @param id
      * @param count
      */
-    void hdecrement(String key,Object likedId,long count);
+    void hdecrement(String key,Object id,long count);
 
     /**
      * 根据key获取所有数据
@@ -106,4 +107,24 @@ public interface RedisService {
      */
     Cursor<Map.Entry<Object, Object>> hscan(String key, ScanOptions scanOptions);
 
+    /**
+     * list向左添加
+     * @param key
+     * @param value
+     */
+    void lpush(String key,Object value);
+
+    /**
+     * list获取数据
+     * @param key
+     * @param start
+     * @param end
+     */
+    List<Object> lrange(String key, long start, long end);
+
+    /**
+     * list删除数据
+     * @param key
+     */
+    void lpop(String key);
 }
