@@ -26,13 +26,14 @@ redis:
       admin: ':ums:portal:'
       prefixId: ':userId:'
       resourceList: 'ums:resourceList'
+      verify: ':verify:'
+      userVisitCount: ':ums:visit:count:'
       userLike: ':like:user:'
       likedCount: ':like:count:'
       userComment: ':comment:user:'
       replyUserComment: ':comment:replyuser:'
       commentedCount: ':comment:count:'
-      userCommentedCount: ':comment:user:count:'
-      userInfoToComment: ':comment:user:info:'
+      userInfoToComment: ':comment:userinfo:'
       playedCount: ':play:count:'
    expire:
       common: 86400   # 24小时
@@ -111,7 +112,7 @@ aliyuncs:
   sendSms:
     regionId: cn-hangzhou           # 地区
     signName: qlmusic               # 签名名称
-    templateCode: SMS_198926122    # 模板ID（CODE）
+    templateCode: SMS_205070324    # 模板ID（CODE）
     endpoint: dysmsapi.aliyuncs.com # 服务地址
     version: 2017-05-25             # 版本号
     verifyKey: code                 # 验证码Key

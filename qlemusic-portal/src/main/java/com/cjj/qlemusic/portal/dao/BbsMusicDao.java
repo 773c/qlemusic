@@ -19,10 +19,11 @@ public interface BbsMusicDao {
 
     /**
      * 获取我的音乐片段
-     * @param id
+     * @param userId
+     * @param category
      * @return
      */
-    List<BbsMusic> selectMyMusicList(Long id);
+    List<BbsMusic> selectMyMusicList(@Param("userId") Long userId,@Param("category") String category);
     /**
      * 获取相应收藏夹的内容
      * @param userId
@@ -38,4 +39,10 @@ public interface BbsMusicDao {
      */
     void insertBbsMusic(@Param("bbsMusic") BbsMusic bbsMusic,@Param("userId") Long userId);
 
+    /**
+     * 获取我的热门音乐
+     * @param userId
+     * @return
+     */
+    List<BbsMusic> selectHotMusic(Long userId);
 }

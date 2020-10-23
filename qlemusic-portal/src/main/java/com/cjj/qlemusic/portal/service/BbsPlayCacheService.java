@@ -30,6 +30,13 @@ public interface BbsPlayCacheService {
 
     /**
      * 获取播放量
+     * @param musicId
+     * @return
+     */
+    Integer getPlayedCount(Long musicId);
+
+    /**
+     * 获取播放量集合
      * @return
      */
     List<BbsMusicOperation> getPlayedCountList() throws IOException;

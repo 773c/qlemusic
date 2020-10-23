@@ -13,16 +13,22 @@ import java.util.Map;
 public interface BbsMusicService {
     /**
      * 获取推荐的音乐片段
+     * @param pageNum
+     * @param pageSize
      * @return
+     * @throws IOException
      */
-    Map<String,Object> getRecommendList() throws IOException;
+    List<BbsMusic> getRecommendList(Integer pageNum,Integer pageSize) throws IOException;
 
     /**
      * 获取我的音乐片段
-     * @param id
+     * @param pageNum
+     * @param pageSize
+     * @param userId
+     * @param category
      * @return
      */
-    List<BbsMusic> getMyMusicList(Long id);
+    List<BbsMusic> getMyMusicList(Integer pageNum,Integer pageSize,Long userId,String category);
 
     /**
      * 获取相应收藏夹的内容
@@ -41,4 +47,11 @@ public interface BbsMusicService {
      * @param file
      */
     int release(BbsMusic bbsMusic,Long userId, MultipartFile[] file) throws IOException;
+
+    /**
+     * 获取我的热门音乐
+     * @param userId
+     * @return
+     */
+    List<BbsMusic> getHotMusic(Long userId);
 }

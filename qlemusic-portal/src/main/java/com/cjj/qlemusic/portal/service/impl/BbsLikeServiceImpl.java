@@ -33,7 +33,6 @@ public class BbsLikeServiceImpl implements BbsLikeService {
 
     @Override
     public void like(BbsUserLike bbsUserLike) throws IOException {
-        //以下基于程序启动时，缓存中没有热点数据
         Object isLike = bbsLikeCacheService.getUserLike(bbsUserLike.getMusicId(), bbsUserLike.getUserId());
         System.out.println("原来redis中的isLike为："+isLike);
         //当缓存中存在，说明该用户已经点赞过
@@ -65,6 +64,65 @@ public class BbsLikeServiceImpl implements BbsLikeService {
             //将用户点赞的内容添加到缓存redis
             bbsLikeCacheService.setUserLike(bbsUserLike.getMusicId(),bbsUserLike.getUserId(),bbsUserLike.getIsLike());
         }
+    }
+
+    @Override
+    public List<BbsUserLike> getUserLikeList(List<Long> musicIdList) throws IOException {
+        List<BbsUserLike> userLikeList = bbsLikeCacheService.getUserLikeList();
+        boolean flag = true;
+        for (Long musicId:musicIdList) {
+            for (BbsUserLike userLike:userLikeList){
+                if(musicId == userLike.getMusicId()){
+                    flag = false;
+                }
+            }
+        }
+        if(flag)
+            userLikeList = new ArrayList<>();
+        //如果用户点赞未命中缓存，则从数据库中查询
+        if (userLikeList.size() == 0 || userLikeList == null) {
+            //获取用户点赞数据
+            userLikeList = bbsLikeDao.selectUserLikeByMusicIds(musicIdList);
+            //将数据存入缓存
+            for (BbsUserLike userLike : userLikeList) {
+                bbsLikeCacheService.setUserLike(userLike.getMusicId(), userLike.getUserId(), userLike.getIsLike());
+            }
+        }
+        return userLikeList;
+    }
+
+    @Override
+    public List<BbsMusicOperation> getLikeOperationList(List<Long> musicIdList) throws IOException {
+        List<BbsMusicOperation> likedCountList = new ArrayList<>();
+        for (Long musicId:musicIdList) {
+            BbsMusicOperation bbsMusicOperation = new BbsMusicOperation();
+            Integer likedCount = (Integer) bbsLikeCacheService.getLikedCount(musicId);
+            if(likedCount == null){
+                bbsMusicOperation = bbsLikeDao.selectLikedCountById(musicId);
+                if (bbsMusicOperation!=null && bbsMusicOperation.getLikeCount() != null) {
+                    bbsLikeCacheService.setLikedCount(
+                            bbsMusicOperation.getMusicId(),
+                            bbsMusicOperation.getLikeCount());
+                }else {
+                    bbsMusicOperation = new BbsMusicOperation();
+                }
+            }else {
+                bbsMusicOperation.setMusicId(musicId);
+                bbsMusicOperation.setLikeCount(likedCount);
+            }
+            likedCountList.add(bbsMusicOperation);
+        }
+//        //如果用户点赞未命中缓存，则从数据库中查询
+//        if (likedCountList.size() == 0 || likedCountList == null) {
+//            //获取点赞数量数据
+//            likedCountList = bbsLikeDao.selectLikedCountByMusicIds(musicIdList);
+//            for (BbsMusicOperation likeOperation : likedCountList) {
+//                //这里做判断是因为，点赞，播放，评论数量在一张表
+//                if (likeOperation.getLikeCount() != null)
+//                    bbsLikeCacheService.setLikedCount(likeOperation.getMusicId(), likeOperation.getLikeCount());
+//            }
+//        }
+        return likedCountList;
     }
 
     @Override

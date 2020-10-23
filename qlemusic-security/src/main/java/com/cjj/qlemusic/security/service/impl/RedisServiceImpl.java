@@ -100,4 +100,10 @@ public class RedisServiceImpl implements RedisService{
         redisTemplate.opsForList().leftPop(key);
     }
 
+    @Override
+    public Long llength(String key) {
+        return redisTemplate.opsForList().size(key);
+    }
+
+
 }

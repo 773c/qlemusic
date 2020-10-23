@@ -31,37 +31,38 @@ public class BbsCommentServiceImpl implements BbsCommentService {
     private UmsUserDao umsUserDao;
 
     @Override
-    public void userComment(BbsUserComment bbsUserComment) {
+    public int userComment(BbsUserComment bbsUserComment) {
+        int count;
         bbsUserComment.setCreateTime(new Date());
         bbsUserComment.setAvailable(true);
         System.out.println(bbsUserComment);
-        //更新行数
-        bbsCommentCacheService.incrementCommentRow(bbsUserComment.getMusicId());
-        //获取行数
-        Integer commentedRow = bbsCommentCacheService.getCommentedRow(bbsUserComment.getMusicId());
-        if (commentedRow == null) {
-            throw new RuntimeException("评论失败");
-        }
-        bbsUserComment.setRowId(commentedRow);
-        //将用户评论存入缓存
-        bbsCommentCacheService.setUserComment(bbsUserComment);
+        //存入数据库
+        bbsCommentDao.insertUserComment(bbsUserComment);
+        //清除缓存中的用户评论
+        bbsCommentCacheService.delUserCommentAll();
         //将用户信息存入缓存
         bbsCommentCacheService.setUserInfoToComment(bbsUserComment.getUmsUser());
         //更新评论数
-        bbsCommentCacheService.incrementCommentCount(bbsUserComment.getMusicId());
+        setCommentedCount(bbsUserComment.getMusicId());
+        count = 1;
+        return count;
     }
 
     @Override
-    public void replyuserComment(BbsReplyuserComment bbsReplyuserComment) {
+    public int replyuserComment(BbsReplyuserComment bbsReplyuserComment) {
+        int count;
         bbsReplyuserComment.setCreateTime(new Date());
         bbsReplyuserComment.setAvailable(true);
         System.out.println(bbsReplyuserComment);
-        //将回复评论存入缓存中
-        bbsCommentCacheService.setReplyuserComment(bbsReplyuserComment);
+        bbsCommentDao.insertReplyuserComment(bbsReplyuserComment);
+        //清除缓存中的回复评论
+        bbsCommentCacheService.delReplyuserCommentAll();
         //将用户信息存入缓存
         bbsCommentCacheService.setUserInfoToComment(bbsReplyuserComment.getUmsUser());
         //更新评论数
-        bbsCommentCacheService.incrementCommentCount(bbsReplyuserComment.getMusicId());
+        setCommentedCount(bbsReplyuserComment.getMusicId());
+        count = 1;
+        return count;
     }
 
     @Override
@@ -76,30 +77,32 @@ public class BbsCommentServiceImpl implements BbsCommentService {
         List<BbsReplyuserComment> replyuserCommentList = bbsCommentCacheService.getReplyuserCommentList();
         List<UmsUser> userList = bbsCommentCacheService.getUserList();
         Set<Long> userIdSet = new HashSet<>();//将用户id存入Set中
-        //只要有评论、回复、数量缓存没有命中就从数据库查找
-        //有用户评论不一定有回复，但有回复一定有用户评论，但一定都有数量
-        //第一种可能：缓存和数据库什么数据都没有
-        //第二种可能：缓存中只有用户评论和数量时，数据库中没有数据（第一次肯定是先有用户评论）
-        //第三种可能：缓存中没有数据，从有数据的数据库中获取
-        //第四种可能：缓存中只有用户评论和数量时，数据库也只有用户评论和数量数据
-        if ((userCommentList.size() == 0 || userCommentList.isEmpty()) &&
-                (replyuserCommentList.size() == 0 || replyuserCommentList.isEmpty())) {
-            System.out.println("没有命中缓存");
+        //如果用户评论没命中缓存，则从数据库查询
+        if(userCommentList.size() == 0 || userCommentList == null){
             userCommentList = bbsCommentDao.selectUserCommentByMusicIds(musicIdList);
-            replyuserCommentList = bbsCommentDao.selectReplyuserCommentByMusicIds(musicIdList);
             //将用户id存入Set中
             for (BbsUserComment userComment:userCommentList)
                 userIdSet.add(userComment.getUserId());
-            for (BbsReplyuserComment replyuserComment:replyuserCommentList)
-                userIdSet.add(replyuserComment.getUserId());
-            userList = bbsCommentDao.selectUserByIds(userIdSet);
             //将数据存入缓存
             for (BbsUserComment userComment : userCommentList)
                 bbsCommentCacheService.setUserComment(userComment);
+        }
+        //如果回复评论没命中缓存，则从数据库查询
+        if(replyuserCommentList.size() == 0 || replyuserCommentList == null){
+            replyuserCommentList = bbsCommentDao.selectReplyuserCommentByMusicIds(musicIdList);
+            for (BbsReplyuserComment replyuserComment:replyuserCommentList)
+                userIdSet.add(replyuserComment.getUserId());
             for (BbsReplyuserComment replyuserComment : replyuserCommentList)
                 bbsCommentCacheService.setReplyuserComment(replyuserComment);
-            for (UmsUser user:userList)
-                bbsCommentCacheService.setUserInfoToComment(user);
+        }
+        //如果用户评论用户信息缓存不命中，则从数据库查询
+        if(userList.size() == 0 || userList == null){
+            if(userIdSet.size() > 0){
+                userList = bbsCommentDao.selectUserByIds(userIdSet);
+                //将用户评论的用户信息存入缓存
+                for (UmsUser user:userList)
+                    bbsCommentCacheService.setUserInfoToComment(user);
+            }
         }
         //将用户信息存入回复评论中
         for (BbsReplyuserComment replyuserComment : replyuserCommentList) {
@@ -119,7 +122,7 @@ public class BbsCommentServiceImpl implements BbsCommentService {
             }
             for (BbsReplyuserComment replyuserComment : replyuserCommentList) {
                 if (userComment.getMusicId() == replyuserComment.getMusicId() &&
-                        userComment.getRowId() == replyuserComment.getRowId())
+                        userComment.getId() == replyuserComment.getRowId())
                     bbsReplyuserCommentList.add(replyuserComment);
             }
             userComment.setBbsReplyuserCommentList(bbsReplyuserCommentList);
@@ -132,55 +135,73 @@ public class BbsCommentServiceImpl implements BbsCommentService {
     }
 
     @Override
-    public void userCommentToDatabaseTimer() throws IOException {
-        List<BbsUserComment> userCommentList = bbsCommentCacheService.getUserCommentList();
-        List<UmsUser> userList = bbsCommentCacheService.getUserList();
-        //清除评论的用户信息
-        for(UmsUser user:userList){
-            bbsCommentCacheService.delUserInfoToComment(user.getId());
-        }
-        for (BbsUserComment bbsUserComment : userCommentList) {
-            BbsUserComment bbsUserCommentDao = bbsCommentDao.selectUserCommentByUMT(bbsUserComment);
-            if (bbsUserCommentDao == null) {
-                //直接存入
-                bbsCommentDao.insertUserComment(bbsUserComment);
+    public void setCommentedCount(Long musicId) {
+        Integer commentedCount = bbsCommentCacheService.getCommentedCount(musicId);
+        if(commentedCount != null){
+            //缓存不为空
+            bbsCommentCacheService.incrementCommentCount(musicId);
+        }else {
+            //缓存为空，查询数据库
+            BbsMusicOperation bbsMusicOperationDao = bbsCommentDao.selectCommentedCountById(musicId);
+            if(bbsMusicOperationDao == null){
+                bbsMusicOperationDao = new BbsMusicOperation();
+                bbsMusicOperationDao.setCommentCount(1);
+                bbsMusicOperationDao.setMusicId(musicId);
+                bbsCommentDao.insertCommentedCount(bbsMusicOperationDao);
+            }else {
+                bbsMusicOperationDao.setCommentCount(bbsMusicOperationDao.getCommentCount()+1);
+                bbsCommentDao.updateCommentedCount(bbsMusicOperationDao);
             }
-            //存到数据库后从 Redis 中删除
-            bbsCommentCacheService.delUserComment();
+            bbsCommentCacheService.setCommentedCount(bbsMusicOperationDao.getMusicId(),bbsMusicOperationDao.getCommentCount());
         }
     }
 
     @Override
-    public void replyuserCommentToDatabaseTimer() {
-        List<BbsReplyuserComment> replyuserCommentList = bbsCommentCacheService.getReplyuserCommentList();
-        for (BbsReplyuserComment replyuserComment : replyuserCommentList) {
-            BbsReplyuserComment bbsReplyuserCommentDao = bbsCommentDao.selectReplyuserCommentByBRMT(replyuserComment);
-            if (bbsReplyuserCommentDao == null) {
-                bbsCommentDao.insertReplyuserComment(replyuserComment);
+    public List<BbsMusicOperation> getCommentOperationList(List<Long> musicIdList) throws IOException {
+        List<BbsMusicOperation> commentedCountList = new ArrayList<>();
+        for (Long musicId:musicIdList){
+            BbsMusicOperation bbsMusicOperation = new BbsMusicOperation();
+            Integer commentedCount = bbsCommentCacheService.getCommentedCount(musicId);
+            if(commentedCount == null){
+                bbsMusicOperation = bbsCommentDao.selectCommentedCountById(musicId);
+                if (bbsMusicOperation!=null && bbsMusicOperation.getCommentCount() != null) {
+                    bbsCommentCacheService.setCommentedCount(
+                            bbsMusicOperation.getMusicId(),
+                            bbsMusicOperation.getCommentCount());
+                }else {
+                    bbsMusicOperation = new BbsMusicOperation();
+                }
+            }else {
+                bbsMusicOperation.setMusicId(musicId);
+                bbsMusicOperation.setCommentCount(commentedCount);
             }
-            //存到数据库后从 Redis 中删除
-            bbsCommentCacheService.delReplyuserComment();
+            commentedCountList.add(bbsMusicOperation);
         }
+        //如果评论数量未命中缓存，则从数据库中查询
+//        if (commentedCountList.size() == 0 || commentedCountList == null) {
+//            //获取评论数量
+//            commentedCountList = bbsCommentDao.selectCommentedCountByMusicIds(musicIdList);
+//            //将数据存入缓存
+//            for (BbsMusicOperation commentOperation : commentedCountList) {
+//                //这里做判断是因为，点赞，播放，评论数量在一张表
+//                if (commentOperation.getCommentCount() != null) {
+//                    bbsCommentCacheService.setCommentedCount(
+//                            commentOperation.getMusicId(),
+//                            commentOperation.getCommentCount());
+//                }
+//            }
+//        }
+        return commentedCountList;
     }
 
     @Override
     public void commentedCountToDatabaseTimer() throws IOException {
         List<BbsMusicOperation> commentedCountList = bbsCommentCacheService.getCommentedCountList();
-        List<BbsMusicOperation> userCommentedCountList = bbsCommentCacheService.getUserCommentedCountList();
-        if (commentedCountList == null || userCommentedCountList == null)
+        if (commentedCountList == null)
             LOGGER.error("评论更新数据库之缓存评论数量为空");
-        for (BbsMusicOperation musicOperation : commentedCountList) {
-            for (BbsMusicOperation userCommentedCount : userCommentedCountList) {
-                if (musicOperation.getMusicId() == userCommentedCount.getMusicId()) {
-                    musicOperation.setUserCommentCount(userCommentedCount.getUserCommentCount());
-                    break;
-                }
-            }
-        }
         for (BbsMusicOperation musicOperation : commentedCountList) {
             if (musicOperation.getMusicId() != null) {
                 BbsMusicOperation musicOperationDao = bbsCommentDao.selectCommentedCountById(musicOperation.getMusicId());
-                LOGGER.info("评论更新数据库之查询评论数量是否存在：{}", musicOperationDao);
                 if (musicOperationDao == null) {
                     //不存在，直接插入
                     bbsCommentDao.insertCommentedCount(musicOperation);
@@ -189,7 +210,6 @@ public class BbsCommentServiceImpl implements BbsCommentService {
                     if (musicOperationDao.getCommentCount() == null)
                         musicOperationDao.setCommentCount(0);
                     musicOperationDao.setCommentCount(musicOperation.getCommentCount());
-                    musicOperationDao.setUserCommentCount(musicOperation.getUserCommentCount());
                     bbsCommentDao.updateCommentedCount(musicOperationDao);
                 }
             } else {
@@ -197,7 +217,6 @@ public class BbsCommentServiceImpl implements BbsCommentService {
             }
             //存到数据库后从 Redis 中删除
             bbsCommentCacheService.delCommentedCount(musicOperation.getMusicId());
-            bbsCommentCacheService.delCommentedRow(musicOperation.getMusicId());
         }
     }
 

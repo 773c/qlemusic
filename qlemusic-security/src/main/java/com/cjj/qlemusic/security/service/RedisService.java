@@ -127,4 +127,12 @@ public interface RedisService {
      * @param key
      */
     void lpop(String key);
+
+    /**
+     * 获取list长度
+     * @param key
+     * @return
+     */
+    Long llength(String key);
+
 }

@@ -14,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Api(value = "评论管理")
@@ -26,10 +27,11 @@ public class BbsCommentController {
     @ApiOperation(value = "评论")
     @PostMapping("/user")
     public ResponseResultUtil userComment(@RequestBody @Validated BbsUserComment bbsUserComment, BindingResult result) {
-        try {
-            bbsCommentService.userComment(bbsUserComment);
-            return ResponseResultUtil.success(1);
-        } catch (Exception e) {
+        int count = bbsCommentService.userComment(bbsUserComment);
+        if(count>0){
+            return ResponseResultUtil.success(count);
+        }
+        else {
             return ResponseResultUtil.failed("评论失败");
         }
     }
@@ -37,31 +39,31 @@ public class BbsCommentController {
     @ApiOperation(value = "回复评论")
     @PostMapping("/replyuser")
     public ResponseResultUtil replyuserComment(@RequestBody @Validated BbsReplyuserComment bbsReplyuserComment, BindingResult result) {
-        try {
-            bbsCommentService.replyuserComment(bbsReplyuserComment);
-            return ResponseResultUtil.success(1);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseResultUtil.failed("评论回复失败");
+        int count = bbsCommentService.replyuserComment(bbsReplyuserComment);
+        if(count>0){
+            return ResponseResultUtil.success(count);
+        }
+        else {
+            return ResponseResultUtil.failed("回复失败");
         }
     }
 
-//    @ApiOperation(value = "获取对应音乐的评论")
-//    @GetMapping("/getCommentByMusic")
-//    public ResponseResultUtil getCommentByMusic(@RequestParam(value = "musicId") Long musicId) {
-//        List<BbsUserComment> commentByMusic = null;
-//        try {
-//            commentByMusic = bbsCommentService.getCommentByMusic(musicId);
-//            if (commentByMusic != null) {
-//                return ResponseResultUtil.success(commentByMusic);
-//            } else {
-//                return ResponseResultUtil.failed("未知错误");
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return ResponseResultUtil.failed("未知错误");
-//        }
-//    }
+    @ApiOperation(value = "获取对应音乐的评论")
+    @PostMapping("/getCommentByMusic")
+    public ResponseResultUtil getCommentByMusic(@RequestParam(value = "musicIdList") List<Long> musicIdList) {
+        List<BbsUserComment> commentByMusic = null;
+        try {
+            commentByMusic = bbsCommentService.getCommentByMusicIds(musicIdList);
+            if (commentByMusic != null) {
+                return ResponseResultUtil.success(commentByMusic);
+            } else {
+                return ResponseResultUtil.failed("未知错误");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseResultUtil.failed("未知错误");
+        }
+    }
 
     @ApiOperation(value = "获取评论的用户")
     @PostMapping("/getUserByComment")

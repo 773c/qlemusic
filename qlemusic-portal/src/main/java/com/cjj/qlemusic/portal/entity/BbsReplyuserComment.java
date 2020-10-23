@@ -31,7 +31,7 @@ public class BbsReplyuserComment implements Serializable {
 
     @ApiModelProperty(value = "评论行数")
     @NotNull(message = "评论失败")
-    private Integer rowId;
+    private Long rowId;
 
     @ApiModelProperty(value = "回复评论内容")
     @NotEmpty(message = "评论内容不能为空")
@@ -82,11 +82,11 @@ public class BbsReplyuserComment implements Serializable {
         this.musicId = musicId;
     }
 
-    public Integer getRowId() {
+    public Long getRowId() {
         return rowId;
     }
 
-    public void setRowId(Integer rowId) {
+    public void setRowId(Long rowId) {
         this.rowId = rowId;
     }
 

@@ -99,7 +99,6 @@ public class UmsUserController {
     @ApiOperation(value = "密码或验证码登录")
     @PostMapping("/login")
     public ResponseResultUtil login(@RequestBody @Validated UmsUser umsUser, BindingResult result) {
-        System.out.println("loginService："+umsUser);
         try {
             String token = userService.login(umsUser);
             if(token != null)
@@ -108,6 +107,8 @@ public class UmsUserController {
                 return ResponseResultUtil.failed("验证码错误");
         }catch (AuthenticationException e){
             return ResponseResultUtil.validateFailed("账号或密码错误");
+        }catch (NullPointerException e){
+            return ResponseResultUtil.validateFailed(e.getMessage());
         }
     }
 

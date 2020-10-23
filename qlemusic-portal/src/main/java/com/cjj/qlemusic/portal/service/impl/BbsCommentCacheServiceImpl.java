@@ -30,8 +30,6 @@ public class BbsCommentCacheServiceImpl implements BbsCommentCacheService {
     private String replyUserCommentKey;
     @Value("${redis.key.commentedCount}")
     private String commentedCountKey;
-    @Value("${redis.key.userCommentedCount}")
-    private String userCommentedCountKey;
     @Value("${redis.key.userInfoToComment}")
     private String userInfoToCommentKey;
 
@@ -80,16 +78,6 @@ public class BbsCommentCacheServiceImpl implements BbsCommentCacheService {
     }
 
     @Override
-    public void incrementCommentRow(Long commentedId) {
-        redisService.hincrement(database+userCommentedCountKey,commentedId.toString(),1);
-    }
-
-    @Override
-    public Integer getCommentedRow(Long commentedId) {
-        return (Integer) redisService.hget(database+userCommentedCountKey,commentedId.toString());
-    }
-
-    @Override
     public void decrementCommentCount(Long commentedId) {
         redisService.hdecrement(database+commentedCountKey,commentedId.toString(),-1);
     }
@@ -100,11 +88,6 @@ public class BbsCommentCacheServiceImpl implements BbsCommentCacheService {
     }
 
     @Override
-    public void delCommentedRow(Long commentedId) {
-        redisService.hdel(database+userCommentedCountKey,commentedId.toString());
-    }
-
-    @Override
     public Integer getCommentedCount(Long commentedId) {
         return (Integer) redisService.hget(database+commentedCountKey,commentedId.toString());
     }
@@ -112,11 +95,6 @@ public class BbsCommentCacheServiceImpl implements BbsCommentCacheService {
     @Override
     public void setCommentedCount(Long commentedId,Integer commentCount) {
         redisService.hset(database+commentedCountKey,commentedId.toString(),commentCount);
-    }
-
-    @Override
-    public void setCommentedRow(Long commentedId, Integer commentRow) {
-        redisService.hset(database+userCommentedCountKey,commentedId.toString(),commentRow);
     }
 
     @Override
@@ -159,25 +137,6 @@ public class BbsCommentCacheServiceImpl implements BbsCommentCacheService {
     }
 
     @Override
-    public List<BbsMusicOperation> getUserCommentedCountList() throws IOException {
-        Cursor<Map.Entry<Object, Object>> cursor = redisService.hscan(database+userCommentedCountKey, ScanOptions.NONE);
-        List<BbsMusicOperation> list = new ArrayList<>();
-        while (cursor.hasNext()){
-            Map.Entry<Object,Object> entry = cursor.next();
-            String key = (String) entry.getKey();
-            Integer userCommentCount = (Integer) entry.getValue();
-
-            //封装到BbsMusicOperation实体类
-            BbsMusicOperation bbsMusicOperation = new BbsMusicOperation();
-            bbsMusicOperation.setUserCommentCount(userCommentCount);
-            bbsMusicOperation.setMusicId(Long.parseLong(key));
-            list.add(bbsMusicOperation);
-        }
-        cursor.close();
-        return list;
-    }
-
-    @Override
     public List<UmsUser> getUserList() throws IOException {
         Cursor<Map.Entry<Object, Object>> cursor = redisService.hscan(database+userInfoToCommentKey, ScanOptions.NONE);
         List<UmsUser> list = new ArrayList<>();
@@ -199,5 +158,23 @@ public class BbsCommentCacheServiceImpl implements BbsCommentCacheService {
     @Override
     public void delUserInfoToComment(Long userId) {
         redisService.hdel(database+userInfoToCommentKey,userId.toString());
+    }
+
+    @Override
+    public void delUserCommentAll() {
+        Long llength = redisService.llength(database + userCommentKey);
+        while (llength != 0){
+            delUserComment();
+            llength--;
+        }
+    }
+
+    @Override
+    public void delReplyuserCommentAll() {
+        Long llength = redisService.llength(database + replyUserCommentKey);
+        while (llength != 0){
+            delReplyuserComment();
+            llength--;
+        }
     }
 }

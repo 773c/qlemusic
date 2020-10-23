@@ -18,7 +18,7 @@ public interface BbsPlayDao {
      * @param musicId
      * @return
      */
-    Long selectPlayedCountByMusicId(Long musicId);
+    BbsMusicOperation selectPlayedCountByMusicId(Long musicId);
 
     /**
      * 存入播放量

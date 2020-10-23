@@ -22,9 +22,6 @@ public class BbsMusicOperation implements Serializable {
     @ApiModelProperty(value = "评论次数")
     private Integer commentCount;
 
-    @ApiModelProperty(value = "用户评论次数")
-    private Integer userCommentCount;
-
     @ApiModelProperty(value = "音乐id")
     private Long musicId;
 
@@ -61,14 +58,6 @@ public class BbsMusicOperation implements Serializable {
         this.commentCount = commentCount;
     }
 
-    public Integer getUserCommentCount() {
-        return userCommentCount;
-    }
-
-    public void setUserCommentCount(Integer userCommentCount) {
-        this.userCommentCount = userCommentCount;
-    }
-
     public Long getMusicId() {
         return musicId;
     }
@@ -84,7 +73,6 @@ public class BbsMusicOperation implements Serializable {
                 ", likeCount=" + likeCount +
                 ", playCount=" + playCount +
                 ", commentCount=" + commentCount +
-                ", userCommentCount=" + userCommentCount +
                 ", musicId=" + musicId +
                 '}';
     }

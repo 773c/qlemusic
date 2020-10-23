@@ -41,19 +41,6 @@ public interface BbsCommentCacheService {
     void incrementCommentCount(Long commentedId);
 
     /**
-     * 评论行数自增加1
-     * @param commentedId
-     */
-    void incrementCommentRow(Long commentedId);
-
-    /**
-     * 获取评论数量
-     * @param commentedId
-     * @return
-     */
-    Integer getCommentedRow(Long commentedId);
-
-    /**
      * 评论自减1(这里commentedId为音乐id)
      * @param commentedId
      */
@@ -64,12 +51,6 @@ public interface BbsCommentCacheService {
      * @param commentedId
      */
     void delCommentedCount(Long commentedId);
-
-    /**
-     * 删除用户评论数量(这里commentedId为音乐id)
-     * @param commentedId
-     */
-    void delCommentedRow(Long commentedId);
 
     /**
      * 获取评论数量
@@ -86,13 +67,6 @@ public interface BbsCommentCacheService {
     void setCommentedCount(Long commentedId,Integer commentCount);
 
     /**
-     * 存入评论数量(这里commentedId为音乐id)
-     * @param commentedId
-     * @param commentRow
-     */
-    void setCommentedRow(Long commentedId,Integer commentRow);
-
-    /**
      * 获得用户评论
      * @return
      */
@@ -107,14 +81,9 @@ public interface BbsCommentCacheService {
     /**
      * 获取评论数量
      * @return
+     * @throws IOException
      */
     List<BbsMusicOperation> getCommentedCountList() throws IOException;
-
-    /**
-     * 获取用户评论数量
-     * @return
-     */
-    List<BbsMusicOperation> getUserCommentedCountList() throws IOException;
 
     /**
      * 获取用户信息
@@ -133,4 +102,14 @@ public interface BbsCommentCacheService {
      * @param userId
      */
     void delUserInfoToComment(Long userId);
+
+    /**
+     * 清除用户评论所有
+     */
+    void delUserCommentAll();
+
+    /**
+     * 清除回复评论所有
+     */
+    void delReplyuserCommentAll();
 }

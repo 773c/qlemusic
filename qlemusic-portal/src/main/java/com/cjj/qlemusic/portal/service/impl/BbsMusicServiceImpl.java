@@ -34,90 +34,33 @@ public class BbsMusicServiceImpl implements BbsMusicService {
     @Autowired
     private BbsMusicDao bbsMusicDao;
     @Autowired
-    private BbsLikeDao bbsLikeDao;
+    private BbsLikeService bbsLikeService;
     @Autowired
-    private BbsCommentDao bbsCommentDao;
-    @Autowired
-    private BbsPlayDao bbsPlayDao;
+    private BbsPlayService bbsPlayService;
     @Autowired
     private BbsCommentService bbsCommentService;
     @Autowired
     private OssService ossService;
-    @Autowired
-    private BbsLikeCacheService bbsLikeCacheService;
-    @Autowired
-    private BbsCommentCacheService bbsCommentCacheService;
-    @Autowired
-    private BbsPlayCacheService bbsPlayCacheService;
 
     @Override
-    public Map<String, Object> getRecommendList() throws IOException {
-        Map<String, Object> data = new HashMap<>();
-        List<BbsUserLike> userLikeList = bbsLikeCacheService.getUserLikeList();
-        List<BbsMusicOperation> likedCountList = bbsLikeCacheService.getLikedCountList();
-        List<BbsMusicOperation> commentedCountList = bbsCommentCacheService.getCommentedCountList();
-        List<BbsMusicOperation> playedCountList = bbsPlayCacheService.getPlayedCountList();
+    public List<BbsMusic> getRecommendList(Integer pageNum, Integer pageSize) throws IOException {
+        PageHelper.startPage(pageNum, pageSize);
         List<BbsMusic> bbsMusicList = bbsMusicDao.selectRecommendList();
-        List<BbsUserComment> userCommentList = null;
         List<Long> musicIdList = new ArrayList<>();
+        //如果获取音乐为空
+        if (bbsMusicList.size() == 0 || bbsMusicList == null)
+            throw new NullPointerException("推荐音乐数据为空");
         //将获取到的音乐id存入list（比如推荐），根据id来从数据库获取相应热点点赞、播放量、评论数据
         for (BbsMusic bbsMusic : bbsMusicList) {
             musicIdList.add(bbsMusic.getId());
         }
-        //如果获取音乐为空
-        if (musicIdList.size() == 0 || musicIdList.isEmpty()) {
-            throw new NullPointerException("推荐音乐数据为空");
-        } else {
-            //如果用户点赞未命中缓存，则从数据库中查询
-            if ((userLikeList.size() == 0 || userLikeList.isEmpty()) ||
-                    (likedCountList.size() == 0 || likedCountList.isEmpty())) {
-                //获取用户点赞数据
-                userLikeList = bbsLikeDao.selectUserLikeByMusicIds(musicIdList);
-                //获取点赞数量数据
-                likedCountList = bbsLikeDao.selectLikedCountByMusicIds(musicIdList);
-                //将数据存入缓存
-                for (BbsUserLike userLike : userLikeList) {
-                    bbsLikeCacheService.setUserLike(userLike.getMusicId(), userLike.getUserId(), userLike.getIsLike());
-                }
-                for (BbsMusicOperation likeOperation : likedCountList) {
-                    //这里做判断是因为，点赞，播放，评论数量在一张表
-                    if (likeOperation.getLikeCount() != null)
-                        bbsLikeCacheService.setLikedCount(likeOperation.getMusicId(), likeOperation.getLikeCount());
-                }
-            }
-            //如果播放数量未命中缓存，则从数据库中查询
-            if(playedCountList.size() == 0 || playedCountList.isEmpty()){
-                //获取播放数量
-                playedCountList = bbsPlayDao.selectPlayedCountByMusicIds(musicIdList);
-                //将数据存入缓存
-                for (BbsMusicOperation playOperation:playedCountList){
-                    //这里做判断是因为，点赞，播放，评论数量在一张表
-                    if (playOperation.getPlayCount() != null) {
-                        bbsPlayCacheService.setPlayedCount(
-                                playOperation.getMusicId(),
-                                playOperation.getPlayCount());
-                    }
-                }
-            }
-            //如果评论数量未命中缓存，则从数据库中查询
-            if (commentedCountList.size() == 0 || commentedCountList.isEmpty()) {
-                //获取评论数量
-                commentedCountList = bbsCommentDao.selectCommentedCountByMusicIds(musicIdList);
-                //将数据存入缓存
-                for (BbsMusicOperation commentOperation : commentedCountList) {
-                    //这里做判断是因为，点赞，播放，评论数量在一张表
-                    if (commentOperation.getCommentCount() != null) {
-                        bbsCommentCacheService.setCommentedCount(
-                                commentOperation.getMusicId(),
-                                commentOperation.getCommentCount());
-                        bbsCommentCacheService.setCommentedRow(
-                                commentOperation.getMusicId(),
-                                commentOperation.getUserCommentCount());
-                    }
-                }
-            }
-            userCommentList = bbsCommentService.getCommentByMusicIds(musicIdList);
-        }
+        //根据音乐id集合获取评论信息
+        List<BbsUserComment> userCommentList = bbsCommentService.getCommentByMusicIds(musicIdList);
+        List<BbsMusicOperation> commentedCountList = bbsCommentService.getCommentOperationList(musicIdList);
+        System.out.println("commentedCountList"+commentedCountList);
+        List<BbsUserLike> userLikeList = bbsLikeService.getUserLikeList(musicIdList);
+        List<BbsMusicOperation> likedCountList = bbsLikeService.getLikeOperationList(musicIdList);
+        List<BbsMusicOperation> playedCountList = bbsPlayService.getPlayOperationList(musicIdList);
         //遍历所有音乐
         List<BbsUserLike> bbsUserLikeList = null;
         BbsMusicOperation bbsMusicOperation = null;
@@ -146,7 +89,8 @@ public class BbsMusicServiceImpl implements BbsMusicService {
                     bbsMusicOperation.setMusicId(bbsMusic.getId());
                     bbsMusicOperation.setLikeCount(likeOperation.getLikeCount());
                     break;
-                }
+                } else
+                    bbsMusicOperation.setMusicId(bbsMusic.getId());
             }
             //遍历播放数量
             for (BbsMusicOperation playOperation : playedCountList) {
@@ -165,18 +109,20 @@ public class BbsMusicServiceImpl implements BbsMusicService {
                 }
             }
             //将处理好的点赞、查看、评论数量存入
-            if (bbsMusic.getId() == bbsMusicOperation.getMusicId()) {
-                bbsMusic.setBbsMusicOperation(bbsMusicOperation);
-                bbsMusicOperation = null;
-            }
+            bbsMusic.setBbsMusicOperation(bbsMusicOperation);
         }
-        data.put("bbsMusic", bbsMusicList);
-        return data;
+        return bbsMusicList;
     }
 
     @Override
-    public List<BbsMusic> getMyMusicList(Long id) {
-        return bbsMusicDao.selectMyMusicList(id);
+    public List<BbsMusic> getMyMusicList(Integer pageNum, Integer pageSize, Long userId, String category) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<BbsMusic> myMusicList = bbsMusicDao.selectMyMusicList(userId, category);
+        for (BbsMusic myMusic : myMusicList) {
+            if (myMusic.getBbsMusicOperation() == null)
+                myMusic.setBbsMusicOperation(new BbsMusicOperation());
+        }
+        return myMusicList;
     }
 
     @Override
@@ -219,5 +165,11 @@ public class BbsMusicServiceImpl implements BbsMusicService {
         bbsMusicDao.insertBbsMusic(bbsMusic, userId);
         count = 1;
         return count;
+    }
+
+    @Override
+    public List<BbsMusic> getHotMusic(Long userId) {
+        PageHelper.startPage(1, 5);
+        return bbsMusicDao.selectHotMusic(userId);
     }
 }

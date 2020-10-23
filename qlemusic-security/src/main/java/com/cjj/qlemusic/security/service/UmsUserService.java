@@ -96,4 +96,10 @@ public interface UmsUserService {
      * @return
      */
     UmsUser getUserById(Long id);
+
+    /**
+     * 清除用户缓存
+     * @param telephone
+     */
+    void delUserInfoCache(String telephone);
 }

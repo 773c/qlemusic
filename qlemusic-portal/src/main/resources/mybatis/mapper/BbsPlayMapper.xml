@@ -21,9 +21,9 @@
             #{musicId}
         </foreach>
     </select>
-    <select id="selectPlayedCountByMusicId" resultType="java.lang.Long">
+    <select id="selectPlayedCountByMusicId" resultMap="bbsMusicOperationMap">
         select
-            id
+            id,play_count,music_id
         from
             bbs_music_operation
         where

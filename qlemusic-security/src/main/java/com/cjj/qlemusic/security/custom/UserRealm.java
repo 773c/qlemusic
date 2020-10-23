@@ -55,6 +55,10 @@ public class UserRealm extends AuthorizingRealm {
         SimpleAuthenticationInfo authenticationInfo = null;
         if(account.length() == 11) {
             umsUser = umsUserService.getUserByTelephone(account);
+            //判断是否存在
+            if(umsUser == null){
+                throw new UnknownAccountException("账号未注册");
+            }
             authenticationInfo = new SimpleAuthenticationInfo(
                     umsUser.getTelephone(),
                     umsUser.getPassword(),
@@ -63,22 +67,20 @@ public class UserRealm extends AuthorizingRealm {
             );
             return authenticationInfo;
         }
-        else
+        else{
             //从数据库获取管理员用户信息
             umsAdmin = umsAdminService.getAdminByAccount(account);
-        //判断是否存在
-        if(umsAdmin == null){
-            System.out.println("账号未注册");
-            throw new UnknownAccountException("账号未注册");
+            //判断是否存在
+            if(umsAdmin == null){
+                throw new UnknownAccountException("账号未注册");
+            }
+            authenticationInfo = new SimpleAuthenticationInfo(
+                    umsAdmin.getAccount(),
+                    umsAdmin.getPassword(),
+                    new SimpleByteSourceUtil(umsAdmin.getSalt().getBytes()),
+                    getName()
+            );
+            return authenticationInfo;
         }
-        System.out.println("用户："+umsAdmin.getName()+"，密码："+umsAdmin.getPassword());
-        authenticationInfo = new SimpleAuthenticationInfo(
-                umsAdmin.getAccount(),
-                umsAdmin.getPassword(),
-                new SimpleByteSourceUtil(umsAdmin.getSalt().getBytes()),
-                getName()
-        );
-        return authenticationInfo;
     }
-
 }

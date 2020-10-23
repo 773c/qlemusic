@@ -1,10 +1,7 @@
 package com.cjj.qlemusic.portal.aspect;
 
 
-import com.cjj.qlemusic.portal.service.BbsCommentService;
-import com.cjj.qlemusic.portal.service.BbsLikeService;
-import com.cjj.qlemusic.portal.service.BbsMusicService;
-import com.cjj.qlemusic.portal.service.BbsPlayService;
+import com.cjj.qlemusic.portal.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,19 +27,19 @@ public class TimerUtil {
     private BbsPlayService bbsPlayService;
     @Autowired
     private BbsMusicService bbsMusicService;
+    @Autowired
+    private UmsUserVisitService umsUserVisitService;
 
-    @Scheduled(cron="0 0/4 * * * ? ")//每过4分钟执行
+    @Scheduled(cron="0 0/3 * * * ? ")//每过4分钟执行
     public void likeAfterSave() throws IOException {
         try {
             System.out.println("❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥ 数据库更新开始");
             bbsLikeService.userLikeToDatabaseTimer();
             bbsLikeService.likedCountToDatabaseTimer();
             bbsPlayService.playedCountToDatabaseTimer();
-            bbsCommentService.userCommentToDatabaseTimer();
-            bbsCommentService.replyuserCommentToDatabaseTimer();
             bbsCommentService.commentedCountToDatabaseTimer();
+            umsUserVisitService.visitedCountToDatabaseTimer();
             System.out.println("数据库全部更新完毕");
-            bbsMusicService.getRecommendList();
         }catch (Exception e){
             e.printStackTrace();
             LOGGER.error("缓存写入数据库失败");

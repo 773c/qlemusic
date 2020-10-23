@@ -44,6 +44,11 @@ public class BbsPlayCacheServiceImpl implements BbsPlayCacheService {
     }
 
     @Override
+    public Integer getPlayedCount(Long musicId) {
+        return (Integer) redisService.hget(database+playedCountKey,musicId.toString());
+    }
+
+    @Override
     public List<BbsMusicOperation> getPlayedCountList() throws IOException {
         Cursor<Map.Entry<Object, Object>> cursor = redisService.hscan(database+playedCountKey, ScanOptions.NONE);
         List<BbsMusicOperation> list = new ArrayList<>();

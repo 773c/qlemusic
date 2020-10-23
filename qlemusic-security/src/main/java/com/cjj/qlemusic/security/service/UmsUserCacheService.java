@@ -43,4 +43,5 @@ public interface UmsUserCacheService {
      * @param telephone
      */
     void delVerify(String telephone);
+
 }

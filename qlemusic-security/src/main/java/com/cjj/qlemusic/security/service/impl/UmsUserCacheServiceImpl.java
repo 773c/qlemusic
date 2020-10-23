@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+
 /**
  * 用户缓存Service实现类
  */
@@ -17,6 +18,8 @@ public class UmsUserCacheServiceImpl implements UmsUserCacheService {
     private String database;
     @Value("${redis.key.admin}")
     private String admin;
+    @Value("${redis.key.verify}")
+    private String verifyKey;
     @Value("${redis.key.resourceList}")
     private String resourceList;
     @Value("${redis.expire.common}")
@@ -47,16 +50,17 @@ public class UmsUserCacheServiceImpl implements UmsUserCacheService {
 
     @Override
     public void setVerify(String telephone, String verify) {
-        redisService.set(telephone,verify,expirationVerify);
+        redisService.set(database + verifyKey + telephone,verify,expirationVerify);
     }
 
     @Override
     public String getVerify(String telephone) {
-        return (String) redisService.get(telephone);
+        return (String) redisService.get(database + verifyKey + telephone);
     }
 
     @Override
     public void delVerify(String telephone) {
-        redisService.del(telephone);
+        redisService.del(database + verifyKey + telephone);
     }
+
 }

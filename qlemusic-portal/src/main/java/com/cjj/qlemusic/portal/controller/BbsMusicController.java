@@ -26,12 +26,13 @@ public class BbsMusicController {
 
     @ApiOperation(value = "获取推荐音乐片段")
     @GetMapping("/recommend")
-    public ResponseResultUtil recommend(){
+    public ResponseResultUtil recommend(@RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,
+                                        @RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize){
         System.out.println("获取推荐音乐片段❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥");
-        Map<String,Object> recommendList = null;
+        List<BbsMusic> recommendList = null;
         try {
-            recommendList = bbsMusicService.getRecommendList();
-            return ResponseResultUtil.success(recommendList);
+            recommendList = bbsMusicService.getRecommendList(pageNum,pageSize);
+            return ResponseResultUtil.success(PageUtil.restPage(recommendList));
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseResultUtil.failed("未知错误");
@@ -40,10 +41,12 @@ public class BbsMusicController {
 
     @ApiOperation(value = "获取我的音乐片段")
     @GetMapping("/myMusic")
-    public ResponseResultUtil myMusic(@RequestParam(value = "id") Long id){
+    public ResponseResultUtil myMusic(@RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,
+                                      @RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize,
+                                      @RequestParam(value = "userId") Long userId,String category){
         System.out.println("获取我的音乐片段❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥");
-        List<BbsMusic> myMusicList = bbsMusicService.getMyMusicList(id);
-        return ResponseResultUtil.success(myMusicList);
+        List<BbsMusic> myMusicList = bbsMusicService.getMyMusicList(pageNum,pageSize,userId,category);
+        return ResponseResultUtil.success(PageUtil.restPage(myMusicList));
     }
 
     @ApiOperation(value = "获取相应收藏夹的内容")
@@ -71,4 +74,12 @@ public class BbsMusicController {
             return ResponseResultUtil.failed("发布失败");
         }
     }
+
+    @ApiOperation(value = "获取我的热门音乐")
+    @GetMapping("/getHotMusic")
+    public ResponseResultUtil getHotMusic(@RequestParam(value = "userId") Long userId){
+        List<BbsMusic> hotMusicList = bbsMusicService.getHotMusic(userId);
+        return ResponseResultUtil.success(hotMusicList);
+    }
+
 }

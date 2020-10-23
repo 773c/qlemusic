@@ -28,15 +28,14 @@
     <resultMap id="bbsMusicOperationMap" type="BbsMusicOperation">
         <id column="id" property="id"/>
         <result column="comment_count" property="commentCount"/>
-        <result column="user_comment_count" property="userCommentCount"/>
         <result column="music_id" property="musicId"/>
     </resultMap>
 
     <insert id="insertUserComment">
         insert into
-            bbs_user_comment(user_id,music_id,row_id,content,create_time,available)
+            bbs_user_comment(user_id,music_id,content,create_time,available)
         values
-            (#{userId},#{musicId},#{rowId},#{content},#{createTime},#{available})
+            (#{userId},#{musicId},#{content},#{createTime},#{available})
     </insert>
     <insert id="insertReplyuserComment">
         insert into
@@ -46,7 +45,7 @@
     </insert>
     <select id="selectCommentedCountById" resultMap="bbsMusicOperationMap">
         select
-            id,comment_count,user_comment_count,music_id
+            id,comment_count,music_id
         from
             bbs_music_operation
         where
@@ -69,14 +68,13 @@
         update
             bbs_music_operation
         set
-            comment_count = #{commentCount},
-            user_comment_count = #{userCommentCount}
+            comment_count = #{commentCount}
         where
             music_id = #{musicId}
     </update>
     <select id="selectUserCommentByMusicIds" resultMap="bbsUserCommentMap">
         select
-            id,user_id,music_id,row_id,content,create_time
+            id,user_id,music_id,content,create_time
         from
             bbs_user_comment
         where
@@ -100,7 +98,7 @@
     </select>
     <select id="selectCommentedCountByMusicIds" resultMap="bbsMusicOperationMap">
         select
-            id,comment_count,user_comment_count,music_id
+            id,comment_count,music_id
         from
             bbs_music_operation
         where
@@ -138,7 +136,7 @@
     </select>
     <select id="selectUserCommentByMusicId" resultMap="bbsUserCommentMap">
         select
-            id,user_id,music_id,row_id,content,create_time
+            id,user_id,music_id,content,create_time
         from
             bbs_user_comment
         where

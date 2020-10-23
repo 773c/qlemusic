@@ -21,6 +21,7 @@
         <association column="mo.id" property="bbsMusicOperation" javaType="BbsMusicOperation">
             <id column="mo.id" property="id"/>
             <result column="like_count" property="likeCount"/>
+            <result column="play_count" property="playCount"/>
             <result column="comment_count" property="commentCount"/>
         </association>
         <association column="ul.id" property="bbsUserLike" javaType="BbsUserLike">
@@ -48,16 +49,23 @@
         from
             bbs_music m
             left join ums_user u on u.id = m.user_id
-        order by
-            m.id desc limit 40
+        order by m.id desc
     </select>
     <select id="selectMyMusicList" resultMap="bbsMusicMap">
         select
-            <include refid="bbsMusicCol"/>
+            m.id,m.title,m.audio_url,m.audio_avatar_url,m.start_time,m.play_time,m.release_time,
+            mo.like_count,mo.play_count,mo.comment_count
         from
-            bbs_music
+            bbs_music m
+            left join bbs_music_operation mo on m.id = mo.music_id
         where
-            user_id = #{id}
+            user_id = #{userId}
+        <if test="category == 'newTime'||category == null">
+            order by m.release_time desc
+        </if>
+        <if test="category == 'maxPlay'">
+            order by mo.play_count desc
+        </if>
     </select>
     <select id="selectMusicByCollectId" resultMap="bbsMusicMap">
         select
@@ -77,4 +85,15 @@
         values
             (#{bbsMusic.title},#{bbsMusic.audioUrl},#{bbsMusic.audioAvatarUrl},#{bbsMusic.startTime},#{bbsMusic.playTime},#{bbsMusic.releaseTime},#{userId})
     </insert>
+    <select id="selectHotMusic" resultMap="bbsMusicMap">
+        select
+            bm.title,
+            mo.like_count
+        from
+            bbs_music bm
+            left join bbs_music_operation mo on mo.music_id = bm.id
+        where
+            bm.user_id = #{userId}
+        order by mo.like_count desc
+    </select>
 </mapper>

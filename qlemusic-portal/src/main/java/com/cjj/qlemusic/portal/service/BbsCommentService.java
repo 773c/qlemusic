@@ -1,5 +1,6 @@
 package com.cjj.qlemusic.portal.service;
 
+import com.cjj.qlemusic.portal.entity.BbsMusicOperation;
 import com.cjj.qlemusic.portal.entity.BbsReplyuserComment;
 import com.cjj.qlemusic.portal.entity.BbsUserComment;
 import com.cjj.qlemusic.security.entity.UmsUser;
@@ -13,13 +14,13 @@ public interface BbsCommentService {
      * 用户评论
      * @param bbsUserComment
      */
-    void userComment(BbsUserComment bbsUserComment);
+    int userComment(BbsUserComment bbsUserComment);
 
     /**
      * 回复评论
      * @param bbsReplyuserComment
      */
-    void replyuserComment(BbsReplyuserComment bbsReplyuserComment);
+    int replyuserComment(BbsReplyuserComment bbsReplyuserComment);
 
     /**
      * 获取评论的用户
@@ -28,21 +29,24 @@ public interface BbsCommentService {
     List<UmsUser> getUserByComment(List<Long> userIds);
 
     /**
-     * 获取对应音乐的评论
+     * 获取对应音乐id的评论
      * @param musicIdList
      * @return
      */
     List<BbsUserComment> getCommentByMusicIds(List<Long> musicIdList) throws IOException;
 
     /**
-     * 定时将用户评论存入数据库
+     * 设置评论数量
+     * @param musicId
      */
-    void userCommentToDatabaseTimer() throws IOException;
+    void setCommentedCount(Long musicId);
 
     /**
-     * 定时将回复评论存入数据库
+     * 获取对应音乐id的评论数量
+     * @param musicIdList
+     * @return
      */
-    void replyuserCommentToDatabaseTimer();
+    List<BbsMusicOperation> getCommentOperationList(List<Long> musicIdList) throws IOException;
 
     /**
      * 定时将评论数量存入数据库

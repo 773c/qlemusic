@@ -11,7 +11,6 @@ import com.aliyuncs.exceptions.ClientException;
 import com.cjj.qlemusic.common.exception.Asserts;
 import com.cjj.qlemusic.common.util.FileUploadUtil;
 import com.cjj.qlemusic.common.util.TelephoneUtil;
-import com.cjj.qlemusic.common.util.UuidUtil;
 import com.cjj.qlemusic.common.util.VerifyUtil;
 import com.cjj.qlemusic.security.dao.UmsCollectDao;
 import com.cjj.qlemusic.security.dao.UmsUserDao;
@@ -242,7 +241,6 @@ public class UmsUserServiceImpl implements UmsUserService {
 
     @Override
     public void addDefaultCollect(UmsUser regUser) {
-        System.out.println(regUser);
         UmsCollect umsCollect = new UmsCollect();
         umsCollect.setName("默认");
         collectDao.createCollect(umsCollect);
@@ -252,6 +250,11 @@ public class UmsUserServiceImpl implements UmsUserService {
     @Override
     public UmsUser getUserById(Long id) {
         return userDao.selectUserById(id);
+    }
+
+    @Override
+    public void delUserInfoCache(String telephone) {
+        userCacheService.delUser(telephone);
     }
 
 }
