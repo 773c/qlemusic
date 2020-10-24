@@ -2,6 +2,7 @@ package com.cjj.qlemusic.security.service;
 
 
 import com.cjj.qlemusic.security.entity.UmsCollect;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public interface UmsCollectService {
      * @param umsCollect
      * @return
      */
+    @Transactional
     Long createCollect(Long userId,UmsCollect umsCollect);
 
     /**
@@ -52,6 +54,7 @@ public interface UmsCollectService {
      * @param moveId
      * @return
      */
+    @Transactional
     int deleteCollectAndMove(Long id,Long moveId);
 
     /**
@@ -59,6 +62,7 @@ public interface UmsCollectService {
      * @param id
      * @return
      */
+    @Transactional
     int deleteCollectAndContent(Long id);
 
     /**

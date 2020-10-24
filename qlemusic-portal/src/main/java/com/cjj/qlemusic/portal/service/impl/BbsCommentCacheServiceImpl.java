@@ -1,5 +1,6 @@
 package com.cjj.qlemusic.portal.service.impl;
 
+import cn.hutool.core.date.DateUtil;
 import com.cjj.qlemusic.portal.entity.BbsMusicOperation;
 import com.cjj.qlemusic.portal.entity.BbsReplyuserComment;
 import com.cjj.qlemusic.portal.entity.BbsUserComment;
@@ -13,9 +14,7 @@ import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 评论缓存Service实现类
@@ -38,38 +37,43 @@ public class BbsCommentCacheServiceImpl implements BbsCommentCacheService {
 
     @Override
     public void setUserComment(BbsUserComment bbsUserComment) {
-        //使用list对评论进行时间排序
-        redisService.lpush(database+userCommentKey,bbsUserComment);
-//        redisService.hset(
-//                database+userCommentKey,
-//                bbsUserComment.getUserId()+"::"+bbsUserComment.getMusicId()+"::"+ DateUtil.formatDateTime(bbsUserComment.getCreateTime()),
+//        redisService.lpush(
+//                database+userCommentKey+bbsUserComment.getMusicId()+":",
 //                bbsUserComment);
+        Double formatCreateTime = Double.parseDouble(
+                DateUtil.format(bbsUserComment.getCreateTime(),
+                        "yyyyMMdd.HHmmss"));
+        redisService.addZset(
+                database+userCommentKey+bbsUserComment.getMusicId()+":",
+                bbsUserComment,
+                formatCreateTime);
     }
 
     @Override
-    public void delUserComment() {
-        redisService.lpop(database+userCommentKey);
-//        redisService.hdel(
-//                database+userCommentKey,
-//                bbsUserComment.getUserId()+"::"+bbsUserComment.getMusicId()+"::"+ DateUtil.formatDateTime(bbsUserComment.getCreateTime()));
+    public Object getUserComment(Long musicId) {
+        return redisService.getZsetAll(database+userCommentKey+musicId+":",0,-1);
+    }
+
+    @Override
+    public void delUserCommentByMusic(Long musicId) {
+        redisService.delZset(database + userCommentKey+musicId+":",0,-1);
     }
 
     @Override
     public void setReplyuserComment(BbsReplyuserComment bbsReplyuserComment) {
-        //使用list对评论进行时间排序
-        redisService.lpush(database+replyUserCommentKey,bbsReplyuserComment);
-//        redisService.hset(
-//                database+replyUserCommentKey,
-//                bbsReplyuserComment.getUserId()+"::"+bbsReplyuserComment.getReplyuserId()+"::"+bbsReplyuserComment.getCreateTime(),
-//                bbsReplyuserComment);
+//        redisService.lpush(database+replyUserCommentKey,bbsReplyuserComment);
+        Double formatCreateTime = Double.parseDouble(
+                DateUtil.format(bbsReplyuserComment.getCreateTime(),
+                        "yyyyMMdd.HHmmss"));
+        redisService.addZset(
+                database+replyUserCommentKey+bbsReplyuserComment.getMusicId()+":",
+                bbsReplyuserComment,
+                formatCreateTime);
     }
 
     @Override
-    public void delReplyuserComment() {
-        redisService.lpop(database+replyUserCommentKey);
-//        redisService.hdel(
-//                database+replyUserCommentKey,
-//                bbsReplyuserComment.getUserId()+"::"+bbsReplyuserComment.getReplyuserId()+"::"+bbsReplyuserComment.getCreateTime());
+    public void delReplyuserCommentByMusic(Long musicId) {
+        redisService.delZset(database + replyUserCommentKey + musicId+":",0,-1);
     }
 
     @Override
@@ -98,8 +102,8 @@ public class BbsCommentCacheServiceImpl implements BbsCommentCacheService {
     }
 
     @Override
-    public List<BbsUserComment> getUserCommentList(){
-        List<Object> list = redisService.lrange(database + userCommentKey, 0, -1);
+    public List<BbsUserComment> getUserCommentList(Long musicId){
+        Set<Object> list = (Set<Object>) redisService.getZsetAll(database+userCommentKey+musicId+":",0,-1);
         List<BbsUserComment> bbsUserCommentList = new ArrayList<>();
         for (Object o:list){
             bbsUserCommentList.add((BbsUserComment) o);
@@ -108,8 +112,8 @@ public class BbsCommentCacheServiceImpl implements BbsCommentCacheService {
     }
 
     @Override
-    public List<BbsReplyuserComment> getReplyuserCommentList(){
-        List<Object> list = redisService.lrange(database+replyUserCommentKey,0,-1);
+    public List<BbsReplyuserComment> getReplyuserCommentList(Long musicId){
+        Set<Object> list = (Set<Object>) redisService.getZsetAll(database+replyUserCommentKey+musicId+":",0,-1);
         List<BbsReplyuserComment> bbsReplyuserCommentList = new ArrayList<>();
         for (Object o:list){
             bbsReplyuserCommentList.add((BbsReplyuserComment) o);
@@ -137,7 +141,7 @@ public class BbsCommentCacheServiceImpl implements BbsCommentCacheService {
     }
 
     @Override
-    public List<UmsUser> getUserList() throws IOException {
+    public List<UmsUser> getUserInfoList() throws IOException {
         Cursor<Map.Entry<Object, Object>> cursor = redisService.hscan(database+userInfoToCommentKey, ScanOptions.NONE);
         List<UmsUser> list = new ArrayList<>();
         while (cursor.hasNext()){
@@ -160,21 +164,4 @@ public class BbsCommentCacheServiceImpl implements BbsCommentCacheService {
         redisService.hdel(database+userInfoToCommentKey,userId.toString());
     }
 
-    @Override
-    public void delUserCommentAll() {
-        Long llength = redisService.llength(database + userCommentKey);
-        while (llength != 0){
-            delUserComment();
-            llength--;
-        }
-    }
-
-    @Override
-    public void delReplyuserCommentAll() {
-        Long llength = redisService.llength(database + replyUserCommentKey);
-        while (llength != 0){
-            delReplyuserComment();
-            llength--;
-        }
-    }
 }

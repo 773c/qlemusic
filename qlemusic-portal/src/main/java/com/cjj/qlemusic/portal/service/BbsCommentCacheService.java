@@ -13,26 +13,35 @@ import java.util.List;
  */
 public interface BbsCommentCacheService {
     /**
-     * 存入用户评论
+     * 存入用户评论（目前根据发表时间来排序）
      * @param bbsUserComment
      */
     void setUserComment(BbsUserComment bbsUserComment);
 
     /**
-     * 删除用户评论
+     * 获取用户评论
+     * @param musicId
+     * @return
      */
-    void delUserComment();
+    Object getUserComment(Long musicId);
 
     /**
-     * 存入回复评论
+     * 删除对应音乐id的用户评论
+     * @param musicId
+     */
+    void delUserCommentByMusic(Long musicId);
+
+    /**
+     * 存入回复评论（目前根据发表时间来排序）
      * @param bbsReplyuserComment
      */
     void setReplyuserComment(BbsReplyuserComment bbsReplyuserComment);
 
     /**
-     * 删除回复评论
+     * 删除对应音乐id的回复评论
+     * @param musicId
      */
-    void delReplyuserComment();
+    void delReplyuserCommentByMusic(Long musicId);
 
     /**
      * 评论自增加1
@@ -68,15 +77,17 @@ public interface BbsCommentCacheService {
 
     /**
      * 获得用户评论
+     * @param musicId
      * @return
      */
-    List<BbsUserComment> getUserCommentList();
+    List<BbsUserComment> getUserCommentList(Long musicId);
 
     /**
      * 获得回复评论
+     * @param musicId
      * @return
      */
-    List<BbsReplyuserComment> getReplyuserCommentList();
+    List<BbsReplyuserComment> getReplyuserCommentList(Long musicId);
 
     /**
      * 获取评论数量
@@ -89,7 +100,7 @@ public interface BbsCommentCacheService {
      * 获取用户信息
      * @return
      */
-    List<UmsUser> getUserList() throws IOException ;
+    List<UmsUser> getUserInfoList() throws IOException ;
 
     /**
      * 存入用户信息
@@ -102,14 +113,4 @@ public interface BbsCommentCacheService {
      * @param userId
      */
     void delUserInfoToComment(Long userId);
-
-    /**
-     * 清除用户评论所有
-     */
-    void delUserCommentAll();
-
-    /**
-     * 清除回复评论所有
-     */
-    void delReplyuserCommentAll();
 }

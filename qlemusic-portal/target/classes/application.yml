@@ -128,3 +128,9 @@ oauth:
   appId: 101903191
   appKey: 6fbe201112e5283eae6e5b2ae3dbfa5d
   redirectUrl: http://www.eiqle.com/portal/connectqq
+
+# 消息队列rabbitMQ
+rabbitmq:
+  queue:
+    name:
+      msgTip: msgTipQueue

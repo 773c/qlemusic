@@ -27,33 +27,45 @@ public class BbsCommentController {
     @ApiOperation(value = "评论")
     @PostMapping("/user")
     public ResponseResultUtil userComment(@RequestBody @Validated BbsUserComment bbsUserComment, BindingResult result) {
-        int count = bbsCommentService.userComment(bbsUserComment);
-        if(count>0){
-            return ResponseResultUtil.success(count);
-        }
-        else {
-            return ResponseResultUtil.failed("评论失败");
+        int count = 0;
+        try {
+            count = bbsCommentService.userComment(bbsUserComment);
+            if(count>0){
+                return ResponseResultUtil.success(count);
+            }
+            else {
+                return ResponseResultUtil.failed("评论失败");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseResultUtil.failed("未知错误");
         }
     }
 
     @ApiOperation(value = "回复评论")
     @PostMapping("/replyuser")
     public ResponseResultUtil replyuserComment(@RequestBody @Validated BbsReplyuserComment bbsReplyuserComment, BindingResult result) {
-        int count = bbsCommentService.replyuserComment(bbsReplyuserComment);
-        if(count>0){
-            return ResponseResultUtil.success(count);
-        }
-        else {
-            return ResponseResultUtil.failed("回复失败");
+        int count = 0;
+        try {
+            count = bbsCommentService.replyuserComment(bbsReplyuserComment);
+            if(count>0){
+                return ResponseResultUtil.success(count);
+            }
+            else {
+                return ResponseResultUtil.failed("回复失败");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseResultUtil.failed("未知错误");
         }
     }
 
     @ApiOperation(value = "获取对应音乐的评论")
-    @PostMapping("/getCommentByMusic")
-    public ResponseResultUtil getCommentByMusic(@RequestParam(value = "musicIdList") List<Long> musicIdList) {
+    @GetMapping("/getCommentByMusic")
+    public ResponseResultUtil getCommentByMusic(@RequestParam(value = "musicId") Long musicId) {
         List<BbsUserComment> commentByMusic = null;
         try {
-            commentByMusic = bbsCommentService.getCommentByMusicIds(musicIdList);
+            commentByMusic = bbsCommentService.getCommentByMusicId(musicId);
             if (commentByMusic != null) {
                 return ResponseResultUtil.success(commentByMusic);
             } else {

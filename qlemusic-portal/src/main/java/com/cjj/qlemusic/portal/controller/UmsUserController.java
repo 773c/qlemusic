@@ -47,6 +47,8 @@ public class UmsUserController {
         return accessToken;
     }
 
+
+
     @ApiOperation(value = "手机号注册")
     @PostMapping("/telRegister")
     public ResponseResultUtil telRegister(@RequestBody @Validated UmsUserRegister umsUserRegister, BindingResult result) {

@@ -27,7 +27,6 @@ public class UmsCollectServiceImpl implements UmsCollectService {
         }
         //将收藏夹添加到数据库中
         collectDao.createCollect(umsCollect);
-        System.out.println("collectId:"+umsCollect.getId());
         //将用户和收藏夹的联系添加到数据库中
         collectDao.insertUserAndCollect(userId, umsCollect.getId());
         count = 1;
@@ -72,7 +71,7 @@ public class UmsCollectServiceImpl implements UmsCollectService {
         //移动收藏夹内容
         collectDao.updateMoveCollectContent(id,moveId);
         //删除收藏夹
-        deleteCollect(id);
+        collectDao.deleteCollect(id);
         count = 1;
         return count;
     }
@@ -83,7 +82,7 @@ public class UmsCollectServiceImpl implements UmsCollectService {
         //删除收藏夹内容
         collectDao.deleteCollectAndContentByCollectId(id);
         //删除收藏夹
-        deleteCollect(id);
+        collectDao.deleteCollect(id);
         count = 1;
         return count;
     }

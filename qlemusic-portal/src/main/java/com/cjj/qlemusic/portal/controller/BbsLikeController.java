@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.Map;
 
 @Api(value = "点赞管理")
 @RestController
@@ -26,8 +27,8 @@ public class BbsLikeController {
     @PostMapping("/bbsmusic")
     public ResponseResultUtil likeBbsMusic(@RequestBody @Validated BbsUserLike bbsUserLike, BindingResult result) {
         try {
-            bbsLikeService.like(bbsUserLike);
-            return ResponseResultUtil.success(1);
+            Map<String, Object> data = bbsLikeService.like(bbsUserLike);
+            return ResponseResultUtil.success(data);
         } catch (IOException e) {
             return ResponseResultUtil.failed("点赞失败");
         }

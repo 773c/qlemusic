@@ -47,7 +47,7 @@ public class BbsMusicServiceImpl implements BbsMusicService {
         PageHelper.startPage(pageNum, pageSize);
         List<BbsMusic> bbsMusicList = bbsMusicDao.selectRecommendList();
         List<Long> musicIdList = new ArrayList<>();
-        //如果获取音乐为空
+        //判断音乐集合是否为空
         if (bbsMusicList.size() == 0 || bbsMusicList == null)
             throw new NullPointerException("推荐音乐数据为空");
         //将获取到的音乐id存入list（比如推荐），根据id来从数据库获取相应热点点赞、播放量、评论数据
@@ -55,9 +55,7 @@ public class BbsMusicServiceImpl implements BbsMusicService {
             musicIdList.add(bbsMusic.getId());
         }
         //根据音乐id集合获取评论信息
-        List<BbsUserComment> userCommentList = bbsCommentService.getCommentByMusicIds(musicIdList);
         List<BbsMusicOperation> commentedCountList = bbsCommentService.getCommentOperationList(musicIdList);
-        System.out.println("commentedCountList"+commentedCountList);
         List<BbsUserLike> userLikeList = bbsLikeService.getUserLikeList(musicIdList);
         List<BbsMusicOperation> likedCountList = bbsLikeService.getLikeOperationList(musicIdList);
         List<BbsMusicOperation> playedCountList = bbsPlayService.getPlayOperationList(musicIdList);
@@ -76,13 +74,6 @@ public class BbsMusicServiceImpl implements BbsMusicService {
                 }
             }
             bbsMusic.setBbsUserLikeList(bbsUserLikeList);
-            //遍历用户评论
-            for (BbsUserComment userComment : userCommentList) {
-                if (bbsMusic.getId() == userComment.getMusicId()) {
-                    bbsUserCommentList.add(userComment);
-                }
-            }
-            bbsMusic.setBbsUserCommentList(bbsUserCommentList);
             //遍历点赞数量
             for (BbsMusicOperation likeOperation : likedCountList) {
                 if (bbsMusic.getId() == likeOperation.getMusicId()) {

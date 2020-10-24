@@ -135,4 +135,30 @@ public interface RedisService {
      */
     Long llength(String key);
 
+    /**
+     * zset有序集合存储
+     * @param key
+     * @param score
+     * @param value
+     */
+    void addZset(String key,Object value,double score);
+
+    /**
+     * 根据key,头索引,尾索引获取zset有序集合数据
+     * @param key
+     * @param start
+     * @param end
+     * @return
+     */
+    Object getZsetAll(String key,long start,long end);
+
+    /**
+     * 根据key,头索引,尾索引移除zset有序集合元素
+     * @param key
+     * @param start
+     * @param end
+     */
+    void delZset(String key,long start,long end);
+
+
 }

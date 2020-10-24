@@ -1,6 +1,8 @@
 package com.cjj.qlemusic.portal.service;
 
 import com.cjj.qlemusic.portal.entity.BbsMusic;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -46,6 +48,7 @@ public interface BbsMusicService {
      * @param userId
      * @param file
      */
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     int release(BbsMusic bbsMusic,Long userId, MultipartFile[] file) throws IOException;
 
     /**

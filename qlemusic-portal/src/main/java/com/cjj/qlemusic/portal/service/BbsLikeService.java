@@ -5,6 +5,7 @@ import com.cjj.qlemusic.portal.entity.BbsUserLike;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 点赞Service
@@ -15,7 +16,7 @@ public interface BbsLikeService {
      * @param bbsUserLike
      * @throws IOException
      */
-    void like(BbsUserLike bbsUserLike) throws IOException;
+    Map<String,Object> like(BbsUserLike bbsUserLike) throws IOException;
 
     /**
      * 根据相应音乐id获取用户点赞

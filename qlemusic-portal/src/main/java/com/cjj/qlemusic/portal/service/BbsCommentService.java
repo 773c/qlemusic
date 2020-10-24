@@ -4,6 +4,8 @@ import com.cjj.qlemusic.portal.entity.BbsMusicOperation;
 import com.cjj.qlemusic.portal.entity.BbsReplyuserComment;
 import com.cjj.qlemusic.portal.entity.BbsUserComment;
 import com.cjj.qlemusic.security.entity.UmsUser;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.List; /**
@@ -14,13 +16,15 @@ public interface BbsCommentService {
      * 用户评论
      * @param bbsUserComment
      */
-    int userComment(BbsUserComment bbsUserComment);
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    int userComment(BbsUserComment bbsUserComment) throws IOException;
 
     /**
      * 回复评论
      * @param bbsReplyuserComment
      */
-    int replyuserComment(BbsReplyuserComment bbsReplyuserComment);
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    int replyuserComment(BbsReplyuserComment bbsReplyuserComment) throws IOException;
 
     /**
      * 获取评论的用户
@@ -30,16 +34,16 @@ public interface BbsCommentService {
 
     /**
      * 获取对应音乐id的评论
-     * @param musicIdList
+     * @param musicId
      * @return
      */
-    List<BbsUserComment> getCommentByMusicIds(List<Long> musicIdList) throws IOException;
+    List<BbsUserComment> getCommentByMusicId(Long musicId) throws IOException;
 
     /**
-     * 设置评论数量
-     * @param musicId
+     * 设置评论的用户信息
+     * @param umsUser
      */
-    void setCommentedCount(Long musicId);
+    void setUserInfo(UmsUser umsUser) throws IOException;
 
     /**
      * 获取对应音乐id的评论数量
@@ -47,6 +51,12 @@ public interface BbsCommentService {
      * @return
      */
     List<BbsMusicOperation> getCommentOperationList(List<Long> musicIdList) throws IOException;
+
+    /**
+     * 发送消息
+     * @param userId
+     */
+    void sendMsgTip(Long userId);
 
     /**
      * 定时将评论数量存入数据库

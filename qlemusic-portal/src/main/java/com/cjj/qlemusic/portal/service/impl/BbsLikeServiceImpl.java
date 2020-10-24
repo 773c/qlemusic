@@ -16,7 +16,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 点赞Service实现类
@@ -32,38 +34,38 @@ public class BbsLikeServiceImpl implements BbsLikeService {
 
 
     @Override
-    public void like(BbsUserLike bbsUserLike) throws IOException {
+    public Map<String,Object> like(BbsUserLike bbsUserLike) throws IOException {
         Object isLike = bbsLikeCacheService.getUserLike(bbsUserLike.getMusicId(), bbsUserLike.getUserId());
-        System.out.println("原来redis中的isLike为："+isLike);
         //当缓存中存在，说明该用户已经点赞过
         if(isLike != null){
             //如果isLike为true，则此时取消点赞
             if(isLike.equals(true)){
-                System.out.println("缓存存在，取消点赞");
                 //将用户点赞的内容添加到缓存redis
                 bbsLikeCacheService.setUserLike(bbsUserLike.getMusicId(),bbsUserLike.getUserId(),false);
                 //将被点赞的内容的点赞数自减1
                 bbsLikeCacheService.decrementLikedCount(bbsUserLike.getMusicId());
             }else {
-                System.out.println("缓存存在，点赞");
                 bbsLikeCacheService.setUserLike(bbsUserLike.getMusicId(),bbsUserLike.getUserId(),true);
                 //将被点赞的内容的点赞数自增加1
                 bbsLikeCacheService.incrementLikedCount(bbsUserLike.getMusicId());
             }
-        }else{
-            //否则，缓存不存在（数据库可能有或没有数据），根据前端传来的isLike进行赋值
+        }
+        //否则，缓存不存在（数据库可能有或没有数据），根据前端传来的isLike进行赋值
+        else{
             if(bbsUserLike.getIsLike() == true){
-                System.out.println("否则，点赞");
                 //将被点赞的内容的点赞数自增加1
                 bbsLikeCacheService.incrementLikedCount(bbsUserLike.getMusicId());
             }else {
-                System.out.println("否则，取消点赞");
                 //将被点赞的内容的点赞数自减1
                 bbsLikeCacheService.decrementLikedCount(bbsUserLike.getMusicId());
             }
             //将用户点赞的内容添加到缓存redis
             bbsLikeCacheService.setUserLike(bbsUserLike.getMusicId(),bbsUserLike.getUserId(),bbsUserLike.getIsLike());
         }
+        Map<String,Object> data = new HashMap<>();
+        data.put("isLike",bbsLikeCacheService.getUserLike(bbsUserLike.getMusicId(),bbsUserLike.getUserId()));
+        data.put("likeCount",bbsLikeCacheService.getLikedCount(bbsUserLike.getMusicId()));
+        return data;
     }
 
     @Override
