@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/qlmusic?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://47.94.161.88:3306/qlemusic?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
-    password: root
+    password: '@Chenjiajie520'
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       initial-size: 5 #连接池初始化大小
@@ -16,19 +16,24 @@ spring:
         login-username: druid
         login-password: druid
   redis:
-    host: 127.0.0.1
+    host: 47.94.161.88
     database: 0
-    port: 6379
-#    password:
+    port: 6381
+    password: 972550
     timeout: 5000
+#    cluster:
+#      nodes: 47.94.161.88:6379,47.94.161.88:6380
+#    sentinel:
+#      master: mymaster
+#      nodes: 127.0.0.1:26380,127.0.0.1:26381
 #    lettuce:
 #      pool:
 #        max-active: 8 #最大连接数
 #        max-idle: 8 #最大空闲连接 默认8
 #        max-wait: -1ms #默认-1 最大连接阻塞等待时间
-#        min-idle: 0 #最小空闲连接
-  rabbitmq:
-      host: 192.168.68.138
-      port: 5672
-      username: guest
-      password: guest
+##        min-idle: 0 #最小空闲连接
+#  rabbitmq:
+#      host: 192.168.68.138
+#      port: 5672
+#      username: guest
+#      password: guest

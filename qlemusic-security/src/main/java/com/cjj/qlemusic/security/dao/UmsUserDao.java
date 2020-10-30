@@ -1,6 +1,8 @@
 package com.cjj.qlemusic.security.dao;
 
 import com.cjj.qlemusic.security.entity.UmsUser;
+import com.cjj.qlemusic.security.entity.UmsUserCollect;
+import com.cjj.qlemusic.security.entity.UmsUserInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -10,39 +12,52 @@ import java.util.List;
  */
 public interface UmsUserDao {
     /**
-     * 用户注册添加
-     * @param umsUser
+     * 用户注册用户信息添加
+     * @param umsUserInfo
      */
-    void insert(UmsUser umsUser);
+    Long insertUserInfo(UmsUserInfo umsUserInfo);
 
     /**
-     * 根据手机号获取用户
-     * @param telephone
+     * 用户注册授权信息添加
+     * @param umsUser
+     */
+    void insertUser(UmsUser umsUser);
+
+    /**
+     * 根据标识获取用户
+     * @param identity
      * @return
      */
-    UmsUser selectUserByTelephone(String telephone);
+    UmsUser selectUserByIdentity(String identity);
+
+    /**
+     * 根据身份标识获取用户id
+     * @param identity
+     * @return
+     */
+    Long selectUserIdByIdentity(String identity);
+
 
     /**
      * 修改用户信息
-     * @param umsUser
+     * @param umsUserInfo
      * @return
      */
-    int updateInfo(UmsUser umsUser);
+    int updateUserInfo(UmsUserInfo umsUserInfo);
 
     /**
      * 根据Id获取用户
      * @param id
      * @return
      */
-    UmsUser selectUserById(Long id);
+    UmsUserInfo selectUserInfoById(Long id);
 
     /**
      * 修改用户唯一ID
-     * @param id
-     * @param uniqueId
+     * @param umsUserInfo
      * @return
      */
-    int updateUniqueId(@Param("id") Long id, @Param("uniqueId") String uniqueId);
+    int updateUniqueId(UmsUserInfo umsUserInfo);
 
     /**
      * 查询用户是否修改过唯一ID
@@ -60,27 +75,34 @@ public interface UmsUserDao {
     /**
      * 修改用户头像
      * @param id
-     * @param headIcon
+     * @param avatar
      * @return
      */
-    int updateAvatar(@Param("id")Long id,@Param("headIcon") String headIcon);
-
-    /**
-     * 创建默认收藏夹
-     * @param name
-     */
-    void createCollect(String name);
-
-    /**
-     * 查询用户
-     * @param id
-     */
-    void getUserById(Long id);
+    int updateAvatar(@Param("id")Long id,@Param("avatar") String avatar);
 
     /**
      * 根据id集合获取用户
      * @param userIds
      * @return
      */
-    List<UmsUser> selectUserByIds(List<Long> userIds);
+    List<UmsUserInfo> selectUserInfoByIds(List<Long> userIds);
+
+    /**
+     * 更新access_token
+     * @param umsUser
+     */
+    void updateUser(UmsUser umsUser);
+
+    /**
+     * 存入收藏夹
+     * @param umsUserCollect
+     */
+    Long insertCollect(UmsUserCollect umsUserCollect);
+
+    /**
+     * 存入用户收藏夹关联表
+     * @param userId
+     * @param collectId
+     */
+    void insertUserAndCollect(@Param("userId") Long userId, @Param("collectId") Long collectId);
 }

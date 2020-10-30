@@ -1,6 +1,6 @@
 package com.cjj.qlemusic.portal.entity;
 
-import com.cjj.qlemusic.security.entity.UmsUser;
+import com.cjj.qlemusic.security.entity.UmsUserInfo;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotEmpty;
@@ -45,7 +45,7 @@ public class BbsReplyuserComment implements Serializable {
     private Date replyuserCreateTime;
 
     @ApiModelProperty(value = "用户信息")
-    private UmsUser umsUser;
+    private UmsUserInfo umsUserInfo;
 
     @ApiModelProperty(value = "是否可用")
     private boolean available;
@@ -114,12 +114,12 @@ public class BbsReplyuserComment implements Serializable {
         this.replyuserCreateTime = replyuserCreateTime;
     }
 
-    public UmsUser getUmsUser() {
-        return umsUser;
+    public UmsUserInfo getUmsUserInfo() {
+        return umsUserInfo;
     }
 
-    public void setUmsUser(UmsUser umsUser) {
-        this.umsUser = umsUser;
+    public void setUmsUserInfo(UmsUserInfo umsUserInfo) {
+        this.umsUserInfo = umsUserInfo;
     }
 
     public boolean getAvailable() {
@@ -141,7 +141,7 @@ public class BbsReplyuserComment implements Serializable {
                 ", content='" + content + '\'' +
                 ", createTime=" + createTime +
                 ", replyuserCreateTime=" + replyuserCreateTime +
-                ", umsUser=" + umsUser +
+                ", umsUserInfo=" + umsUserInfo +
                 ", available=" + available +
                 '}';
     }

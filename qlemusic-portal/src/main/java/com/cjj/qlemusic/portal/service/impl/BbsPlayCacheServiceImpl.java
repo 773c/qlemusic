@@ -30,22 +30,26 @@ public class BbsPlayCacheServiceImpl implements BbsPlayCacheService {
 
     @Override
     public void incrementPlayedCount(Long musicId) {
-        redisService.hincrement(database+playedCountKey,musicId.toString(),1);
+        String keys = database+playedCountKey;
+        redisService.hincrement(keys,musicId.toString(),1);
     }
 
     @Override
     public void setPlayedCount(Long musicId, Integer playCount) {
-        redisService.hset(database+playedCountKey,musicId.toString(),playCount);
+        String keys = database+playedCountKey;
+        redisService.hset(keys,musicId.toString(),playCount);
     }
 
     @Override
     public void delPlayedCount(Long musicId) {
-        redisService.hdel(database+playedCountKey,musicId.toString());
+        String keys = database+playedCountKey;
+        redisService.hdel(keys,musicId.toString());
     }
 
     @Override
     public Integer getPlayedCount(Long musicId) {
-        return (Integer) redisService.hget(database+playedCountKey,musicId.toString());
+        String keys = database+playedCountKey;
+        return (Integer) redisService.hget(keys,musicId.toString());
     }
 
     @Override

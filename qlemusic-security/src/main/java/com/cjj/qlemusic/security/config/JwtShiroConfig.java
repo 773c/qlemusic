@@ -5,10 +5,7 @@ import com.cjj.qlemusic.security.custom.JwtUserRealm;
 import com.cjj.qlemusic.security.custom.UserRealm;
 import com.cjj.qlemusic.security.filter.JwtAuthenticationTokenFilter;
 import com.cjj.qlemusic.security.util.JwtTokenUtil;
-import org.apache.shiro.authc.Authenticator;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.authc.pam.FirstSuccessfulStrategy;
-import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
@@ -49,14 +46,6 @@ public class JwtShiroConfig {
     private boolean authenticationCachingEnabled;
     @Value("${shiro.realm.authorizationCachingEnabled}")
     private boolean authorizationCachingEnabled;
-    @Value("${spring.redis.host}")
-    private String host;
-    @Value("${spring.redis.port}")
-    private Integer port;
-//    @Value("${spring.redis.password}")
-//    private String password;
-    @Value("${spring.redis.timeout}")
-    private Integer TIMEOUT;
 
     /**
      * shiroFilter过滤器

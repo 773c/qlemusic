@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 /**
  * 消息提示的接收者
  */
-@Component
-@RabbitListener(queues = "qlemusic.msg.cancel")
-public class MsgTipReceiver {
-    private static Logger LOGGER = LoggerFactory.getLogger(MsgTipReceiver.class);
-
-    @RabbitHandler
-    public void handle(){
-        LOGGER.info("process orderId:{}");
-    }
-}
+//@Component
+//@RabbitListener(queues = "qlemusic.msg.cancel")
+//public class MsgTipReceiver {
+//    private static Logger LOGGER = LoggerFactory.getLogger(MsgTipReceiver.class);
+//
+//    @RabbitHandler
+//    public void handle(){
+//        LOGGER.info("process orderId:{}");
+//    }
+//}

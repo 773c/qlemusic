@@ -1,8 +1,8 @@
 package com.cjj.qlemusic.portal.controller;
 
 import com.cjj.qlemusic.common.util.ResponseResultUtil;
-import com.cjj.qlemusic.security.service.UmsCollectService;
-import com.cjj.qlemusic.security.entity.UmsCollect;
+import com.cjj.qlemusic.portal.service.UmsCollectService;
+import com.cjj.qlemusic.portal.entity.UmsCollect;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

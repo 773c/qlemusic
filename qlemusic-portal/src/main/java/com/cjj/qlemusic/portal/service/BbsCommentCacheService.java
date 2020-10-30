@@ -3,7 +3,7 @@ package com.cjj.qlemusic.portal.service;
 import com.cjj.qlemusic.portal.entity.BbsMusicOperation;
 import com.cjj.qlemusic.portal.entity.BbsReplyuserComment;
 import com.cjj.qlemusic.portal.entity.BbsUserComment;
-import com.cjj.qlemusic.security.entity.UmsUser;
+import com.cjj.qlemusic.security.entity.UmsUserInfo;
 
 import java.io.IOException;
 import java.util.List;
@@ -100,13 +100,13 @@ public interface BbsCommentCacheService {
      * 获取用户信息
      * @return
      */
-    List<UmsUser> getUserInfoList() throws IOException ;
+    List<UmsUserInfo> getUserInfoList() throws IOException ;
 
     /**
      * 存入用户信息
-     * @param umsUser
+     * @param umsUserInfo
      */
-    void setUserInfoToComment(UmsUser umsUser);
+    void setUserInfoToComment(UmsUserInfo umsUserInfo);
 
     /**
      * 删除评论中的用户信息

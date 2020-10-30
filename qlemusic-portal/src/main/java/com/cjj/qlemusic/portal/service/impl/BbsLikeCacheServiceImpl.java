@@ -34,42 +34,51 @@ public class BbsLikeCacheServiceImpl implements BbsLikeCacheService {
 
     @Override
     public void setUserLike(Long likedId, Long userId,boolean isLike) {
-        redisService.hset(database+userLikeKey,userId+"::"+likedId,isLike);
+        String keys = database+userLikeKey;
+        redisService.hset(keys,userId+"::"+likedId,isLike);
     }
 
     @Override
     public Object getUserLike(Long likedId, Long userId) {
-        return redisService.hget(database+userLikeKey,userId+"::"+likedId);
+        String keys = database+userLikeKey;
+        return redisService.hget(keys,userId+"::"+likedId);
     }
 
     @Override
     public void delUserLike(Long likedId, Long userId) {
-        redisService.hdel(database+userLikeKey,userId+"::"+likedId);
+        String keys = database+userLikeKey;
+        redisService.hdel(keys,userId+"::"+likedId);
     }
 
     @Override
     public void setLikedCount(Long musicId, Integer likeCount) {
-        redisService.hset(database+likedCountKey,musicId.toString(),likeCount);
+        String keys = database+likedCountKey;
+        redisService.hset(keys,musicId.toString(),likeCount);
     }
 
     @Override
     public void incrementLikedCount(Long likedId) {
-        redisService.hincrement(database+likedCountKey,likedId.toString(),1);
+        System.out.println("❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥ 音乐ID："+likedId+"被点赞了");
+        String keys = database+likedCountKey;
+        redisService.hincrement(keys,likedId.toString(),1);
     }
 
     @Override
     public void decrementLikedCount(Long likedId) {
-        redisService.hincrement(database+likedCountKey,likedId.toString(),-1);
+        String keys = database+likedCountKey;
+        redisService.hincrement(keys,likedId.toString(),-1);
     }
 
     @Override
     public Object getLikedCount(Long likedId) {
-        return redisService.hget(database+likedCountKey,likedId.toString());
+        String keys = database+likedCountKey;
+        return redisService.hget(keys,likedId.toString());
     }
 
     @Override
     public void delLikedCount(Long likedId) {
-        redisService.hdel(database+likedCountKey,likedId.toString());
+        String keys = database+likedCountKey;
+        redisService.hdel(keys,likedId.toString());
     }
 
     @Override

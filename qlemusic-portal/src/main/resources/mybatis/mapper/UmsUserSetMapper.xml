@@ -5,32 +5,32 @@
 <mapper namespace="com.cjj.qlemusic.portal.dao.UmsUserSetDao">
     <select id="selectUserById" resultType="UmsUser">
         select
-            telephone,password,salt
+            identity,credential,salt
         from
             ums_user
         where
-            id=#{userId}
+            user_id=#{userId}
     </select>
     <update id="updatePassword">
         update
             ums_user
         set
-            password=#{newPassword},
+            credential=#{newPassword},
             salt=#{salt}
         where
-            id=#{userId}
+            user_id=#{userId}
     </update>
-    <select id="selectTelephoneById" resultType="java.lang.String">
-        select
-            telephone
-        from
-            ums_user
-        where
-            id=#{userId}
-    </select>
     <update id="updateTelephone">
         update
             ums_user
+        set
+            identity=#{newTelephone}
+        where
+            user_id=#{userId}
+    </update>
+    <update id="updateUserInfoToTelephone">
+        update
+            ums_user_info
         set
             telephone=#{newTelephone}
         where
@@ -38,10 +38,26 @@
     </update>
     <select id="selectUserByNewTelephone" resultType="java.lang.Long">
         select
-            id
+            user_id
         from
             ums_user
         where
-            telephone=#{newTelephone}
+            identity=#{newTelephone}
+    </select>
+    <select id="selectUserInfoById" resultType="UmsUserInfo">
+        select
+            id,telephone,oauth_id 'oauthId'
+        from
+            ums_user_info
+        where
+            id=#{userId}
+    </select>
+    <select id="selectUserCountByUserId" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            ums_user
+        where
+            user_id=#{userId}
     </select>
 </mapper>

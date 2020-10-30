@@ -3,6 +3,7 @@ package com.cjj.qlemusic.security.util;
 import cn.hutool.core.date.DateUtil;
 import com.cjj.qlemusic.security.entity.UmsAdmin;
 import com.cjj.qlemusic.security.entity.UmsUser;
+import com.cjj.qlemusic.security.entity.UmsUserInfo;
 import com.cjj.qlemusic.security.service.UmsAdminService;
 import com.cjj.qlemusic.security.service.UmsUserService;
 import io.jsonwebtoken.Claims;
@@ -23,10 +24,7 @@ import java.util.Map;
 public class JwtTokenUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
     public static final String CLAIM_ACCOUNT = "account";
-    @Autowired
-    private UmsAdminService umsAdminService;
-    @Autowired
-    private UmsUserService umsUserService;
+
     @Value("${jwt.tokenHeader}")
     private String tokenHeader;
     @Value("${jwt.secretKey}")
@@ -36,6 +34,10 @@ public class JwtTokenUtil {
     @Value("${jwt.tokenHead}")
     private String tokenHead;
 
+    @Autowired
+    private UmsAdminService umsAdminService;
+    @Autowired
+    private UmsUserService umsUserService;
 
     /**
      * 根据用户信息创建JWT的token
@@ -103,16 +105,9 @@ public class JwtTokenUtil {
      * @param token
      */
     public boolean validateToken(String token) {
-        String account = getAccountFromToken(token);
-        UmsAdmin admin = null;
-        UmsUser user = null;
-        if(account.length() == 11)
-            user = umsUserService.getUserByTelephone(account);
-        else
-            admin = umsAdminService.getAdminByAccount(account);
-        if (admin == null && user == null) {
-            return false;
-        }
+        String identity = getAccountFromToken(token);
+        UmsUser user = umsUserService.getUserByIdentity(identity);
+        if (user == null) return false;
         return true;
     }
 

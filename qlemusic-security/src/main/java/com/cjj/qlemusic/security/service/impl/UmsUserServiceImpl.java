@@ -1,7 +1,6 @@
 package com.cjj.qlemusic.security.service.impl;
 
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.aliyuncs.CommonRequest;
@@ -10,13 +9,9 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.cjj.qlemusic.common.exception.Asserts;
 import com.cjj.qlemusic.common.util.FileUploadUtil;
-import com.cjj.qlemusic.common.util.TelephoneUtil;
 import com.cjj.qlemusic.common.util.VerifyUtil;
-import com.cjj.qlemusic.security.dao.UmsCollectDao;
 import com.cjj.qlemusic.security.dao.UmsUserDao;
-import com.cjj.qlemusic.security.entity.UmsCollect;
-import com.cjj.qlemusic.security.entity.UmsUser;
-import com.cjj.qlemusic.security.entity.UmsUserRegister;
+import com.cjj.qlemusic.security.entity.*;
 import com.cjj.qlemusic.security.service.OssService;
 import com.cjj.qlemusic.security.service.UmsUserCacheService;
 import com.cjj.qlemusic.security.service.UmsUserService;
@@ -25,6 +20,8 @@ import com.cjj.qlemusic.security.util.ShiroMd5Util;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -40,79 +37,95 @@ import java.util.Map;
  */
 @Service
 public class UmsUserServiceImpl implements UmsUserService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(UmsUserServiceImpl.class);
+
     @Value("${aliyuncs.sendSms.parameters.phoneNumbersKey}")
     private String phoneNumbersKey;
     @Value("${aliyuncs.sendSms.parameters.templateParamKey}")
     private String templateParamKey;
     @Value("${aliyuncs.sendSms.verifyKey}")
     private String verifyKey;
+    @Value("${aliyun.oss.host}")
+    private String host;
     @Value("${user.avatar}")
     private String defaultAvatar;
     @Value("${user.uniqueId}")
     private String uniqueId;
-    @Value("${aliyun.oss.host}")
-    private String host;
+    @Value("${user.telLoginType}")
+    private String telLoginType;
+    @Value("${user.credentialVerifyType}")
+    private String credentialVerifyType;
+    @Value("${user.credentialPasswordType}")
+    private String credentialPasswordType;
 
     @Autowired
-    private UmsUserDao userDao;
+    private UmsUserDao umsUserDao;
     @Autowired
     private IAcsClient iAcsClient;
     @Autowired
     private CommonRequest request;
     @Autowired
-    private UmsUserCacheService userCacheService;
+    private UmsUserCacheService umsUserCacheService;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
     private OssService ossService;
-    @Autowired
-    private UmsCollectDao collectDao;
+
 
     @Override
-    public UmsUser register(UmsUserRegister umsUserRegister) {
-        int count = 0;
-        UmsUser regUser = null;
-        UmsUser user = getUserByTelephone(umsUserRegister.getTelephone());
+    public int register(UmsUserRegister umsUserRegister) {
+        int count;
+        UmsUser umsUser = getUserByIdentity(umsUserRegister.getTelephone());
         //判断手机号是否已经注册
-        if (user == null) {
+        if (umsUser == null) {
             //判断两次密码是否相同
             if (umsUserRegister.getPassword().equals(umsUserRegister.getRePassword())) {
-                regUser = new UmsUser();
-                //手机号
-                regUser.setTelephone(umsUserRegister.getTelephone());
+                umsUser = new UmsUser();
+                //身份标识
+                umsUser.setIdentity(umsUserRegister.getTelephone());
                 //盐
                 String salt = ShiroMd5Util.getSalt();
-                regUser.setSalt(salt);
+                umsUser.setSalt(salt);
                 //密码
-                regUser.setPassword(ShiroMd5Util.getEncodePassword(umsUserRegister.getPassword(), salt));
+                umsUser.setCredential(ShiroMd5Util.getEncodePassword(umsUserRegister.getPassword(), salt));
+                //设置登录类型
+                umsUser.setLoginType(telLoginType);
+                //设置为可用
+                umsUser.setAvailable(true);
                 //设置用户信息
-                regUser = setUserInfo(regUser);
-                //存入数据库
-                userDao.insert(regUser);
-                //这里进行收藏夹默认的创建
-                addDefaultCollect(regUser);
-                count = 1;
-            }
-            if(count == 1)
-                return regUser;
-            else
-                return null;
-        }
-        user.setAvailable(false);
-        return user;
+                umsUser = setUserInfo(umsUser);
+                //存入用户信息数据库
+                umsUserDao.insertUserInfo(umsUser.getUmsUserInfo());
+                LOGGER.info("用户信息自增id为："+umsUser.getUmsUserInfo().getId());
+                //将id存入
+                umsUser.getUmsUserInfo().setId(umsUser.getUmsUserInfo().getId());
+                //存入用户授权信息
+                umsUserDao.insertUser(umsUser);
+                //创建默认收藏夹
+                UmsUserCollect umsUserCollect = new UmsUserCollect();
+                umsUserCollect.setName("默认");
+                umsUserDao.insertCollect(umsUserCollect);
+                umsUserDao.insertUserAndCollect(umsUser.getUmsUserInfo().getId(),umsUserCollect.getId());
+            }else
+                Asserts.fail("两次输入密码不一致");
+        }else
+            Asserts.fail("您已注册，请登录");
+        LOGGER.info("用户注册信息为：" + JSONUtil.toJsonPrettyStr(umsUser));
+        count = 1;
+        return count;
     }
 
     @Override
-    public boolean matchVerify(UmsUser umsUser) {
+    public boolean matchVerify(UmsUserLogin umsUserLogin) {
         //从Redis缓存中获取验证码
-        JSONObject jsonCacheVerify = JSONUtil.parseObj(userCacheService.getVerify(umsUser.getTelephone()));
+        JSONObject jsonCacheVerify = JSONUtil.parseObj(umsUserCacheService.getVerify(umsUserLogin.getTelephone()));
         Integer cacheVerify = (Integer) jsonCacheVerify.get(verifyKey);
         if (cacheVerify == null)
             throw new NullPointerException("验证码失效");
         //判断前台传来的验证码与缓存中的是否相同
-        if ((umsUser.getVerify()).equals(cacheVerify.toString())) {
+        if ((umsUserLogin.getVerify()).equals(cacheVerify.toString())) {
             //验证成功后清除验证码
-            userCacheService.delVerify(umsUser.getTelephone());
+            umsUserCacheService.delVerify(umsUserLogin.getTelephone());
             return true;
         } else
             return false;
@@ -124,7 +137,7 @@ public class UmsUserServiceImpl implements UmsUserService {
         //随便获取6位验证码
         String verify = VerifyUtil.getJsonSixNumber();
         //存入redis（期限120s）
-        userCacheService.setVerify(telephone, verify);
+        umsUserCacheService.setVerify(telephone, verify);
         //调用阿里云服务
         request.putQueryParameter(templateParamKey, verify);
         //获得响应结果
@@ -134,90 +147,91 @@ public class UmsUserServiceImpl implements UmsUserService {
 
     @Override
     public UmsUser setUserInfo(UmsUser umsUser) {
-        //存入唯一标识ID
-        umsUser.setUniqueId(uniqueId+"_"+
+        UmsUserInfo umsUserInfo = new UmsUserInfo();
+        //唯一标识ID
+        umsUserInfo.setUniqueId(uniqueId+"_"+
                 DateUtil.dayOfMonth(DateUtil.date())%10 +
-                VerifyUtil.getJsonSixNumber() +
+                VerifyUtil.getSixNumber() +
                 DateUtil.format(new Date(),"ss"));
-        //存入用户头像
-        umsUser.setHeadIcon(defaultAvatar);
-        //存入名称
-        umsUser.setName(TelephoneUtil.encryptTelephone(umsUser.getTelephone()));
-        //存入注册日期
-        umsUser.setCreateTime(new Date());
-        //是否可用
-        umsUser.setAvailable(true);
+        //用户头像
+        umsUserInfo.setAvatar(defaultAvatar);
+        //名称
+        umsUserInfo.setName("ei巧了_"+ umsUser.getIdentity().substring(7));
+        //注册日期
+        umsUserInfo.setCreateTime(new Date());
+        //手机号绑定
+        umsUserInfo.setTelephone(umsUser.getIdentity());
+        //用户信息
+        umsUser.setUmsUserInfo(umsUserInfo);
         return umsUser;
     }
 
     @Override
-    public String login(UmsUser umsUser) {
+    public String login(UmsUserLogin umsUserLogin) {
         //判断该用户是否存在
-        UmsUser user = getUserByTelephone(umsUser.getTelephone());
-        if(user == null)
-            //抛出自定义异常
-            Asserts.fail("用户未注册");
+        Long id  = umsUserDao.selectUserIdByIdentity(umsUserLogin.getTelephone());
+        if(id == null) Asserts.fail("用户未注册");
         //创建一个claims
         Map<String,Object> claims = new HashMap<>();
-        //判断是验证码登录还是密码
-        if(StrUtil.isEmpty(umsUser.getVerify())){
-            //密码登录
-            //获取主体
+        //判断是用哪种凭证登录
+        if(credentialVerifyType.equals(umsUserLogin.getCredentialType())){
+            //验证码
+            if(matchVerify(umsUserLogin)) claims.put(JwtTokenUtil.CLAIM_ACCOUNT,umsUserLogin.getTelephone());
+            else Asserts.fail("验证码错误");
+        }else {
+            //密码
+            //获得shiro主体
             Subject subject = SecurityUtils.getSubject();
-            UsernamePasswordToken authenticationToken = new UsernamePasswordToken(umsUser.getTelephone(),umsUser.getPassword());
+            UsernamePasswordToken authenticationToken = new UsernamePasswordToken(umsUserLogin.getTelephone(),umsUserLogin.getPassword());
             //会到自定义的realm中认证用户
             subject.login(authenticationToken);
             //Shiro认证通过后会将user信息放到subject内，生成token并返回
             claims.put(JwtTokenUtil.CLAIM_ACCOUNT,subject.getPrincipal());
-        }else {
-            //验证码登录
-            if(matchVerify(umsUser))
-                //验证码认证成功后将user信息放到subject内
-                claims.put(JwtTokenUtil.CLAIM_ACCOUNT,umsUser.getTelephone());
-            else
-                return null;
         }
         //生成token并返回
         return jwtTokenUtil.generateToken(claims);
     }
+
     @Override
-    public UmsUser getUserByTelephone(String telephone) {
-        UmsUser user = userCacheService.getUser(telephone);
-        if(user != null) return user;
-        System.out.println("redis缓存中不存在，正在访问数据库根据账号查询是否存在用户。。。。");
-        user = userDao.selectUserByTelephone(telephone);
-        if(user != null)
-            userCacheService.setUser(user);
-        return user;
+    public UmsUser getUserByIdentity(String identity) {
+        UmsUser umsUser = umsUserCacheService.getUser(identity);
+        if(umsUser != null) return umsUser;
+        umsUser = umsUserDao.selectUserByIdentity(identity);
+        if(umsUser != null) umsUserCacheService.setUser(umsUser);
+        return umsUser;
     }
 
     @Override
-    public int updateInfo(UmsUser umsUser) {
+    public int updateUserInfo(UmsUserInfo umsUserInfo) {
+        int count;
         //修改内容
-        int count = userDao.updateInfo(umsUser);
+         umsUserDao.updateUserInfo(umsUserInfo);
         //更新缓存
-        userCacheService.delUser(umsUser.getTelephone());
-        userCacheService.setUser(userDao.selectUserById(umsUser.getId()));
+        if(umsUserInfo.getTelephone() != null) umsUserCacheService.delUser(umsUserInfo.getTelephone());
+        if(umsUserInfo.getOauthId() != null) umsUserCacheService.delUser(umsUserInfo.getOauthId());
+        count = 1;
         return count;
     }
 
     @Override
-    public int updateUniqueId(Long id,String uniqueId) {
+    public int updateUniqueId(UmsUserInfo umsUserInfo) {
         int count;
         //修改内容
-        userDao.updateUniqueId(id,uniqueId);
-        //更新缓存
-        userCacheService.delUser(userDao.selectUserById(id).getTelephone());
-        userCacheService.setUser(userDao.selectUserById(id));
+        umsUserDao.updateUniqueId(umsUserInfo);
+        //获取用户信息
+        UmsUserInfo umsUserInfoDao = umsUserDao.selectUserInfoById(umsUserInfo.getId());
+        //删除缓存
+        if(umsUserInfoDao.getTelephone() != null) umsUserCacheService.delUser(umsUserInfoDao.getTelephone());
+        if(umsUserInfoDao.getOauthId() != null) umsUserCacheService.delUser(umsUserInfoDao.getOauthId());
         //将修改记录插入到表unique_id中
-        userDao.addUpdateUniqueIdRecord(id);
+        umsUserDao.addUpdateUniqueIdRecord(umsUserInfo.getId());
         count = 1;
         return count;
     }
 
     @Override
     public Long getUserByIdFromUniqueId(Long id) {
-        return userDao.selectUserByIdFromUniqueId(id);
+        return umsUserDao.selectUserByIdFromUniqueId(id);
     }
 
     @Override
@@ -228,33 +242,20 @@ public class UmsUserServiceImpl implements UmsUserService {
         //上传到OSS
         String ossFileApiPath = ossService.uploadOss(imgName, file.getInputStream());
         //修改数据库
-        userDao.updateAvatar(id,host + ossFileApiPath);
-        //更新缓存
-        userCacheService.delUser(userDao.selectUserById(id).getTelephone());
-        userCacheService.setUser(userDao.selectUserById(id));
+        umsUserDao.updateAvatar(id,host + ossFileApiPath);
+        //获取用户信息
+        UmsUserInfo umsUserInfoDao = umsUserDao.selectUserInfoById(id);
+        //删除缓存
+        if(umsUserInfoDao.getTelephone() != null) umsUserCacheService.delUser(umsUserInfoDao.getTelephone());
+        if(umsUserInfoDao.getOauthId() != null) umsUserCacheService.delUser(umsUserInfoDao.getOauthId());
         count = 1;
-        if(count == 1)
-            return ossFileApiPath;
-        else
-            return null;
+        if(count == 1) return ossFileApiPath;
+        else return null;
     }
 
     @Override
-    public void addDefaultCollect(UmsUser regUser) {
-        UmsCollect umsCollect = new UmsCollect();
-        umsCollect.setName("默认");
-        collectDao.createCollect(umsCollect);
-        collectDao.insertUserAndCollect(regUser.getId(),umsCollect.getId());
-    }
-
-    @Override
-    public UmsUser getUserById(Long id) {
-        return userDao.selectUserById(id);
-    }
-
-    @Override
-    public void delUserInfoCache(String telephone) {
-        userCacheService.delUser(telephone);
+    public UmsUserInfo getUserById(Long id) {
+        return umsUserDao.selectUserInfoById(id);
     }
 
 }

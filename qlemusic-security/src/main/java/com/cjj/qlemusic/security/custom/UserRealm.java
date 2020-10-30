@@ -11,12 +11,16 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 用于用户登录时的校验
  */
 public class UserRealm extends AuthorizingRealm {
+    private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
+
     @Autowired
     private UmsAdminService umsAdminService;
     @Autowired
@@ -29,7 +33,7 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        System.out.println("❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥ UserRealm（授权中）");
+        LOGGER.info("❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥ UserRealm（授权中）");
         //获取身份
         String token = (String) principalCollection.getPrimaryPrincipal();
         //获取账号
@@ -48,39 +52,42 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        System.out.println("❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥ UserRealm（认证中）");
-        String account = (String) authenticationToken.getPrincipal();
+        LOGGER.info("❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥ UserRealm（认证中）");
+        String identity = (String) authenticationToken.getPrincipal();
         UmsUser umsUser = null;
         UmsAdmin umsAdmin = null;
         SimpleAuthenticationInfo authenticationInfo = null;
-        if(account.length() == 11) {
-            umsUser = umsUserService.getUserByTelephone(account);
-            //判断是否存在
-            if(umsUser == null){
-                throw new UnknownAccountException("账号未注册");
-            }
-            authenticationInfo = new SimpleAuthenticationInfo(
-                    umsUser.getTelephone(),
-                    umsUser.getPassword(),
-                    new SimpleByteSourceUtil(umsUser.getSalt().getBytes()),
-                    getName()
-            );
-            return authenticationInfo;
+        //判断是用户登录还是管理员
+        if(!identity.contains("admin")) {
+            //用户
+            umsUser = umsUserService.getUserByIdentity(identity);
+            System.out.println(umsUser);
+            authenticationInfo = getAuthenticationInfo(umsUser.getIdentity(),umsUser.getCredential(),umsUser.getSalt());
+        } else{
+            //管理员
+            umsAdmin = umsAdminService.getAdminByAccount(identity);
+            authenticationInfo = getAuthenticationInfo(umsAdmin.getAccount(),umsAdmin.getPassword(),umsAdmin.getSalt());
         }
-        else{
-            //从数据库获取管理员用户信息
-            umsAdmin = umsAdminService.getAdminByAccount(account);
-            //判断是否存在
-            if(umsAdmin == null){
-                throw new UnknownAccountException("账号未注册");
-            }
-            authenticationInfo = new SimpleAuthenticationInfo(
-                    umsAdmin.getAccount(),
-                    umsAdmin.getPassword(),
-                    new SimpleByteSourceUtil(umsAdmin.getSalt().getBytes()),
-                    getName()
-            );
-            return authenticationInfo;
+        //判断是否存在
+        if(umsUser == null && umsAdmin == null){
+            throw new UnknownAccountException("账号未注册");
         }
+        return authenticationInfo;
+    }
+
+    /**
+     * 获取认证信息
+     * @param identity
+     * @param credential
+     * @param salt
+     * @return
+     */
+    public SimpleAuthenticationInfo getAuthenticationInfo(String identity,String credential,String salt){
+        return new SimpleAuthenticationInfo(
+                identity,
+                credential,
+                new SimpleByteSourceUtil(salt.getBytes()),
+                getName()
+        );
     }
 }

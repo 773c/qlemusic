@@ -29,17 +29,20 @@ public class UmsUserVisitCacheServiceImpl implements UmsUserVisitCacheService {
 
     @Override
     public void incrementVisitedCount(Long userId) {
-        redisService.hincrement(database+userVisitCountKey,userId.toString(),1);
+        String keys = database+userVisitCountKey;
+        redisService.hincrement(keys,userId.toString(),1);
     }
 
     @Override
     public void setVisitedCount(Long userId,Integer visitCount) {
-        redisService.hset(database+userVisitCountKey,userId.toString(),visitCount);
+        String keys = database+userVisitCountKey;
+        redisService.hset(keys,userId.toString(),visitCount);
     }
 
     @Override
     public Integer getVisitedCount(Long userId) {
-        return (Integer) redisService.hget(database+userVisitCountKey,userId.toString());
+        String keys = database+userVisitCountKey;
+        return (Integer) redisService.hget(keys,userId.toString());
     }
 
     @Override
@@ -63,6 +66,7 @@ public class UmsUserVisitCacheServiceImpl implements UmsUserVisitCacheService {
 
     @Override
     public void delVisitedCount(Long userId) {
-        redisService.hdel(database+userVisitCountKey,userId.toString());
+        String keys = database+userVisitCountKey;
+        redisService.hdel(keys,userId.toString());
     }
 }

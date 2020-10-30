@@ -1,6 +1,8 @@
 package com.cjj.qlemusic.portal.components;
 
 
+import cn.hutool.core.date.DateUtil;
+import com.cjj.qlemusic.common.util.VerifyUtil;
 import com.cjj.qlemusic.portal.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +13,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Date;
 
 
 @Component
@@ -32,7 +35,7 @@ public class ScheduleTask {
      * 点赞、播放、评论、访问数量的更新写入数据库操作
      * @throws IOException
      */
-    @Scheduled(cron="0 0/3 * * * ? ")//每过4分钟执行
+//    @Scheduled(cron="0 0/3 * * * ? ")//每过4分钟执行
     public void likeAfterSave() throws IOException {
         LOGGER.info("数据库更新开始");
         try {
@@ -48,5 +51,12 @@ public class ScheduleTask {
         }finally {
 
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("eiqle_"+
+                DateUtil.dayOfMonth(DateUtil.date())%10 +
+                VerifyUtil.getSixNumber() +
+                DateUtil.format(new Date(),"ss"));
     }
 }

@@ -3,6 +3,7 @@ package com.cjj.qlemusic.portal.dao;
 import com.cjj.qlemusic.portal.entity.UmsUserSetPassword;
 import com.cjj.qlemusic.portal.entity.UmsUserSetTelephone;
 import com.cjj.qlemusic.security.entity.UmsUser;
+import com.cjj.qlemusic.security.entity.UmsUserInfo;
 
 /**
  * 用户设置Dao
@@ -22,13 +23,6 @@ public interface UmsUserSetDao {
     void updatePassword(UmsUserSetPassword umsUserSetPassword);
 
     /**
-     * 根据id获取手机号
-     * @param userId
-     * @return
-     */
-    String selectTelephoneById(Long userId);
-
-    /**
      * 修改手机号
      * @param umsUserSetTelephone
      */
@@ -40,4 +34,24 @@ public interface UmsUserSetDao {
      * @return
      */
     Long selectUserByNewTelephone(String newTelephone);
+
+    /**
+     * 根据id获取用户信息
+     * @param userId
+     * @return
+     */
+    UmsUserInfo selectUserInfoById(Long userId);
+
+    /**
+     * 更新用户信息中的手机号
+     * @param umsUserSetTelephone
+     */
+    void updateUserInfoToTelephone(UmsUserSetTelephone umsUserSetTelephone);
+
+    /**
+     * 根据用户id查询条数
+     * @param userId
+     * @return
+     */
+    int selectUserCountByUserId(Long userId);
 }

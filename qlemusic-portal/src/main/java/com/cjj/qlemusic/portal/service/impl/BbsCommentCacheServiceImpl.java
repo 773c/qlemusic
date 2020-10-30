@@ -5,7 +5,7 @@ import com.cjj.qlemusic.portal.entity.BbsMusicOperation;
 import com.cjj.qlemusic.portal.entity.BbsReplyuserComment;
 import com.cjj.qlemusic.portal.entity.BbsUserComment;
 import com.cjj.qlemusic.portal.service.BbsCommentCacheService;
-import com.cjj.qlemusic.security.entity.UmsUser;
+import com.cjj.qlemusic.security.entity.UmsUserInfo;
 import com.cjj.qlemusic.security.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,65 +40,69 @@ public class BbsCommentCacheServiceImpl implements BbsCommentCacheService {
 //        redisService.lpush(
 //                database+userCommentKey+bbsUserComment.getMusicId()+":",
 //                bbsUserComment);
+        String key = database+userCommentKey+bbsUserComment.getMusicId()+":";
         Double formatCreateTime = Double.parseDouble(
                 DateUtil.format(bbsUserComment.getCreateTime(),
                         "yyyyMMdd.HHmmss"));
-        redisService.addZset(
-                database+userCommentKey+bbsUserComment.getMusicId()+":",
-                bbsUserComment,
-                formatCreateTime);
+        redisService.addZset(key, bbsUserComment, formatCreateTime);
     }
 
     @Override
     public Object getUserComment(Long musicId) {
-        return redisService.getZsetAll(database+userCommentKey+musicId+":",0,-1);
+        String key = database+userCommentKey+musicId+":";
+        return redisService.getZsetAll(key,0,-1);
     }
 
     @Override
     public void delUserCommentByMusic(Long musicId) {
-        redisService.delZset(database + userCommentKey+musicId+":",0,-1);
+        String key = database + userCommentKey+musicId+":";
+        redisService.delZset(key,0,-1);
     }
 
     @Override
     public void setReplyuserComment(BbsReplyuserComment bbsReplyuserComment) {
 //        redisService.lpush(database+replyUserCommentKey,bbsReplyuserComment);
+        String key = database+replyUserCommentKey+bbsReplyuserComment.getMusicId()+":";
         Double formatCreateTime = Double.parseDouble(
                 DateUtil.format(bbsReplyuserComment.getCreateTime(),
                         "yyyyMMdd.HHmmss"));
-        redisService.addZset(
-                database+replyUserCommentKey+bbsReplyuserComment.getMusicId()+":",
-                bbsReplyuserComment,
-                formatCreateTime);
+        redisService.addZset(key, bbsReplyuserComment, formatCreateTime);
     }
 
     @Override
     public void delReplyuserCommentByMusic(Long musicId) {
-        redisService.delZset(database + replyUserCommentKey + musicId+":",0,-1);
+        String key = database + replyUserCommentKey + musicId+":";
+        redisService.delZset(key,0,-1);
     }
 
     @Override
     public void incrementCommentCount(Long commentedId) {
-        redisService.hincrement(database+commentedCountKey,commentedId.toString(),1);
+        String key = database+commentedCountKey;
+        redisService.hincrement(key,commentedId.toString(),1);
     }
 
     @Override
     public void decrementCommentCount(Long commentedId) {
-        redisService.hdecrement(database+commentedCountKey,commentedId.toString(),-1);
+        String key = database+commentedCountKey;
+        redisService.hdecrement(key,commentedId.toString(),-1);
     }
 
     @Override
     public void delCommentedCount(Long commentedId) {
-        redisService.hdel(database+commentedCountKey,commentedId.toString());
+        String keys = database+commentedCountKey;
+        redisService.hdel(keys,commentedId.toString());
     }
 
     @Override
     public Integer getCommentedCount(Long commentedId) {
-        return (Integer) redisService.hget(database+commentedCountKey,commentedId.toString());
+        String keys = database+commentedCountKey;
+        return (Integer) redisService.hget(keys,commentedId.toString());
     }
 
     @Override
     public void setCommentedCount(Long commentedId,Integer commentCount) {
-        redisService.hset(database+commentedCountKey,commentedId.toString(),commentCount);
+        String keys = database+commentedCountKey;
+        redisService.hset(keys,commentedId.toString(),commentCount);
     }
 
     @Override
@@ -141,27 +145,29 @@ public class BbsCommentCacheServiceImpl implements BbsCommentCacheService {
     }
 
     @Override
-    public List<UmsUser> getUserInfoList() throws IOException {
+    public List<UmsUserInfo> getUserInfoList() throws IOException {
         Cursor<Map.Entry<Object, Object>> cursor = redisService.hscan(database+userInfoToCommentKey, ScanOptions.NONE);
-        List<UmsUser> list = new ArrayList<>();
+        List<UmsUserInfo> list = new ArrayList<>();
         while (cursor.hasNext()){
             Map.Entry<Object,Object> entry = cursor.next();
             String key = (String) entry.getKey();
-            UmsUser umsUser = (UmsUser) entry.getValue();
-            list.add(umsUser);
+            UmsUserInfo umsUserInfo = (UmsUserInfo) entry.getValue();
+            list.add(umsUserInfo);
         }
         cursor.close();
         return list;
     }
 
     @Override
-    public void setUserInfoToComment(UmsUser umsUser) {
-        redisService.hset(database+userInfoToCommentKey,umsUser.getId().toString(),umsUser);
+    public void setUserInfoToComment(UmsUserInfo umsUserInfo) {
+        String keys = database+userInfoToCommentKey;
+        redisService.hset(keys, umsUserInfo.getId().toString(), umsUserInfo);
     }
 
     @Override
     public void delUserInfoToComment(Long userId) {
-        redisService.hdel(database+userInfoToCommentKey,userId.toString());
+        String keys = database+userInfoToCommentKey;
+        redisService.hdel(keys,userId.toString());
     }
 
 }

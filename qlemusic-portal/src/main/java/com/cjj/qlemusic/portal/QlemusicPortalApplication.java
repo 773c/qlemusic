@@ -6,7 +6,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication(scanBasePackages = "com.cjj.qlemusic")
-public class QlemusicPortalApplication extends SpringBootServletInitializer{
+public class QlemusicPortalApplication{
     public static void main(String[] args) {
         SpringApplication.run(QlemusicPortalApplication.class,args);
     }

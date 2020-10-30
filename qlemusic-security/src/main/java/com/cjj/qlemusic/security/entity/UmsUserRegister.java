@@ -13,6 +13,7 @@ public class UmsUserRegister implements Serializable{
     private final static long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "手机号")
+    @NotEmpty(message = "手机号不能为空")
     private String telephone;
 
     @ApiModelProperty(value = "密码")

@@ -3,7 +3,7 @@ package com.cjj.qlemusic.portal.dao;
 import com.cjj.qlemusic.portal.entity.BbsMusicOperation;
 import com.cjj.qlemusic.portal.entity.BbsReplyuserComment;
 import com.cjj.qlemusic.portal.entity.BbsUserComment;
-import com.cjj.qlemusic.security.entity.UmsUser;
+import com.cjj.qlemusic.security.entity.UmsUserInfo;
 
 import java.util.List;
 import java.util.Set; /**
@@ -102,5 +102,5 @@ public interface BbsCommentDao {
      * @param userIdSet
      * @return
      */
-    List<UmsUser> selectUserByIds(Set<Long> userIdSet);
+    List<UmsUserInfo> selectUserByIds(Set<Long> userIdSet);
 }

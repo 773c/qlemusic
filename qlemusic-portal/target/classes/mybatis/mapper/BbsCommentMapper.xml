@@ -150,19 +150,20 @@
         where
             music_id = #{musicId}
     </select>
-    <select id="selectUserByIds" resultType="UmsUser">
+    <select id="selectUserByIds" resultType="UmsUserInfo">
         select
             id,
             unique_id as uniqueId,
-            head_icon as headIcon,
             name,
             sex,
-            telephone,
+            avatar,
             create_time as createTime,
+            description,
+            telephone,
             email,
-            description
+            oauth_id as oauthId
         from 
-            ums_user
+            ums_user_info
         where 
             id 
         in 

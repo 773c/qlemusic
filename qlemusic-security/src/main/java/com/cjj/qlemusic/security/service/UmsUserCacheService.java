@@ -1,6 +1,5 @@
 package com.cjj.qlemusic.security.service;
 
-
 import com.cjj.qlemusic.security.entity.UmsUser;
 
 /**
@@ -8,22 +7,23 @@ import com.cjj.qlemusic.security.entity.UmsUser;
  */
 public interface UmsUserCacheService {
     /**
-     * 设置用户缓存
+     * 存储用户缓存
      * @param umsUser
      */
     void setUser(UmsUser umsUser);
 
     /**
      * 获取用户缓存
-     * @param telephone
+     * @param identity
      */
-    UmsUser getUser(String telephone);
+    UmsUser getUser(String identity);
 
     /**
      * 删除用户缓存
-     * @param telephone
+     * @param identity
      */
-    void delUser(String telephone);
+    void delUser(String identity);
+
 
     /**
      * 设置手机验证码

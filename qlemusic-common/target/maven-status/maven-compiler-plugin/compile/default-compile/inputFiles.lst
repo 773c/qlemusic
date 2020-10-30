@@ -1,8 +1,11 @@
 F:\javaweb\qlemusic\qlemusic-common\src\main\java\com\cjj\qlemusic\common\util\TelephoneUtil.java
 F:\javaweb\qlemusic\qlemusic-common\src\main\java\com\cjj\qlemusic\common\exception\Asserts.java
 F:\javaweb\qlemusic\qlemusic-common\src\main\java\com\cjj\qlemusic\common\exception\GlobalExceptionHandler.java
+F:\javaweb\qlemusic\qlemusic-common\src\main\java\com\cjj\qlemusic\common\util\UuidUtil.java
+F:\javaweb\qlemusic\qlemusic-common\src\main\java\com\cjj\qlemusic\common\constant\QueueConstant.java
 F:\javaweb\qlemusic\qlemusic-common\src\main\java\com\cjj\qlemusic\common\util\PageUtil.java
 F:\javaweb\qlemusic\qlemusic-common\src\main\java\com\cjj\qlemusic\common\exception\ApiException.java
+F:\javaweb\qlemusic\qlemusic-common\src\main\java\com\cjj\qlemusic\common\util\FileUploadUtil.java
 F:\javaweb\qlemusic\qlemusic-common\src\main\java\com\cjj\qlemusic\common\util\ResponseResultUtil.java
 F:\javaweb\qlemusic\qlemusic-common\src\main\java\com\cjj\qlemusic\common\constant\StatusCodeConstant.java
 F:\javaweb\qlemusic\qlemusic-common\src\main\java\com\cjj\qlemusic\common\util\VerifyUtil.java

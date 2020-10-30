@@ -17,7 +17,7 @@ public class BbsPlayController {
     @Autowired
     private BbsPlayService bbsPlayService;
 
-    @ApiOperation(value = "点赞")
+    @ApiOperation(value = "播放量")
     @GetMapping("/bbsmusic")
     public ResponseResultUtil playBbsMusic(@RequestParam(value = "musicId") Long musicId) {
         int count = bbsPlayService.playBbsMusic(musicId);

@@ -32,9 +32,9 @@ public class BbsLikeServiceImpl implements BbsLikeService {
     @Autowired
     private BbsLikeCacheService bbsLikeCacheService;
 
-
     @Override
     public Map<String,Object> like(BbsUserLike bbsUserLike) throws IOException {
+        LOGGER.info("❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥ 用户 "+bbsUserLike.getUserId()+" 点赞音乐："+bbsUserLike.getMusicId());
         Object isLike = bbsLikeCacheService.getUserLike(bbsUserLike.getMusicId(), bbsUserLike.getUserId());
         //当缓存中存在，说明该用户已经点赞过
         if(isLike != null){

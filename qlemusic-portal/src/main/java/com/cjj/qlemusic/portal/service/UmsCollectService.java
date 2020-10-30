@@ -1,7 +1,7 @@
-package com.cjj.qlemusic.security.service;
+package com.cjj.qlemusic.portal.service;
 
 
-import com.cjj.qlemusic.security.entity.UmsCollect;
+import com.cjj.qlemusic.portal.entity.UmsCollect;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

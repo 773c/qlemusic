@@ -5,7 +5,7 @@ import com.cjj.qlemusic.common.util.ResponseResultUtil;
 import com.cjj.qlemusic.portal.entity.BbsReplyuserComment;
 import com.cjj.qlemusic.portal.entity.BbsUserComment;
 import com.cjj.qlemusic.portal.service.BbsCommentService;
-import com.cjj.qlemusic.security.entity.UmsUser;
+import com.cjj.qlemusic.security.entity.UmsUserInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Api(value = "评论管理")
@@ -81,8 +80,8 @@ public class BbsCommentController {
     @PostMapping("/getUserByComment")
     public ResponseResultUtil getUserByComment(@RequestParam(value = "userIds") List<Long> userIds) {
         try {
-            List<UmsUser> umsUserList = bbsCommentService.getUserByComment(userIds);
-            return ResponseResultUtil.success(umsUserList);
+            List<UmsUserInfo> umsUserInfoList = bbsCommentService.getUserByComment(userIds);
+            return ResponseResultUtil.success(umsUserInfoList);
         } catch (Exception e) {
             return ResponseResultUtil.failed("未知错误");
         }

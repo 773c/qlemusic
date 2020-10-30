@@ -1,11 +1,10 @@
 package com.cjj.qlemusic.portal.entity;
 
-import com.cjj.qlemusic.security.entity.UmsUser;
+import com.cjj.qlemusic.security.entity.UmsUserInfo;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class BbsMusic implements Serializable {
     private Date releaseTime;
 
     @ApiModelProperty(value = "用户信息")
-    private UmsUser umsUser;
+    private UmsUserInfo umsUserInfo;
 
     @ApiModelProperty(value = "点赞,查看,评论的次数")
     private BbsMusicOperation bbsMusicOperation;
@@ -122,12 +121,12 @@ public class BbsMusic implements Serializable {
         this.releaseTime = releaseTime;
     }
 
-    public UmsUser getUmsUser() {
-        return umsUser;
+    public UmsUserInfo getUmsUserInfo() {
+        return umsUserInfo;
     }
 
-    public void setUmsUser(UmsUser umsUser) {
-        this.umsUser = umsUser;
+    public void setUmsUserInfo(UmsUserInfo umsUserInfo) {
+        this.umsUserInfo = umsUserInfo;
     }
 
     public BbsMusicOperation getBbsMusicOperation() {

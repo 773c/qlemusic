@@ -3,61 +3,100 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cjj.qlemusic.security.dao.UmsUserDao">
-    <resultMap id="userMap" type="UmsUser">
+    <resultMap id="umsUserMap" type="UmsUser">
         <id property="id" column="id"/>
-        <result property="uniqueId" column="unique_id"/>
-        <result property="headIcon" column="head_icon"/>
-        <result property="name" column="name"/>
-        <result property="sex" column="sex"/>
-        <result property="telephone" column="telephone"/>
-        <result property="password" column="password"/>
-        <result property="salt" column="salt"/>
-        <result property="createTime" column="create_time"/>
-        <result property="email" column="email"/>
-        <result property="description" column="description"/>
-        <result property="available" column="available"/>
+        <result column="identity" property="identity"/>
+        <result column="credential" property="credential"/>
+        <result column="salt" property="salt"/>
+        <result column="login_type" property="loginType"/>
+        <result column="expired_time" property="expiredTime"/>
+        <result column="available" property="available"/>
+        <association column="user_id" property="umsUserInfo" javaType="UmsUserInfo">
+            <id column="user_id" property="id"/>
+            <result column="unique_id" property="uniqueId"/>
+            <result column="avatar" property="avatar"/>
+            <result column="name" property="name"/>
+            <result column="sex" property="sex"/>
+            <result column="create_time" property="createTime"/>
+            <result column="description" property="description"/>
+            <result column="telephone" property="telephone"/>
+            <result column="email" property="email"/>
+            <result column="oauth_id" property="oauthId"/>
+        </association>
     </resultMap>
 
-    <sql id="userCol">
-        id,
-        unique_id,
-        head_icon,
-        name,
-        sex,
-        telephone,
-        password,
-        salt,
-        create_time,
-        email,
-        description,
-        available
-    </sql>
-    <insert id="insert">
+    <resultMap id="umsUserInfoMap" type="UmsUserInfo">
+        <id property="id" column="id"/>
+        <result column="unique_id" property="uniqueId"/>
+        <result column="avatar" property="avatar"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="create_time" property="createTime"/>
+        <result column="description" property="description"/>
+        <result column="telephone" property="telephone"/>
+        <result column="email" property="email"/>
+        <result column="oauth_id" property="oauthId"/>
+    </resultMap>
+
+    <insert id="insertUserInfo">
         insert into
-            ums_user(unique_id,head_icon,name,telephone,password,salt,create_time,available)
+            ums_user_info(unique_id,avatar,name,create_time,telephone,email,oauth_id)
         values
-            (#{uniqueId},#{headIcon},#{name},#{telephone},#{password},#{salt},#{createTime},#{available})
+            (#{uniqueId},#{avatar},#{name},#{createTime},#{telephone},#{email},#{oauthId})
         <selectKey resultType="java.lang.Long" keyProperty="id">
             SELECT LAST_INSERT_ID() AS id
         </selectKey>
     </insert>
-    <insert id="createCollect">
+    <insert id="insertUser">
         insert into
-            ums_collect(name)
-        value
-            (#{name})
+            ums_user(identity,credential,salt,login_type,user_id,expired_time,available)
+        values
+            (#{identity},#{credential},#{salt},#{loginType},#{umsUserInfo.id},#{expiredTime},#{available})
     </insert>
-    <select id="selectUserByTelephone" resultMap="userMap">
+    <insert id="insertCollect">
+        insert into
+            ums_collect(name,description)
+        values
+            (#{name},#{description})
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+    <insert id="insertUserAndCollect">
+        insert into
+            ums_user_collect(user_id,collect_id)
+        values
+            (#{userId},#{collectId})
+    </insert>
+    <update id="updateUser">
+        update
+            ums_user
+        set
+            credential=#{credential}
+        where
+            identity=#{identity}
+    </update>
+    <select id="selectUserByIdentity" resultMap="umsUserMap">
         select
-            <include refid="userCol"/>
+            u.id,u.identity,u.credential,u.salt,u.user_id,
+            ui.unique_id,ui.avatar,ui.name,ui.sex,ui.create_time,ui.description,ui.telephone,ui.email,ui.oauth_id
+        from
+            ums_user u
+            join ums_user_info ui on u.user_id = ui.id
+        where
+            u.identity=#{identity}
+    </select>
+    <select id="selectUserIdByIdentity" resultType="java.lang.Long">
+        select
+            id
         from
             ums_user
         where
-            telephone = #{telephone}
+            identity=#{identity}
     </select>
-    <update id="updateInfo">
+    <update id="updateUserInfo">
         update
-            ums_user
+            ums_user_info
         set
             name=#{name},
             sex=#{sex},
@@ -65,17 +104,17 @@
         where
             id = #{id}
     </update>
-    <select id="selectUserById" resultMap="userMap">
+    <select id="selectUserInfoById" resultMap="umsUserInfoMap">
         select
-            <include refid="userCol"/>
+            id,unique_id,avatar,name,sex,create_time,description,telephone,email,oauth_id
         from
-            ums_user
+            ums_user_info
         where
             id = #{id}
     </select>
     <update id="updateUniqueId">
         update
-            ums_user
+            ums_user_info
         set
             unique_id=#{uniqueId}
         where
@@ -97,17 +136,17 @@
     </insert>
     <update id="updateAvatar">
         update
-            ums_user
+            ums_user_info
         set
-            head_icon=#{headIcon}
+            avatar=#{avatar}
         where
             id = #{id}
     </update>
-    <select id="selectUserByIds" resultMap="userMap">
+    <select id="selectUserInfoByIds" resultMap="umsUserInfoMap">
         select
             id,name,head_icon
         from
-            ums_user
+            ums_user_info
         where
             id
         in

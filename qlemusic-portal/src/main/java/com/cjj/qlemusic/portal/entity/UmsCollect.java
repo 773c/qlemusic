@@ -1,4 +1,4 @@
-package com.cjj.qlemusic.security.entity;
+package com.cjj.qlemusic.portal.entity;
 
 import io.swagger.annotations.ApiModelProperty;
 

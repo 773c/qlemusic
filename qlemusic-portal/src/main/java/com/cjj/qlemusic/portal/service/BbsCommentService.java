@@ -3,7 +3,7 @@ package com.cjj.qlemusic.portal.service;
 import com.cjj.qlemusic.portal.entity.BbsMusicOperation;
 import com.cjj.qlemusic.portal.entity.BbsReplyuserComment;
 import com.cjj.qlemusic.portal.entity.BbsUserComment;
-import com.cjj.qlemusic.security.entity.UmsUser;
+import com.cjj.qlemusic.security.entity.UmsUserInfo;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +30,7 @@ public interface BbsCommentService {
      * 获取评论的用户
      * @param userIds
      */
-    List<UmsUser> getUserByComment(List<Long> userIds);
+    List<UmsUserInfo> getUserByComment(List<Long> userIds);
 
     /**
      * 获取对应音乐id的评论
@@ -41,9 +41,9 @@ public interface BbsCommentService {
 
     /**
      * 设置评论的用户信息
-     * @param umsUser
+     * @param umsUserInfo
      */
-    void setUserInfo(UmsUser umsUser) throws IOException;
+    void setUserInfo(UmsUserInfo umsUserInfo) throws IOException;
 
     /**
      * 获取对应音乐id的评论数量

@@ -2,8 +2,8 @@ package com.cjj.qlemusic.security.service;
 
 
 import com.aliyuncs.exceptions.ClientException;
-import com.cjj.qlemusic.security.entity.UmsUser;
-import com.cjj.qlemusic.security.entity.UmsUserRegister;
+import com.cjj.qlemusic.security.entity.*;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -15,15 +15,17 @@ public interface UmsUserService {
     /**
      * 用户手机号注册
      * @param umsUserRegister
+     * @return
      */
-    UmsUser register(UmsUserRegister umsUserRegister);
+    @Transactional
+    int register(UmsUserRegister umsUserRegister);
 
     /**
      * 匹配验证码
-     * @param umsUser
+     * @param umsUserLogin
      * @return
      */
-    boolean matchVerify(UmsUser umsUser);
+    boolean matchVerify(UmsUserLogin umsUserLogin);
 
     /**
      * 发送短信
@@ -40,33 +42,33 @@ public interface UmsUserService {
     UmsUser setUserInfo(UmsUser umsUser);
 
     /**
-     * 用户登录
-     * @param umsUser
+     * 手机验证码登录
+     * @param umsUserLogin
      * @return
      */
-    String login(UmsUser umsUser);
+    String login(UmsUserLogin umsUserLogin);
 
     /**
      * 根据手机号查询用户
-     * @param telephone
+     * @param identity
      * @return
      */
-    UmsUser getUserByTelephone(String telephone);
+    UmsUser getUserByIdentity(String identity);
 
     /**
      * 修改用户信息
-     * @param umsUser
+     * @param umsUserInfo
      * @return
      */
-    int updateInfo(UmsUser umsUser);
+    int updateUserInfo(UmsUserInfo umsUserInfo);
 
     /**
      * 修改用户唯一ID
-     * @param id
-     * @param uniqueId
+     * @param umsUserInfo
      * @return
      */
-    int updateUniqueId(Long id,String uniqueId);
+    @Transactional
+    int updateUniqueId(UmsUserInfo umsUserInfo);
 
     /**
      * 查询用户是否修改过唯一ID
@@ -85,21 +87,10 @@ public interface UmsUserService {
     String updateAvatar(Long id,String uniqueId,MultipartFile file) throws IOException;
 
     /**
-     * 添加默认收藏夹
-     * @param regUser
-     */
-    void addDefaultCollect(UmsUser regUser);
-
-    /**
      * 查询用户
      * @param id
      * @return
      */
-    UmsUser getUserById(Long id);
+    UmsUserInfo getUserById(Long id);
 
-    /**
-     * 清除用户缓存
-     * @param telephone
-     */
-    void delUserInfoCache(String telephone);
 }

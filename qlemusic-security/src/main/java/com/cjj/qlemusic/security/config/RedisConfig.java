@@ -1,7 +1,5 @@
 package com.cjj.qlemusic.security.config;
 
-import com.cjj.qlemusic.security.service.RedisService;
-import com.cjj.qlemusic.security.service.impl.RedisServiceImpl;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,7 +31,6 @@ public class RedisConfig  {
 
         //string序列化
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-
         //key采用String序列化
         template.setKeySerializer(stringRedisSerializer);
         //hashKey

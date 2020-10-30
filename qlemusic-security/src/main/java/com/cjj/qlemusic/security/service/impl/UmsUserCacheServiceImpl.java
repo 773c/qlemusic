@@ -32,19 +32,21 @@ public class UmsUserCacheServiceImpl implements UmsUserCacheService {
 
     @Override
     public void setUser(UmsUser umsUser) {
-        String key = database + admin + umsUser.getTelephone();
-        redisService.set(key,umsUser,expiration);
+        String key = database + admin + umsUser.getIdentity();
+        redisService.set(key, umsUser,expiration);
     }
 
+
     @Override
-    public UmsUser getUser(String telephone) {
-        String key = database + admin + telephone;
+    public UmsUser getUser(String identity) {
+        String key = database + admin + identity;
         return (UmsUser) redisService.get(key);
     }
 
+
     @Override
-    public void delUser(String telephone) {
-        String key = database + admin + telephone;
+    public void delUser(String identity) {
+        String key = database + admin + identity;
         redisService.del(key);
     }
 

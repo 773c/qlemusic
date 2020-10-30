@@ -3,6 +3,9 @@ com\cjj\qlemusic\common\exception\GlobalExceptionHandler.class
 com\cjj\qlemusic\common\exception\ApiException.class
 com\cjj\qlemusic\common\util\PageUtil.class
 com\cjj\qlemusic\common\util\VerifyUtil.class
+com\cjj\qlemusic\common\util\FileUploadUtil.class
 com\cjj\qlemusic\common\util\ResponseResultUtil.class
+com\cjj\qlemusic\common\util\UuidUtil.class
 com\cjj\qlemusic\common\util\TelephoneUtil.class
 com\cjj\qlemusic\common\constant\StatusCodeConstant.class
+com\cjj\qlemusic\common\constant\QueueConstant.class

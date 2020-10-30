@@ -1,6 +1,7 @@
 package com.cjj.qlemusic.portal.controller;
 
 import com.cjj.qlemusic.common.util.ResponseResultUtil;
+import com.cjj.qlemusic.portal.entity.UmsUserSetBindTelephone;
 import com.cjj.qlemusic.portal.entity.UmsUserSetPassword;
 import com.cjj.qlemusic.portal.entity.UmsUserSetTelephone;
 import com.cjj.qlemusic.portal.service.UmsUserSetService;
@@ -34,6 +35,21 @@ public class UmsUserSetController {
     public ResponseResultUtil updateTelephone(@RequestBody @Validated UmsUserSetTelephone umsUserSetTelephone, BindingResult result){
         try {
             int count = umsUserSetService.updateTelephone(umsUserSetTelephone);
+            if(count > 0){
+                return ResponseResultUtil.success(count);
+            }else {
+                return ResponseResultUtil.failed("未知错误");
+            }
+        }catch (NullPointerException e){
+            return ResponseResultUtil.failed(e.getMessage());
+        }
+    }
+
+    @ApiOperation(value = "修改手机号")
+    @PostMapping("/bindTelephone")
+    public ResponseResultUtil bindTelephone(@RequestBody @Validated UmsUserSetBindTelephone umsUserSetTelephone, BindingResult result){
+        try {
+            int count = umsUserSetService.bindTelephone(umsUserSetTelephone);
             if(count > 0){
                 return ResponseResultUtil.success(count);
             }else {

@@ -5,8 +5,7 @@ import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.aliyuncs.exceptions.ClientException;
 import com.cjj.qlemusic.common.util.ResponseResultUtil;
-import com.cjj.qlemusic.security.entity.UmsUser;
-import com.cjj.qlemusic.security.entity.UmsUserRegister;
+import com.cjj.qlemusic.security.entity.*;
 import com.cjj.qlemusic.security.service.UmsUserService;
 import com.cjj.qlemusic.security.util.JwtTokenUtil;
 import io.swagger.annotations.Api;
@@ -29,46 +28,34 @@ import java.util.Map;
 
 @Api(value = "用户管理")
 @RestController
-@RequestMapping("/portal")
+@RequestMapping("/user")
 public class UmsUserController {
     @Value("${jwt.tokenHeader}")
     private String tokenHeader;
     @Value("${jwt.tokenHead}")
     private String tokenHead;
     @Autowired
-    private UmsUserService userService;
+    private UmsUserService umsUserService;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
-
-    @ApiOperation(value = "qq授权")
-    @RequestMapping("/connectqq")
-    public String connectqq(HttpServletRequest request) {
-        String accessToken = request.getParameter("access_token");
-        return accessToken;
-    }
-
 
 
     @ApiOperation(value = "手机号注册")
     @PostMapping("/telRegister")
     public ResponseResultUtil telRegister(@RequestBody @Validated UmsUserRegister umsUserRegister, BindingResult result) {
-        System.out.println(umsUserRegister);
-        UmsUser regUser = userService.register(umsUserRegister);
-        if (regUser == null)
-            return ResponseResultUtil.failed();
-        else if (regUser.getAvailable() == true)
+        int count = umsUserService.register(umsUserRegister);
+        if (count > 0)
             return ResponseResultUtil.success();
         else
-            return ResponseResultUtil.failed("账号已注册，请直接登录");
+            return ResponseResultUtil.failed("未知错误");
     }
 
     @ApiOperation(value = "匹配验证码")
     @PostMapping("/matchVerify")
-    public ResponseResultUtil matchVerify(@RequestBody @Validated UmsUser umsUser, BindingResult result) {
-        System.out.println(umsUser);
+    public ResponseResultUtil matchVerify(@RequestBody @Validated UmsUserLogin umsUserLogin, BindingResult result) {
         boolean isMatch = false;
         try {
-            isMatch = userService.matchVerify(umsUser);
+            isMatch = umsUserService.matchVerify(umsUserLogin);
         } catch (NullPointerException e) {
             return ResponseResultUtil.verifyCodeFailed(e.getMessage());
         }
@@ -80,11 +67,10 @@ public class UmsUserController {
 
     @ApiOperation(value = "发送短信")
     @PostMapping("/sendSms")
-    public ResponseResultUtil sendSms(@RequestParam(value = "telephone") String telephone) {
-        System.out.println(telephone);
+    public ResponseResultUtil sendSms(String telephone) {
         String data = null;
         try {
-            data = userService.sendSms(telephone);
+            data = umsUserService.sendSms(telephone);
         } catch (ClientException e) {
             e.printStackTrace();
         }
@@ -98,74 +84,71 @@ public class UmsUserController {
         }
     }
 
-    @ApiOperation(value = "密码或验证码登录")
+    @ApiOperation(value = "手机，邮箱账号密码或手机验证码登录")
     @PostMapping("/login")
-    public ResponseResultUtil login(@RequestBody @Validated UmsUser umsUser, BindingResult result) {
+    public ResponseResultUtil login(@RequestBody @Validated UmsUserLogin umsUserLogin, BindingResult result) {
         try {
-            String token = userService.login(umsUser);
-            if(token != null)
-                return ResponseResultUtil.success(token);
-            else
-                return ResponseResultUtil.failed("验证码错误");
+            String token = umsUserService.login(umsUserLogin);
+            return ResponseResultUtil.success(token);
         }catch (AuthenticationException e){
             return ResponseResultUtil.validateFailed("账号或密码错误");
         }catch (NullPointerException e){
+            e.printStackTrace();
             return ResponseResultUtil.validateFailed(e.getMessage());
         }
+
     }
 
     @ApiOperation(value = "获取用户信息")
     @RequestMapping("/info")
     public ResponseResultUtil getUserInfo(HttpServletRequest request){
-        System.out.println("获取用户信息");
-
+        System.out.println("❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥❥ 获取用户信息");
         String token = request.getHeader(tokenHeader).substring(tokenHead.length() + 1);
-        String telephone = jwtTokenUtil.getAccountFromToken(token);
-        //像这种频繁访问的数据可以放入redis缓存中
-        UmsUser umsUser = userService.getUserByTelephone(telephone);
-        System.out.println(umsUser);
+        String identity = jwtTokenUtil.getAccountFromToken(token);
         Map<String,Object> mapInfo = new HashMap<>();
-        mapInfo.put("id",umsUser.getId());
-        mapInfo.put("uniqueId",umsUser.getUniqueId());
-        mapInfo.put("name",umsUser.getName());
-        mapInfo.put("sex",umsUser.getSex());
-        mapInfo.put("telephone",umsUser.getTelephone());
-        mapInfo.put("createTime", DateUtil.formatDateTime(umsUser.getCreateTime()));
-        mapInfo.put("email",umsUser.getEmail());
-        mapInfo.put("description",umsUser.getDescription());
-        mapInfo.put("headIcon",umsUser.getHeadIcon());
-
+        //像这种频繁访问的数据可以放入redis缓存中
+        UmsUser umsUser = umsUserService.getUserByIdentity(identity);
+        System.out.println("umsUser："+JSONUtil.toJsonPrettyStr(umsUser));
+        //存入用户信息到map中
+        mapInfo.put("id", umsUser.getUmsUserInfo().getId());
+        mapInfo.put("uniqueId", umsUser.getUmsUserInfo().getUniqueId());
+        mapInfo.put("name", umsUser.getUmsUserInfo().getName());
+        mapInfo.put("sex", umsUser.getUmsUserInfo().getSex());
+        mapInfo.put("avatar", umsUser.getUmsUserInfo().getAvatar());
+        mapInfo.put("createTime", DateUtil.formatDateTime(umsUser.getUmsUserInfo().getCreateTime()));
+        mapInfo.put("description", umsUser.getUmsUserInfo().getDescription());
+        mapInfo.put("telephone", umsUser.getUmsUserInfo().getTelephone());
+        mapInfo.put("email", umsUser.getUmsUserInfo().getEmail());
+        mapInfo.put("oauthId", umsUser.getUmsUserInfo().getOauthId());
         return ResponseResultUtil.success(mapInfo);
     }
 
     @ApiOperation(value = "修改用户信息")
     @PostMapping(value = "/updateInfo")
-    public ResponseResultUtil updateInfo(@RequestBody UmsUser umsUser) {
-        System.out.println("修改用户信息："+umsUser);
-        int count = userService.updateInfo(umsUser);
+    public ResponseResultUtil updateUserInfo(@RequestBody UmsUserInfo umsUserInfo) {
+        int count = umsUserService.updateUserInfo(umsUserInfo);
         if(count > 0)
             return ResponseResultUtil.success(count);
         else
-            return ResponseResultUtil.failed("修改用户信息失败");
+            return ResponseResultUtil.failed("修改失败");
     }
 
     @ApiOperation(value = "修改用户唯一ID")
-    @GetMapping(value = "/updateUniqueId")
-    public ResponseResultUtil updateUniqueId(@RequestParam(value = "id") Long id,
-                                             @RequestParam(value = "uniqueId") String uniqueId) {
-        int count = userService.updateUniqueId(id,uniqueId);
+    @PostMapping(value = "/updateUniqueId")
+    public ResponseResultUtil updateUniqueId(@RequestBody @Validated UmsUserInfo umsUserInfo,BindingResult result) {
+        int count = umsUserService.updateUniqueId(umsUserInfo);
         if(count > 0)
             return ResponseResultUtil.success(count);
         else
-            return ResponseResultUtil.failed("修改唯一ID失败");
+            return ResponseResultUtil.failed("修改失败");
     }
 
     @ApiOperation(value = "查询是否修改过唯一ID")
     @GetMapping(value = "/isUpdateUniqueId")
     public ResponseResultUtil isUpdateUniqueId(@RequestParam(value = "id") Long id) {
-        Long userByIdFromUniqueId = userService.getUserByIdFromUniqueId(id);
+        Long userByIdFromUniqueId = umsUserService.getUserByIdFromUniqueId(id);
         if(userByIdFromUniqueId != null)
-            return ResponseResultUtil.failed("您的ID已修改，请勿重复操作");
+            return ResponseResultUtil.failed("修改次数已上限，请勿重复操作");
         else
             return ResponseResultUtil.success();
     }
@@ -177,20 +160,21 @@ public class UmsUserController {
                                            @RequestParam(value = "file") MultipartFile file) {
         String ossFileApiPath = null;
         try {
-            ossFileApiPath = userService.updateAvatar(id,uniqueId,file);
+            ossFileApiPath = umsUserService.updateAvatar(id,uniqueId,file);
         }catch (IOException e){
-            return ResponseResultUtil.failed("修改头像失败,IO异常");
+            e.printStackTrace();
+            return ResponseResultUtil.failed("修改失败");
         }
         if(ossFileApiPath != null)
             return ResponseResultUtil.success(ossFileApiPath);
         else
-            return ResponseResultUtil.failed("修改头像失败");
+            return ResponseResultUtil.failed("修改失败");
     }
 
     @ApiOperation(value = "查询用户")
     @GetMapping(value = "/getUserById")
     public ResponseResultUtil getUserById(@RequestParam(value = "id") Long id) {
-        UmsUser user = userService.getUserById(id);
+        UmsUserInfo user = umsUserService.getUserById(id);
         if(user != null)
             return ResponseResultUtil.success(user);
         else

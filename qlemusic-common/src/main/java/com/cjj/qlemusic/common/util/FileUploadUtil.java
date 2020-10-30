@@ -54,10 +54,5 @@ public class FileUploadUtil {
     }
 
     public static void main(String[] args) throws ParseException {
-        String time = "2020-10-14 18:22:59";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date parse = simpleDateFormat.parse(time);
-
-        System.out.println(parse.getTime());
     }
 }

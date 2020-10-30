@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cjj.qlemusic.security.dao.UmsCollectDao">
+<mapper namespace="com.cjj.qlemusic.portal.dao.UmsCollectDao">
     <insert id="createCollect" parameterType="UmsCollect">
         insert into
             ums_collect(name,description)

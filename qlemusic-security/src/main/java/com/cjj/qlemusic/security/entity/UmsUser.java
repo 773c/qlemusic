@@ -1,58 +1,37 @@
 package com.cjj.qlemusic.security.entity;
 
-import com.cjj.qlemusic.security.validator.LoginValidator;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
- * 用户实体类
+ * qq信息实体类
  */
-public class UmsUser implements Serializable{
-    private final static long serialVersionUID = 1L;
+public class UmsUser implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "用户id")
+    @ApiModelProperty(value = "id")
     private Long id;
 
-    @ApiModelProperty(value = "用户唯一标识ID")
-    private String uniqueId;
+    @ApiModelProperty(value = "手机号，邮箱，第三方唯一登录标识")
+    @NotEmpty(message = "账号不能为空")
+    private String identity;
 
-    @ApiModelProperty(value = "用户头像")
-    private String headIcon;
+    @ApiModelProperty(value = "登录密码，第三方令牌")
+    private String credential;
 
-    @ApiModelProperty(value = "名称")
-    private String name;
-
-    @ApiModelProperty(value = "性别")
-    private String sex;
-
-    @ApiModelProperty(value = "手机号")
-    @NotEmpty(message = "手机号不能为空")
-    private String telephone;
-
-    @ApiModelProperty(value = "验证码")
-    @LoginValidator(message = "验证码不能为空")
-    private String verify;
-
-    @ApiModelProperty(value = "密码")
-    @LoginValidator(message = "密码不能为空")
-    private String password;
-
-    @ApiModelProperty(value = "盐")
+    @ApiModelProperty(value = "加密盐")
     private String salt;
 
-    @ApiModelProperty(value = "注册日期")
-    private Date createTime;
+    @ApiModelProperty(value = "登录类型")
+    private String loginType;
 
-    @ApiModelProperty(value = "邮箱号")
-    private String email;
+    @ApiModelProperty(value = "用户信息")
+    private UmsUserInfo umsUserInfo;
 
-    @ApiModelProperty(value = "简介")
-    private String description;
+    @ApiModelProperty(value = "qq授权过期时间")
+    private Long expiredTime;
 
     @ApiModelProperty(value = "是否可用")
     private boolean available;
@@ -65,60 +44,20 @@ public class UmsUser implements Serializable{
         this.id = id;
     }
 
-    public String getUniqueId() {
-        return uniqueId;
+    public String getIdentity() {
+        return identity;
     }
 
-    public void setUniqueId(String uniqueId) {
-        this.uniqueId = uniqueId;
+    public void setIdentity(String identity) {
+        this.identity = identity;
     }
 
-    public String getHeadIcon() {
-        return headIcon;
+    public String getCredential() {
+        return credential;
     }
 
-    public void setHeadIcon(String headIcon) {
-        this.headIcon = headIcon;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getVerify() {
-        return verify;
-    }
-
-    public void setVerify(String verify) {
-        this.verify = verify;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setCredential(String credential) {
+        this.credential = credential;
     }
 
     public String getSalt() {
@@ -129,31 +68,31 @@ public class UmsUser implements Serializable{
         this.salt = salt;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public String getLoginType() {
+        return loginType;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setLoginType(String loginType) {
+        this.loginType = loginType;
     }
 
-    public String getEmail() {
-        return email;
+    public UmsUserInfo getUmsUserInfo() {
+        return umsUserInfo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUmsUserInfo(UmsUserInfo umsUserInfo) {
+        this.umsUserInfo = umsUserInfo;
     }
 
-    public String getDescription() {
-        return description;
+    public Long getExpiredTime() {
+        return expiredTime;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setExpiredTime(Long expiredTime) {
+        this.expiredTime = expiredTime;
     }
 
-    public boolean getAvailable() {
+    public boolean isAvailable() {
         return available;
     }
 
@@ -165,17 +104,12 @@ public class UmsUser implements Serializable{
     public String toString() {
         return "UmsUser{" +
                 "id=" + id +
-                ", uniqueId='" + uniqueId + '\'' +
-                ", headIcon='" + headIcon + '\'' +
-                ", name='" + name + '\'' +
-                ", sex='" + sex + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", verify='" + verify + '\'' +
-                ", password='" + password + '\'' +
+                ", identity='" + identity + '\'' +
+                ", credential='" + credential + '\'' +
                 ", salt='" + salt + '\'' +
-                ", createTime=" + createTime +
-                ", email='" + email + '\'' +
-                ", description='" + description + '\'' +
+                ", loginType='" + loginType + '\'' +
+                ", umsUserInfo=" + umsUserInfo +
+                ", expiredTime=" + expiredTime +
                 ", available=" + available +
                 '}';
     }

@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 /**
  * 消息队列相关配置
  */
-@Component
-public class RabbitMqConfig {
-    @Bean
-    public Queue msgTipQueue() {
-        return new Queue(QueueConstant.QUEUE_ORDER_CANCEL.getName());
-    }
-
-}
+//@Component
+//public class RabbitMqConfig {
+//    @Bean
+//    public Queue msgTipQueue() {
+//        return new Queue(QueueConstant.QUEUE_ORDER_CANCEL.getName());
+//    }
+//
+//}

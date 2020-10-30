@@ -12,9 +12,9 @@
         <result column="start_time" property="startTime"/>
         <result column="play_time" property="playTime"/>
         <result column="release_time" property="releaseTime"/>
-        <association column="user_id" property="umsUser" javaType="UmsUser">
+        <association column="user_id" property="umsUserInfo" javaType="UmsUserInfo">
             <id column="user_id" property="id"/>
-            <result column="head_icon" property="headIcon" />
+            <result column="avatar" property="avatar" />
             <result column="unique_id" property="uniqueId" />
             <result column="name" property="name" />
         </association>
@@ -45,10 +45,10 @@
     <select id="selectRecommendList" resultMap="bbsMusicMap">
         select
             m.*,
-            u.id,u.unique_id,u.head_icon,u.name
+            ui.id,ui.unique_id,ui.avatar,ui.name
         from
             bbs_music m
-            left join ums_user u on u.id = m.user_id
+            left join ums_user_info ui on ui.id = m.user_id
         order by m.id desc
     </select>
     <select id="selectMyMusicList" resultMap="bbsMusicMap">

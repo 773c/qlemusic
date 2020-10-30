@@ -1,20 +1,18 @@
 package com.cjj.qlemusic.portal.entity;
 
-import com.cjj.qlemusic.security.entity.Base;
-import com.cjj.qlemusic.security.entity.UmsUser;
+import com.cjj.qlemusic.security.entity.UmsUserInfo;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
  * 用户评论实体类
  */
-public class BbsUserComment extends Base implements Serializable {
+public class BbsUserComment implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "id")
@@ -43,7 +41,7 @@ public class BbsUserComment extends Base implements Serializable {
 
     @ApiModelProperty(value = "用户信息")
     @NotNull(message = "用户信息错误")
-    private UmsUser umsUser;
+    private UmsUserInfo umsUserInfo;
 
     @ApiModelProperty(value = "回复评论集合")
     private List<BbsReplyuserComment> bbsReplyuserCommentList;
@@ -107,12 +105,12 @@ public class BbsUserComment extends Base implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public UmsUser getUmsUser() {
-        return umsUser;
+    public UmsUserInfo getUmsUserInfo() {
+        return umsUserInfo;
     }
 
-    public void setUmsUser(UmsUser umsUser) {
-        this.umsUser = umsUser;
+    public void setUmsUserInfo(UmsUserInfo umsUserInfo) {
+        this.umsUserInfo = umsUserInfo;
     }
 
     public List<BbsReplyuserComment> getBbsReplyuserCommentList() {
@@ -141,7 +139,7 @@ public class BbsUserComment extends Base implements Serializable {
                 ", content='" + content + '\'' +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
-                ", umsUser=" + umsUser +
+                ", umsUserInfo=" + umsUserInfo +
                 ", bbsReplyuserCommentList=" + bbsReplyuserCommentList +
                 ", available=" + available +
                 '}';

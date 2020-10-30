@@ -1,9 +1,9 @@
-package com.cjj.qlemusic.security.service.impl;
+package com.cjj.qlemusic.portal.service.impl;
 
 import com.cjj.qlemusic.common.exception.Asserts;
-import com.cjj.qlemusic.security.dao.UmsCollectDao;
-import com.cjj.qlemusic.security.entity.UmsCollect;
-import com.cjj.qlemusic.security.service.UmsCollectService;
+import com.cjj.qlemusic.portal.dao.UmsCollectDao;
+import com.cjj.qlemusic.portal.entity.UmsCollect;
+import com.cjj.qlemusic.portal.service.UmsCollectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

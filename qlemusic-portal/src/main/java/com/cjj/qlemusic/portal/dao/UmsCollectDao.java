@@ -1,6 +1,7 @@
-package com.cjj.qlemusic.security.dao;
+package com.cjj.qlemusic.portal.dao;
 
-import com.cjj.qlemusic.security.entity.UmsCollect;
+
+import com.cjj.qlemusic.portal.entity.UmsCollect;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

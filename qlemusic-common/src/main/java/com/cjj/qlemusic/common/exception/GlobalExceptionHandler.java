@@ -5,6 +5,7 @@ import org.apache.shiro.authz.AuthorizationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import javax.validation.ConstraintViolationException;
 
@@ -38,8 +39,6 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = ConstraintViolationException.class)
     public ResponseResultUtil paramValidated(ConstraintViolationException exception){
-        System.out.println(exception.getMessage());
         return ResponseResultUtil.validateFailed(exception.getMessage().substring(exception.getMessage().indexOf(':')+1));
     }
-
 }

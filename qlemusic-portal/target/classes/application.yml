@@ -6,6 +6,7 @@ spring:
     multipart:
       enabled: true       #开启文件上传
       max-file-size: 20MB #限制文件上传大小
+      max-request-size: 20MB #限制请求上传大小
 
 #端口
 server:
@@ -23,7 +24,7 @@ mybatis:
 redis:
    database: qlemusic
    key:
-      admin: ':ums:portal:'
+      admin: ':ums:user:'
       prefixId: ':userId:'
       resourceList: 'ums:resourceList'
       verify: ':verify:'
@@ -42,8 +43,13 @@ redis:
 
 #用户信息
 user:
-  avatar: http://www.eiqle.com/img/default-avatar.png # 默认头像地址
+  avatar: https://qlmusic-oss1.oss-cn-zhangjiakou.aliyuncs.com/qlemusic/images/default/default-avatar.png # 默认头像地址
   uniqueId: eiqle
+  telLoginType: phone
+  qqLoginType: qq
+  wxLoginType: wx
+  credentialVerifyType: verify
+  credentialPasswordType: password
 
 #shiro
 shiro:
@@ -67,15 +73,25 @@ shiro:
     permission: anon
   - url: /admin/login
     permission: anon
-  - url: /portal/connectqq
+  - url: /oauth/**
     permission: anon
-  - url: /portal/telRegister
+  - url: /user/telRegister
     permission: anon
-  - url: /portal/matchVerify
+  - url: /user/matchVerify
     permission: anon
-  - url: /portal/sendSms
+  - url: /user/sendSms
     permission: anon
-  - url: /portal/login
+  - url: /user/login
+    permission: anon
+  - url: /user/getUserById
+    permission: anon
+  - url: /visit/**
+    permission: anon
+  - url: /play/**
+    permission: anon
+  - url: /comment/getCommentByMusic
+    permission: anon
+  - url: /comment/getUserByComment
     permission: anon
   - url: /audio/**
     permission: anon
@@ -122,12 +138,6 @@ aliyuncs:
       signNameKey: SignName
       templateCodeKey: TemplateCode
       templateParamKey: TemplateParam
-
-# 第三方qq登录授权
-oauth:
-  appId: 101903191
-  appKey: 6fbe201112e5283eae6e5b2ae3dbfa5d
-  redirectUrl: http://www.eiqle.com/portal/connectqq
 
 # 消息队列rabbitMQ
 rabbitmq:
