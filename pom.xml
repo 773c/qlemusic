@@ -42,7 +42,7 @@
         <logstash-logback-encoder.version>4.8</logstash-logback-encoder.version>
         <aspectjweaver.version>1.8.14</aspectjweaver.version>
         <hutool-all.version>4.5.7</hutool-all.version>
-        <shiro-spring.version>1.4.2</shiro-spring.version>
+        <shiro-spring.version>1.7.1</shiro-spring.version>
         <shiro-redis.version>3.2.3</shiro-redis.version>
         <java-jwt.version>3.8.1</java-jwt.version>
         <jjwt.version>0.9.1</jjwt.version>
